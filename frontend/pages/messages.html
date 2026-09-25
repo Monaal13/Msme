@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Messages | MSME Digital ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <span class="brand-text">MSME ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">CRM</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/customer-history.html">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                        <span class="nav-text">Customer History</span>
+                    </a>
+                    <a class="nav-link active" href="/pages/messages.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="nav-text">Customer Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory</div>
+                    <a class="nav-link" href="/pages/products.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Products & Stock</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Billing</div>
+                    <a class="nav-link" href="/pages/billing.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Create Invoice</span>
+                    </a>
+                    <a class="nav-link" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices History</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">HR & Operations</div>
+                    <a class="nav-link" href="/pages/employees.html">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="nav-text">Employees</span>
+                    </a>
+                    <a class="nav-link" href="/pages/departments.html">
+                        <svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                    <a class="nav-link" href="/pages/expenses.html">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="nav-text">Expenses</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Analytics & Reports</div>
+                    <a class="nav-link" href="/pages/analytics.html">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span class="nav-text">Sales Analytics</span>
+                    </a>
+                    <a class="nav-link" href="/pages/reports.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Business Reports</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Customer Messaging Center</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header" style="flex-wrap: wrap;">
+                    <div>
+                        <h1 class="page-title">Automated Communication Logs</h1>
+                        <p class="muted">Monitor instant confirmation notifications, check scheduled follow-up triggers, and review templates.</p>
+                    </div>
+                    <button class="btn btn-sm" id="processScheduledBtn" style="font-weight:700;">⏰ Process Scheduled Queue</button>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- Messages KPI cards -->
+                <div class="grid kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 24px;">
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Total Messages Logged</span>
+                        <div class="kpi-value" id="countTotal">0</div>
+                        <div class="kpi-sub">All types</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Delivered Messages</span>
+                        <div class="kpi-value" id="countSent" style="color: var(--success);">0</div>
+                        <div class="kpi-sub">Sent successfully (Demo)</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Scheduled Follow-ups</span>
+                        <div class="kpi-value" id="countScheduled" style="color: var(--warning);">0</div>
+                        <div class="kpi-sub">Pending time-delay trigger</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Failed Deliveries</span>
+                        <div class="kpi-value" id="countFailed" style="color: var(--danger);">0</div>
+                        <div class="kpi-sub">Requires retry (Starts with 999)</div>
+                    </div>
+                </div>
+
+                <!-- Page Tabs -->
+                <div style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--line); padding-bottom: 10px;">
+                    <button class="btn btn-sm page-tab active" data-tab="inbox">Message Logs</button>
+                    <button class="btn btn-sm secondary page-tab" data-tab="settings">Automation Settings & Templates</button>
+                </div>
+
+                <!-- TAB 1: INBOX / OUTBOX LOGS -->
+                <div class="tab-content" id="tabContentInbox">
+                    <!-- Filters & Search -->
+                    <div class="toolbar" style="margin-bottom: 20px;">
+                        <div class="toolbar-group" style="display: flex; gap: 10px; align-items: center;">
+                            <button class="btn btn-sm filter-btn active" data-status="all">All</button>
+                            <button class="btn btn-sm secondary filter-btn" data-status="sent">Sent</button>
+                            <button class="btn btn-sm secondary filter-btn" data-status="scheduled">Scheduled</button>
+                            <button class="btn btn-sm secondary filter-btn" data-status="failed">Failed</button>
+                        </div>
+                        <div class="toolbar-group">
+                            <input id="searchInput" placeholder="Search by customer name, phone or text..." style="min-width: 320px;">
+                        </div>
+                    </div>
+
+                    <!-- Messages Table -->
+                    <div class="card table-wrap" style="padding: 0;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>Phone</th>
+                                    <th>Message Text</th>
+                                    <th>Type</th>
+                                    <th>Status</th>
+                                    <th>Scheduled / Sent Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="messageTableBody">
+                                <tr>
+                                    <td colspan="7"><div class="empty-state">Loading messages...</div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- TAB 2: SETTINGS & TEMPLATE EDITOR -->
+                <div class="tab-content" id="tabContentSettings" style="display: none;">
+                    <div class="grid" style="grid-template-columns: 1fr 1.2fr; gap: 24px;">
+                        
+                        <!-- Configuration Form -->
+                        <div class="card">
+                            <h3 style="margin: 0 0 16px; font-size: 18px;">Communication Configurations</h3>
+                            <form id="settingsForm" style="display: flex; flex-direction: column; gap: 16px;">
+                                <label style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 10px;">
+                                    <div>
+                                        <strong>Instant Purchase Confirmation</strong>
+                                        <div class="muted" style="font-size: 12px; margin-top: 2px;">Send billing receipts immediately.</div>
+                                    </div>
+                                    <input type="checkbox" id="setPurchaseConf" style="transform: scale(1.3); margin-right: 10px;">
+                                </label>
+
+                                <label style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 10px;">
+                                    <div>
+                                        <strong>Post-Purchase Follow-up</strong>
+                                        <div class="muted" style="font-size: 12px; margin-top: 2px;">Schedule automatically to solicit reviews.</div>
+                                    </div>
+                                    <input type="checkbox" id="setFollowup" style="transform: scale(1.3); margin-right: 10px;">
+                                </label>
+
+                                <label>Send Follow-up Delay (Days)
+                                    <select id="setFollowupDays" style="margin-top: 6px;">
+                                        <option value="1">1 Day after purchase</option>
+                                        <option value="2">2 Days after purchase</option>
+                                        <option value="3">3 Days after purchase</option>
+                                        <option value="5">5 Days after purchase</option>
+                                        <option value="7">7 Days after purchase</option>
+                                    </select>
+                                </label>
+
+                                <label style="margin-top: 6px;">Preferred Sending Channel
+                                    <select id="setChannel" style="margin-top: 6px;">
+                                        <option value="WhatsApp">WhatsApp</option>
+                                        <option value="SMS">SMS Message</option>
+                                        <option value="Email">Email Address</option>
+                                    </select>
+                                </label>
+
+                                <button class="btn" type="submit" id="saveSettingsBtn" style="margin-top: 10px;">Save Automation Preferences</button>
+                            </form>
+                        </div>
+
+                        <!-- Template Editors -->
+                        <div class="card">
+                            <h3 style="margin: 0 0 16px; font-size: 18px;">Edit Message Templates</h3>
+                            <p class="muted" style="font-size: 12px; margin-top:-10px; margin-bottom: 16px;">
+                                Use placeholders like <code>{{customer_name}}</code>, <code>{{shop_name}}</code>, <code>{{amount}}</code>, <code>{{invoice_number}}</code>, <code>{{purchase_date}}</code>, and <code>{{product_name}}</code>.
+                            </p>
+                            <form id="templatesForm" style="display: flex; flex-direction: column; gap: 16px;">
+                                <label><strong>Purchase Confirmation Template</strong>
+                                    <textarea id="tempPurchase" rows="4" style="margin-top: 6px; font-family: monospace; font-size: 13px;" required></textarea>
+                                </label>
+
+                                <label><strong>Post-Purchase Follow-up Template</strong>
+                                    <textarea id="tempFollowUp" rows="4" style="margin-top: 6px; font-family: monospace; font-size: 13px;" required></textarea>
+                                </label>
+
+                                <label><strong>Payment Reminder Template</strong>
+                                    <textarea id="tempReminder" rows="4" style="margin-top: 6px; font-family: monospace; font-size: 13px;" required></textarea>
+                                </label>
+
+                                <button class="btn" type="submit" id="saveTemplatesBtn">Save Templates</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Message Details Modal -->
+    <div id="messageModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content" style="max-width: 520px;">
+            <div class="modal-header">
+                <h2>Message Details Log</h2>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
+            </div>
+            <div style="padding: 10px;">
+                <div class="grid form-grid" style="margin-bottom: 20px; font-size: 14px;">
+                    <div><strong>Customer Name:</strong> <span id="mdCustName">-</span></div>
+                    <div><strong>Customer Phone:</strong> <span id="mdCustPhone">-</span></div>
+                    <div><strong>Invoice No:</strong> <span id="mdInvoiceNum">-</span></div>
+                    <div><strong>Sending Type:</strong> <span id="mdType">-</span></div>
+                    <div><strong>Channel:</strong> <span id="mdChannel">-</span></div>
+                    <div><strong>Current Status:</strong> <span id="mdStatus">-</span></div>
+                </div>
+                <div style="background:var(--secondary); padding: 14px; border-radius:8px; font-family: monospace; white-space: pre-wrap; font-size: 13px; border: 1px solid var(--line);" id="mdContent"></div>
+                <div id="mdErrorBlock" style="margin-top: 14px; color: var(--danger); font-size:12px; font-weight:700; display:none;">
+                    ⚠️ Error: <span id="mdErrorText"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let messages = [];
+        let activeTab = "inbox";
+        let statusFilter = "all";
+
+        async function initMessages() {
+            await requireLogin();
+            await fetchMessages();
+            await fetchSettings();
+            await fetchTemplates();
+        }
+
+        async function fetchMessages() {
+            const search = document.getElementById("searchInput").value.trim();
+            try {
+                const data = await api.request(`/api/messages?status=${statusFilter}&search=${encodeURIComponent(search)}`);
+                messages = data.messages || [];
+                renderSummary(data.summary || {});
+                renderMessageTable();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        function renderSummary(summary) {
+            document.getElementById("countTotal").textContent = summary.total ?? 0;
+            document.getElementById("countSent").textContent = summary.sent ?? 0;
+            document.getElementById("countScheduled").textContent = summary.scheduled ?? 0;
+            document.getElementById("countFailed").textContent = summary.failed ?? 0;
+        }
+
+        function renderMessageTable() {
+            const tbody = document.getElementById("messageTableBody");
+            if (!messages.length) {
+                tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">No messages logged for this criteria.</div></td></tr>`;
+                return;
+            }
+            tbody.innerHTML = messages.map(msg => {
+                let statusClass = "unpaid";
+                if (msg.status === "sent") statusClass = "paid";
+                else if (msg.status === "scheduled") statusClass = "overdue";
+                else if (msg.status === "failed") statusClass = "danger-text";
+                
+                const showDate = msg.sent_at || msg.scheduled_at || msg.created_at;
+                
+                const actionButton = msg.status === "failed" 
+                    ? `<button class="btn btn-sm" onclick="retryMessage(${msg.id})">Retry</button>`
+                    : `<button class="btn btn-sm secondary" onclick="viewMessageDetails(${msg.id})">View</button>`;
+
+                return `
+                    <tr>
+                        <td><strong>${escapeHtml(msg.customer_name)}</strong></td>
+                        <td>${escapeHtml(msg.customer_phone || '-')}</td>
+                        <td><div style="max-width: 250px; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${escapeHtml(msg.message_text)}</div></td>
+                        <td><span class="badge info">${escapeHtml(msg.type.toUpperCase())}</span></td>
+                        <td><span class="badge-pay ${statusClass}">${escapeHtml(msg.status.toUpperCase())}</span></td>
+                        <td>${formatDateTime(showDate)}</td>
+                        <td><div class="actions-cell">${actionButton}</div></td>
+                    </tr>
+                `;
+            }).join("");
+        }
+
+        async function retryMessage(id) {
+            try {
+                showToast("Resending message...", "info");
+                const res = await api.request(`/api/messages/${id}/retry`, { method: "POST" });
+                if (res.success) {
+                    showToast("Message sent successfully!", "success");
+                } else {
+                    showToast(`Delivery failed: ${res.error_message}`, "error");
+                }
+                fetchMessages();
+            } catch (err) {
+                showToast(err.message, "error");
+            }
+        }
+
+        function viewMessageDetails(id) {
+            const msg = messages.find(m => m.id === id);
+            if (!msg) return;
+
+            document.getElementById("mdCustName").textContent = msg.customer_name;
+            document.getElementById("mdCustPhone").textContent = msg.customer_phone || "-";
+            document.getElementById("mdInvoiceNum").textContent = msg.invoice_number || "None";
+            document.getElementById("mdType").textContent = msg.type.toUpperCase();
+            document.getElementById("mdChannel").textContent = msg.channel;
+            document.getElementById("mdStatus").textContent = msg.status.toUpperCase();
+            document.getElementById("mdContent").textContent = msg.message_text;
+
+            const errorBlock = document.getElementById("mdErrorBlock");
+            if (msg.status === "failed" && msg.error_message) {
+                document.getElementById("mdErrorText").textContent = msg.error_message;
+                errorBlock.style.display = "block";
+            } else {
+                errorBlock.style.display = "none";
+            }
+
+            document.getElementById("messageModal").style.display = "flex";
+        }
+
+        async function fetchSettings() {
+            try {
+                const data = await api.request("/api/messages/settings");
+                document.getElementById("setPurchaseConf").checked = data.purchase_confirmation === 1;
+                document.getElementById("setFollowup").checked = data.post_purchase_followup === 1;
+                document.getElementById("setFollowupDays").value = data.followup_days;
+                document.getElementById("setChannel").value = data.preferred_channel;
+            } catch (err) {
+                console.error("Error fetching settings:", err);
+            }
+        }
+
+        async function fetchTemplates() {
+            try {
+                const data = await api.request("/api/messages/templates");
+                document.getElementById("tempPurchase").value = data.purchase || "";
+                document.getElementById("tempFollowUp").value = data.follow_up || "";
+                document.getElementById("tempReminder").value = data.payment_reminder || "";
+            } catch (err) {
+                console.error("Error fetching templates:", err);
+            }
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            initMessages();
+
+            // Search and filtering listeners
+            document.getElementById("searchInput").addEventListener("input", fetchMessages);
+            document.querySelectorAll(".filter-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".filter-btn").forEach(b => b.classList.add("secondary"));
+                    btn.classList.remove("secondary");
+                    statusFilter = btn.getAttribute("data-status");
+                    fetchMessages();
+                });
+            });
+
+            // Tabs handlers
+            document.querySelectorAll(".page-tab").forEach(tab => {
+                tab.addEventListener("click", () => {
+                    document.querySelectorAll(".page-tab").forEach(t => t.classList.add("secondary"));
+                    tab.classList.remove("secondary");
+                    const activeTab = tab.getAttribute("data-tab");
+                    if (activeTab === "inbox") {
+                        document.getElementById("tabContentInbox").style.display = "block";
+                        document.getElementById("tabContentSettings").style.display = "none";
+                    } else {
+                        document.getElementById("tabContentInbox").style.display = "none";
+                        document.getElementById("tabContentSettings").style.display = "block";
+                    }
+                });
+            });
+
+            // Close modal details
+            document.getElementById("closeModalBtn").addEventListener("click", () => {
+                document.getElementById("messageModal").style.display = "none";
+            });
+
+            // Process scheduled queue trigger
+            document.getElementById("processScheduledBtn").addEventListener("click", async () => {
+                const btn = document.getElementById("processScheduledBtn");
+                setBtnLoading(btn, true, "Checking Queue...");
+                try {
+                    const res = await api.request("/api/messages/process-scheduled", { method: "POST" });
+                    showToast(`Queue check completed! ${res.count} messages sent successfully.`, "success");
+                    fetchMessages();
+                } catch (err) {
+                    showToast(err.message, "error");
+                } finally {
+                    setBtnLoading(btn, false);
+                }
+            });
+
+            // Settings form submit
+            document.getElementById("settingsForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const btn = document.getElementById("saveSettingsBtn");
+                setBtnLoading(btn, true, "Saving...");
+                const payload = {
+                    purchase_confirmation: document.getElementById("setPurchaseConf").checked ? 1 : 0,
+                    post_purchase_followup: document.getElementById("setFollowup").checked ? 1 : 0,
+                    followup_days: parseInt(document.getElementById("setFollowupDays").value),
+                    preferred_channel: document.getElementById("setChannel").value
+                };
+                try {
+                    await api.request("/api/messages/settings", {
+                        method: "PUT",
+                        body: JSON.stringify(payload)
+                    });
+                    showToast("Automation preferences saved successfully!", "success");
+                    fetchSettings();
+                } catch (err) {
+                    showToast(err.message, "error");
+                } finally {
+                    setBtnLoading(btn, false);
+                }
+            });
+
+            // Templates form submit
+            document.getElementById("templatesForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const btn = document.getElementById("saveTemplatesBtn");
+                setBtnLoading(btn, true, "Saving...");
+                const payload = {
+                    purchase: document.getElementById("tempPurchase").value.trim(),
+                    follow_up: document.getElementById("tempFollowUp").value.trim(),
+                    payment_reminder: document.getElementById("tempReminder").value.trim()
+                };
+                try {
+                    await api.request("/api/messages/templates", {
+                        method: "PUT",
+                        body: JSON.stringify(payload)
+                    });
+                    showToast("Message templates updated successfully!", "success");
+                    fetchTemplates();
+                } catch (err) {
+                    showToast(err.message, "error");
+                } finally {
+                    setBtnLoading(btn, false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

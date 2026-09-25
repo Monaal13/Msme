@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Orders | Mini ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">🏭</div>
+                <span class="brand-text">Mini ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">Orders & Production</div>
+                    <a class="nav-link active" href="/pages/orders.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                        <span class="nav-text">Customer Orders</span>
+                    </a>
+                    <a class="nav-link" href="/pages/production.html">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <span class="nav-text">Production Board</span>
+                    </a>
+                    <a class="nav-link" href="/pages/quality-packing.html">
+                        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        <span class="nav-text">Quality & Packing</span>
+                    </a>
+                    <a class="nav-link" href="/pages/dispatch.html">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        <span class="nav-text">Dispatch</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory & Material</div>
+                    <a class="nav-link" href="/pages/raw-materials.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Raw Materials</span>
+                    </a>
+                    <a class="nav-link" href="/pages/finished-goods.html">
+                        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        <span class="nav-text">Finished Goods</span>
+                    </a>
+                    <a class="nav-link" href="/pages/purchases.html">
+                        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span class="nav-text">Procurement</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">CRM & Billing</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices & Payments</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Customer Order Management</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Orders & Material Requirements</h1>
+                        <p class="muted">Record buyer orders, define garment specs, and automatically check raw material stock availability.</p>
+                    </div>
+                    <button class="btn" onclick="openCreateOrderModal()">+ New Customer Order</button>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- Pending Orders Overview Section -->
+                <div class="kpi-grid" style="grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px;">
+                    <div class="card kpi-card order-stat-card active-card" id="cardTotalOrders" onclick="setOrderFilter('all')">
+                        <div class="kpi-header">
+                            <span class="kpi-label">Total Orders</span>
+                            <div class="kpi-icon-box" style="background: rgba(37, 99, 235, 0.1); color: var(--primary);">📦</div>
+                        </div>
+                        <div class="kpi-value" id="totalOrdersCount">0</div>
+                        <div class="kpi-sub">All registered orders</div>
+                    </div>
+
+                    <div class="card kpi-card order-stat-card" id="cardPendingOrders" onclick="setOrderFilter('pending')">
+                        <div class="kpi-header">
+                            <span class="kpi-label">Pending Orders</span>
+                            <div class="kpi-icon-box" style="background: rgba(217, 119, 6, 0.1); color: var(--warning);">⏳</div>
+                        </div>
+                        <div class="kpi-value" id="pendingOrdersCount" style="color: var(--warning);">0</div>
+                        <div class="kpi-sub">Awaiting completion</div>
+                    </div>
+
+                    <div class="card kpi-card order-stat-card" id="cardInProduction" onclick="setOrderFilter('in_production')">
+                        <div class="kpi-header">
+                            <span class="kpi-label">In Production</span>
+                            <div class="kpi-icon-box" style="background: rgba(147, 51, 234, 0.1); color: #9333ea;">⚙️</div>
+                        </div>
+                        <div class="kpi-value" id="inProductionCount" style="color: #9333ea;">0</div>
+                        <div class="kpi-sub">Cutting / Stitching / Finishing</div>
+                    </div>
+
+                    <div class="card kpi-card order-stat-card" id="cardCompleted" onclick="setOrderFilter('completed')">
+                        <div class="kpi-header">
+                            <span class="kpi-label">Completed</span>
+                            <div class="kpi-icon-box" style="background: rgba(22, 163, 74, 0.1); color: var(--success);">✅</div>
+                        </div>
+                        <div class="kpi-value" id="completedOrdersCount" style="color: var(--success);">0</div>
+                        <div class="kpi-sub">Finished production</div>
+                    </div>
+
+                    <div class="card kpi-card order-stat-card" id="cardDispatched" onclick="setOrderFilter('dispatched')">
+                        <div class="kpi-header">
+                            <span class="kpi-label">Dispatched</span>
+                            <div class="kpi-icon-box" style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9;">🚚</div>
+                        </div>
+                        <div class="kpi-value" id="dispatchedOrdersCount" style="color: #0ea5e9;">0</div>
+                        <div class="kpi-sub">Sent out / Delivered</div>
+                    </div>
+                </div>
+
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <input type="text" id="orderSearch" placeholder="Search order #, customer, garment..." onkeyup="loadOrders()">
+                    </div>
+                    <div class="toolbar-group" style="justify-content: flex-end;">
+                        <select id="stageFilter" onchange="onStageFilterChange()" style="max-width: 220px;">
+                            <option value="all">All Orders</option>
+                            <option value="pending">Pending Orders</option>
+                            <option value="in_production">In Production</option>
+                            <option value="completed">Completed</option>
+                            <option value="dispatched">Dispatched</option>
+                            <optgroup label="Specific Production Stages">
+                                <option value="New">New</option>
+                                <option value="Material Pending">Material Pending</option>
+                                <option value="Material Ready">Material Ready</option>
+                                <option value="Cutting">Cutting</option>
+                                <option value="Stitching">Stitching</option>
+                                <option value="Finishing">Finishing</option>
+                                <option value="Quality Check">Quality Check</option>
+                                <option value="Packing">Packing</option>
+                                <option value="Ready for Dispatch">Ready for Dispatch</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Customer</th>
+                                <th>Garment / Product</th>
+                                <th>Design / Size / Color</th>
+                                <th>Quantity</th>
+                                <th>Target Date</th>
+                                <th>Stage</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Create Order Modal -->
+    <div id="orderModal" class="modal-backdrop" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>New Customer Order</h2>
+                <button class="close-btn" onclick="closeOrderModal()">✕</button>
+            </div>
+            <form id="orderForm" onsubmit="submitOrder(event)">
+                <div class="form-grid">
+                    <div>
+                        <label>Customer / Buyer <span class="required-asterisk">*</span></label>
+                        <select name="customer_id" id="orderCustomerSelect" required></select>
+                    </div>
+                    <div>
+                        <label>Garment Name / Product <span class="required-asterisk">*</span></label>
+                        <input type="text" name="garment_name" placeholder="e.g. Round Neck T-Shirt" required>
+                    </div>
+                    <div>
+                        <label>Design / SKU Code</label>
+                        <input type="text" name="design" placeholder="e.g. DS-402">
+                    </div>
+                    <div>
+                        <label>Size</label>
+                        <input type="text" name="size" placeholder="e.g. L / XL / 40">
+                    </div>
+                    <div>
+                        <label>Color</label>
+                        <input type="text" name="color" placeholder="e.g. Navy Blue">
+                    </div>
+                    <div>
+                        <label>Quantity (Pcs) <span class="required-asterisk">*</span></label>
+                        <input type="number" name="quantity" id="orderQty" value="500" min="1" required onchange="renderBOMFields()">
+                    </div>
+                    <div>
+                        <label>Price per Unit (₹)</label>
+                        <input type="number" name="price" value="250" step="0.01" min="0">
+                    </div>
+                    <div>
+                        <label>Expected Delivery Date</label>
+                        <input type="date" name="expected_delivery_date" id="orderDeliveryDate">
+                    </div>
+                    <div class="full">
+                        <label>Special Requirements / Notes</label>
+                        <textarea name="special_requirements" rows="2" placeholder="e.g. Double stitch on hem, custom brand label"></textarea>
+                    </div>
+
+                    <!-- Bill of Materials (BOM) Section -->
+                    <div class="full bom-checker">
+                        <h4 style="margin:0 0 10px; font-size:14px; color:var(--ink);">Raw Material Requirements (BOM Check)</h4>
+                        <p class="muted" style="font-size:12px; margin-bottom:12px;">Define raw materials needed for this order to check stock availability.</p>
+                        
+                        <div id="bomList">
+                            <!-- Dynamic BOM Rows -->
+                        </div>
+                        <button type="button" class="btn btn-sm secondary" style="margin-top:10px;" onclick="addBOMRow()">+ Add Material Requirement</button>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+                    <button type="button" class="btn secondary" onclick="closeOrderModal()">Cancel</button>
+                    <button type="submit" class="btn">Create Order & Check Stock</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Order Detail & BOM Modal -->
+    <div id="orderDetailModal" class="modal-backdrop" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="detailOrderTitle">Order Details</h2>
+                <button class="close-btn" onclick="closeDetailModal()">✕</button>
+            </div>
+            <div id="orderDetailContent">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let rawMaterialsCache = [];
+        let customersCache = [];
+
+        async function initOrdersPage() {
+            await requireLogin();
+            await loadOrderStats();
+            await loadDropdowns();
+            loadOrders();
+            // Default delivery date 7 days ahead
+            const d = new Date();
+            d.setDate(d.getDate() + 7);
+            document.getElementById("orderDeliveryDate").value = d.toISOString().split("T")[0];
+        }
+
+        async function loadOrderStats() {
+            try {
+                const stats = await api.request("/api/orders/stats");
+                animateValue(document.getElementById("totalOrdersCount"), stats.total || 0);
+                animateValue(document.getElementById("pendingOrdersCount"), stats.pending || 0);
+                animateValue(document.getElementById("inProductionCount"), stats.in_production || 0);
+                animateValue(document.getElementById("completedOrdersCount"), stats.completed || 0);
+                animateValue(document.getElementById("dispatchedOrdersCount"), stats.dispatched || 0);
+            } catch (e) {
+                console.error("Failed to load order stats:", e);
+            }
+        }
+
+        function setOrderFilter(filterVal) {
+            const filterSelect = document.getElementById("stageFilter");
+            filterSelect.value = filterVal;
+            updateActiveCardHighlight(filterVal);
+            loadOrders();
+        }
+
+        function onStageFilterChange() {
+            const filterVal = document.getElementById("stageFilter").value;
+            updateActiveCardHighlight(filterVal);
+            loadOrders();
+        }
+
+        function updateActiveCardHighlight(filterVal) {
+            const cardMap = {
+                "all": "cardTotalOrders",
+                "pending": "cardPendingOrders",
+                "in_production": "cardInProduction",
+                "completed": "cardCompleted",
+                "dispatched": "cardDispatched"
+            };
+
+            document.querySelectorAll(".order-stat-card").forEach(c => c.classList.remove("active-card"));
+            const activeCardId = cardMap[filterVal];
+            if (activeCardId) {
+                const el = document.getElementById(activeCardId);
+                if (el) el.classList.add("active-card");
+            }
+        }
+
+        async function loadDropdowns() {
+            try {
+                customersCache = await api.request("/api/customers");
+                rawMaterialsCache = await api.request("/api/raw-materials");
+
+                const sel = document.getElementById("orderCustomerSelect");
+                if (!customersCache.length) {
+                    sel.innerHTML = '<option value="">No customers found. Please add a customer first.</option>';
+                } else {
+                    sel.innerHTML = customersCache.map(c => `<option value="${c.id}">${c.name} ${c.company_name ? `(${c.company_name})` : ''}</option>`).join("");
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        async function loadOrders() {
+            try {
+                const search = document.getElementById("orderSearch").value;
+                const stage = document.getElementById("stageFilter").value;
+                const orders = await api.request(`/api/orders?search=${encodeURIComponent(search)}&status=${encodeURIComponent(stage)}`);
+                renderOrdersTable(orders);
+            } catch (e) {
+                setStatus(e.message, "error");
+            }
+        }
+
+        function renderOrdersTable(rows) {
+            const tbody = document.getElementById("ordersTableBody");
+            const columns = [
+                { key: "order_number", render: r => `<strong>${r.order_number}</strong>` },
+                { key: "customer_name", render: r => `<div>${r.customer_name}</div><span class="muted" style="font-size:11px;">${r.customer_company || ''}</span>` },
+                { key: "garment_name", render: r => `<strong>${r.garment_name}</strong>` },
+                { key: "design", render: r => `${r.design || '-'} / ${r.size || '-'} / ${r.color || '-'}` },
+                { key: "quantity", render: r => `<strong>${r.quantity} Pcs</strong>` },
+                { key: "expected_completion", render: r => formatDate(r.expected_completion) },
+                { key: "current_stage", render: r => renderStageBadge(r.current_stage) },
+                { key: "status", render: r => {
+                    if (r.status === "Material Pending") return '<span class="status-tag shortage">⚠️ Shortage</span>';
+                    if (r.status === "Material Ready") return '<span class="status-tag available">✅ Ready</span>';
+                    return `<span class="badge info">${r.status}</span>`;
+                }},
+                { key: "actions", render: r => `
+                    <button class="btn btn-sm secondary" onclick="viewOrderDetail(${r.id})">Inspect BOM & Stage</button>
+                `}
+            ];
+            renderRows(tbody, rows, columns, "No customer orders found.");
+        }
+
+        function openCreateOrderModal() {
+            document.getElementById("orderModal").style.display = "flex";
+            renderBOMFields();
+        }
+
+        function closeOrderModal() {
+            document.getElementById("orderModal").style.display = "none";
+        }
+
+        function renderBOMFields() {
+            const container = document.getElementById("bomList");
+            if (container.children.length === 0) {
+                addBOMRow();
+            }
+        }
+
+        function addBOMRow() {
+            const container = document.getElementById("bomList");
+            const rowId = Date.now() + Math.random();
+            const div = document.createElement("div");
+            div.className = "bom-item";
+            div.id = `bomRow_${rowId}`;
+
+            let matOptions = rawMaterialsCache.map(m => `<option value="${m.id}">${m.name} (${m.category}) - Stock: ${m.current_stock} ${m.unit}</option>`).join("");
+            if (!rawMaterialsCache.length) matOptions = '<option value="">No materials created yet</option>';
+
+            div.innerHTML = `
+                <div style="flex:2; margin-right:10px;">
+                    <select class="bom-mat-select">${matOptions}</select>
+                </div>
+                <div style="flex:1; margin-right:10px;">
+                    <input type="number" class="bom-mat-qty" placeholder="Req Qty" value="100" min="0.1" step="0.1">
+                </div>
+                <button type="button" class="btn btn-sm danger" onclick="this.closest('.bom-item').remove()">✕</button>
+            `;
+            container.appendChild(div);
+        }
+
+        async function submitOrder(e) {
+            e.preventDefault();
+            const form = document.getElementById("orderForm");
+            const data = collectForm(form);
+
+            // Collect BOM materials
+            const bomRows = document.querySelectorAll(".bom-item");
+            const materials = [];
+            bomRows.forEach(row => {
+                const matId = row.querySelector(".bom-mat-select").value;
+                const qty = row.querySelector(".bom-mat-qty").value;
+                if (matId && qty) {
+                    materials.push({ raw_material_id: parseInt(matId), required_quantity: parseFloat(qty) });
+                }
+            });
+            data.materials = materials;
+
+            try {
+                const res = await api.request("/api/orders", { method: "POST", body: JSON.stringify(data) });
+                closeOrderModal();
+                showToast(res.message, res.has_shortage ? "warning" : "success", "Order Created");
+                loadOrderStats();
+                loadOrders();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        async function viewOrderDetail(orderId) {
+            try {
+                const order = await api.request(`/api/orders/${orderId}`);
+                document.getElementById("detailOrderTitle").textContent = `Order ${order.order_number} — ${order.garment_name}`;
+                
+                let bomHtml = '';
+                let shortageDetected = false;
+
+                if (order.material_requirements && order.material_requirements.length) {
+                    bomHtml = `
+                        <div class="table-wrap" style="margin-top:10px;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Material</th>
+                                        <th>Required</th>
+                                        <th>In Stock</th>
+                                        <th>Shortage</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${order.material_requirements.map(m => {
+                                        const isShort = m.status === "Shortage";
+                                        if (isShort) shortageDetected = true;
+                                        return `
+                                            <tr>
+                                                <td><strong>${m.material_name}</strong></td>
+                                                <td>${m.required_quantity} ${m.unit}</td>
+                                                <td>${m.available_stock} ${m.unit}</td>
+                                                <td style="color:${isShort ? 'var(--danger)' : 'var(--success)'}; font-weight:700;">${isShort ? `${m.shortage_quantity} ${m.unit}` : '0'}</td>
+                                                <td>${isShort ? '<span class="status-tag shortage">⚠️ Shortage</span>' : '<span class="status-tag available">✅ Available</span>'}</td>
+                                                <td>${isShort ? `<a href="/pages/purchases.html" class="btn btn-sm danger">+ Purchase ${m.shortage_quantity} ${m.unit}</a>` : '<span class="muted">-</span>'}</td>
+                                            </tr>
+                                        `;
+                                    }).join("")}
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                } else {
+                    bomHtml = '<p class="muted">No BOM materials attached to this order.</p>';
+                }
+
+                document.getElementById("orderDetailContent").innerHTML = `
+                    <div style="margin-bottom:16px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span>Customer: <strong>${order.customer_name}</strong> (${order.customer_phone || ''})</span>
+                            <span>Stage: ${renderStageBadge(order.current_stage)}</span>
+                        </div>
+                        <div style="margin-top:6px;">Specs: <strong>Design: ${order.design || 'Std'}, Size: ${order.size || 'L'}, Color: ${order.color || 'Standard'}, Qty: ${order.quantity} Pcs</strong></div>
+                    </div>
+
+                    ${renderStageProgressStepper(order.current_stage)}
+
+                    <h4 style="margin:20px 0 10px;">Raw Material Status vs Inventory</h4>
+                    ${bomHtml}
+
+                    <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+                        <a href="/pages/production.html" class="btn">Open Production Board →</a>
+                        <button class="btn secondary" onclick="closeDetailModal()">Close</button>
+                    </div>
+                `;
+
+                document.getElementById("orderDetailModal").style.display = "flex";
+            } catch (e) {
+                setStatus(e.message, "error");
+            }
+        }
+
+        function closeDetailModal() {
+            document.getElementById("orderDetailModal").style.display = "none";
+        }
+
+        document.addEventListener("DOMContentLoaded", initOrdersPage);
+    </script>
+</body>
+</html>

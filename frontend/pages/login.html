@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | MSME Digital Transformation</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class="auth-page">
+    <!-- Live Business Animated Background Canvas -->
+    <canvas id="loginBgCanvas" class="login-bg-canvas"></canvas>
+
+    <!-- Glassmorphism Login Section -->
+    <main class="auth-card">
+        <div class="auth-logo">
+            <div class="brand-icon">M</div>
+            <span class="brand-text" style="font-size: 20px; font-weight: 800; color: var(--ink);">MSME <span style="color: var(--primary);">ERP</span></span>
+        </div>
+        <h2>Sign in</h2>
+        <p class="muted">Access your digital business workspace.</p>
+        
+        <form id="loginForm" class="grid" style="gap: 16px;">
+            <label>Email Address <span class="required-asterisk">*</span>
+                <input type="email" name="email" id="loginEmail" required placeholder="name@company.com" autocomplete="username">
+            </label>
+            
+            <label>Password <span class="required-asterisk">*</span>
+                <div class="password-wrapper">
+                    <input type="password" name="password" id="loginPassword" required placeholder="••••••••" autocomplete="current-password">
+                    <button type="button" class="toggle-password-btn" id="togglePasswordBtn" title="Show/Hide Password" aria-label="Toggle Password Visibility">👁</button>
+                </div>
+            </label>
+            
+            <div class="remember-row">
+                <label class="remember-label">
+                    <input type="checkbox" id="rememberMe" name="remember">
+                    <span>Remember me on this device</span>
+                </label>
+            </div>
+            
+            <button class="btn" type="submit" id="loginSubmitBtn" style="margin-top: 8px;">Sign In</button>
+            <div data-status class="status"></div>
+        </form>
+        
+        <p class="auth-footer">New business? <a href="/pages/register.html">Create Admin account</a> | Are you a customer? <a href="/pages/register-customer.html">Customer Signup</a></p>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/login-bg.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const toggleBtn = document.getElementById("togglePasswordBtn");
+            const passInput = document.getElementById("loginPassword");
+            const rememberCheck = document.getElementById("rememberMe");
+            const emailInput = document.getElementById("loginEmail");
+
+            // Remember me restore
+            if (localStorage.getItem("rememberedEmail")) {
+                emailInput.value = localStorage.getItem("rememberedEmail");
+                rememberCheck.checked = true;
+            }
+
+            toggleBtn?.addEventListener("click", () => {
+                const isPass = passInput.type === "password";
+                passInput.type = isPass ? "text" : "password";
+                toggleBtn.textContent = isPass ? "🙈" : "👁";
+            });
+
+            document.getElementById("loginForm")?.addEventListener("submit", () => {
+                if (rememberCheck.checked) {
+                    localStorage.setItem("rememberedEmail", emailInput.value.trim());
+                } else {
+                    localStorage.removeItem("rememberedEmail");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

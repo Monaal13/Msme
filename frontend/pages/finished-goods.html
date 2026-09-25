@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finished Goods Inventory | Mini ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">🏭</div>
+                <span class="brand-text">Mini ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">Orders & Production</div>
+                    <a class="nav-link" href="/pages/orders.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                        <span class="nav-text">Customer Orders</span>
+                    </a>
+                    <a class="nav-link" href="/pages/production.html">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <span class="nav-text">Production Board</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory & Material</div>
+                    <a class="nav-link" href="/pages/raw-materials.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Raw Materials</span>
+                    </a>
+                    <a class="nav-link active" href="/pages/finished-goods.html">
+                        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        <span class="nav-text">Finished Goods</span>
+                    </a>
+                    <a class="nav-link" href="/pages/purchases.html">
+                        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span class="nav-text">Procurement</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Finished Garments Inventory</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Finished Goods Catalog</h1>
+                        <p class="muted">Monitor finished knitwear stock levels automatically updated by production and dispatch.</p>
+                    </div>
+                    <a href="/pages/products.html" class="btn">+ Add New Product Model</a>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <input type="text" id="goodsSearch" placeholder="Search garment name, SKU..." onkeyup="loadFinishedGoods()">
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product / Garment</th>
+                                <th>SKU Code</th>
+                                <th>Category</th>
+                                <th>Selling Price</th>
+                                <th>Available Stock</th>
+                                <th>Min Stock Level</th>
+                                <th>Stock Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="finishedGoodsTableBody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        async function initFinishedGoodsPage() {
+            await requireLogin();
+            loadFinishedGoods();
+        }
+
+        async function loadFinishedGoods() {
+            try {
+                const search = document.getElementById("goodsSearch").value;
+                const rows = await api.request(`/api/products?search=${encodeURIComponent(search)}`);
+                renderGoodsTable(rows);
+            } catch (e) {
+                setStatus(e.message, "error");
+            }
+        }
+
+        function renderGoodsTable(rows) {
+            const tbody = document.getElementById("finishedGoodsTableBody");
+            const columns = [
+                { key: "name", render: r => `<strong>${r.name}</strong>` },
+                { key: "sku", render: r => `<code style="background:var(--secondary); padding:2px 6px; border-radius:4px;">${r.sku}</code>` },
+                { key: "category", render: r => r.category || 'Garments' },
+                { key: "selling_price", render: r => formatMoney(r.selling_price) },
+                { key: "quantity", render: r => `<strong style="font-size:15px; color:var(--primary);">${r.quantity} Pcs</strong>` },
+                { key: "minimum_stock_level", render: r => `${r.minimum_stock_level} Pcs` },
+                { key: "stock_status", render: r => {
+                    if (r.quantity <= 0) return '<span class="status-tag shortage">✕ Out of Stock</span>';
+                    if (r.quantity <= r.minimum_stock_level) return '<span class="status-tag shortage">⚠️ Low Stock</span>';
+                    return '<span class="status-tag available">✅ In Stock</span>';
+                }},
+                { key: "actions", render: r => `
+                    <button class="btn btn-sm secondary" onclick="stockInProduct(${r.id}, '${r.name}')">+ Add Stock</button>
+                `}
+            ];
+            renderRows(tbody, rows, columns, "No finished garment products cataloged yet.");
+        }
+
+        async function stockInProduct(id, name) {
+            const qtyStr = prompt(`Enter quantity to add to finished stock for '${name}':`, "50");
+            if (!qtyStr) return;
+            const qty = parseInt(qtyStr);
+            if (isNaN(qty) || qty <= 0) {
+                alert("Invalid quantity!");
+                return;
+            }
+
+            try {
+                const res = await api.request(`/api/products/${id}/stock-in`, {
+                    method: "POST",
+                    body: JSON.stringify({ quantity: qty })
+                });
+                showToast(res.message, "success", "Finished Stock Updated");
+                loadFinishedGoods();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", initFinishedGoodsPage);
+    </script>
+</body>
+</html>

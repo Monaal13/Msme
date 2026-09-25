@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Management | MSME Digital ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <span class="brand-text">MSME ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">CRM</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/customer-history.html">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                        <span class="nav-text">Customer History</span>
+                    </a>
+                    <a class="nav-link" href="/pages/messages.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="nav-text">Customer Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory</div>
+                    <a class="nav-link" href="/pages/products.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Products & Stock</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Billing</div>
+                    <a class="nav-link" href="/pages/billing.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Create Invoice</span>
+                    </a>
+                    <a class="nav-link" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices History</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">HR & Operations</div>
+                    <a class="nav-link" href="/pages/employees.html">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="nav-text">Employees</span>
+                    </a>
+                    <a class="nav-link" href="/pages/departments.html">
+                        <svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                    <a class="nav-link active" href="/pages/expenses.html">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="nav-text">Expenses</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Analytics & Reports</div>
+                    <a class="nav-link" href="/pages/analytics.html">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span class="nav-text">Sales Analytics</span>
+                    </a>
+                    <a class="nav-link" href="/pages/reports.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Business Reports</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Expense Tracking</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Expense Management</h1>
+                        <p class="muted">Track business operating expenses, categorize overhead costs, and log bills.</p>
+                    </div>
+                    <button class="btn btn-sm" id="scrollToAddBtn">+ New Expense</button>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- KPI Summary -->
+                <div class="grid kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Total Expenses</span>
+                        <div class="kpi-value" id="statTotalExpenses">₹0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Expense Claims</span>
+                        <div class="kpi-value" id="statCount">0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Average Expense</span>
+                        <div class="kpi-value" id="statAvgExpense">₹0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Top Category</span>
+                        <div class="kpi-value" id="statTopCat" style="font-size:18px; margin-top:10px;">-</div>
+                    </div>
+                </div>
+
+                <!-- Add / Edit Expense Form Card -->
+                <div class="card" id="expenseFormCard" style="margin-bottom: 24px;">
+                    <h3 id="formTitle" style="margin: 0 0 16px; font-size: 18px;">Log New Expense</h3>
+                    <form id="expenseForm" class="form-grid">
+                        <input type="hidden" id="expId">
+                        <label>Expense Title / Reason <span class="required-asterisk">*</span>
+                            <input id="expTitle" required placeholder="e.g. Factory Utility Bill">
+                        </label>
+                        <label>Category <span class="required-asterisk">*</span>
+                            <select id="expCategory" required>
+                                <option value="">-- Select Category --</option>
+                                <option value="Utilities">Utilities (Electricity, Water)</option>
+                                <option value="Rent">Rent & Real Estate</option>
+                                <option value="Salaries">Payroll & Stipends</option>
+                                <option value="Raw Materials">Raw Materials & Procurement</option>
+                                <option value="Logistics">Logistics & Transportation</option>
+                                <option value="Maintenance">Maintenance & Repairs</option>
+                                <option value="Marketing">Marketing & Advertising</option>
+                                <option value="Miscellaneous">Miscellaneous</option>
+                            </select>
+                        </label>
+                        <label>Amount (₹) <span class="required-asterisk">*</span>
+                            <input type="number" step="0.01" min="0" id="expAmount" required placeholder="0.00">
+                        </label>
+                        <label>Expense Date
+                            <input type="date" id="expDate">
+                        </label>
+                        <label class="full">Notes / Receipt Ref
+                            <textarea id="expNotes" rows="2" placeholder="Invoice number, payment method, or notes..."></textarea>
+                        </label>
+
+                        <div class="full actions-cell" style="margin-top: 8px;">
+                            <button class="btn" type="submit" id="submitBtn">Save Expense</button>
+                            <button class="btn secondary" type="button" id="cancelEditBtn" style="display:none;">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Toolbar (Search & Category Filter) -->
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <input data-search id="searchInput" placeholder="Search by title, notes..." style="max-width: 300px;">
+                        <select id="categoryFilter" style="max-width: 200px;">
+                            <option value="all">All Categories</option>
+                            <option value="Utilities">Utilities</option>
+                            <option value="Rent">Rent</option>
+                            <option value="Salaries">Salaries</option>
+                            <option value="Raw Materials">Raw Materials</option>
+                            <option value="Logistics">Logistics</option>
+                            <option value="Maintenance">Maintenance</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Miscellaneous">Miscellaneous</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Expenses Table -->
+                <div class="card table-wrap" style="padding: 0;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>Date</th>
+                                <th>Notes</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expenseTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let expenses = [];
+
+        async function loadExpenses() {
+            await requireLogin();
+            await refreshData();
+        }
+
+        async function refreshData() {
+            try {
+                expenses = await api.request("/api/expenses");
+                updateStats();
+                renderTable();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        function updateStats() {
+            const count = expenses.length;
+            let total = 0;
+            const catMap = {};
+
+            expenses.forEach(e => {
+                const amt = Number(e.amount || 0);
+                total += amt;
+                const cat = e.category || "Miscellaneous";
+                catMap[cat] = (catMap[cat] || 0) + amt;
+            });
+
+            let topCat = "-";
+            let topAmt = 0;
+            for (let c in catMap) {
+                if (catMap[c] > topAmt) {
+                    topAmt = catMap[c];
+                    topCat = c;
+                }
+            }
+
+            document.getElementById("statTotalExpenses").textContent = formatMoney(total);
+            document.getElementById("statCount").textContent = count;
+            document.getElementById("statAvgExpense").textContent = count ? formatMoney(total / count) : "₹0";
+            document.getElementById("statTopCat").textContent = topCat;
+        }
+
+        function renderTable() {
+            const search = document.getElementById("searchInput").value.trim().toLowerCase();
+            const catF = document.getElementById("categoryFilter").value;
+
+            const filtered = expenses.filter(e => {
+                const matchesSearch = !search ||
+                    e.title.toLowerCase().includes(search) ||
+                    (e.notes && e.notes.toLowerCase().includes(search));
+
+                const matchesCat = catF === "all" || (e.category || "").toLowerCase() === catF.toLowerCase();
+
+                return matchesSearch && matchesCat;
+            });
+
+            const tbody = document.getElementById("expenseTableBody");
+            if (!filtered.length) {
+                tbody.innerHTML = `<tr><td colspan="6"><div class="empty-state"><span class="empty-icon">💸</span><span>No expenses found.</span></div></td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(e => `
+                <tr>
+                    <td><strong>${escapeHtml(e.title)}</strong></td>
+                    <td><span class="badge warning">${escapeHtml(e.category) || "General"}</span></td>
+                    <td><strong style="color: var(--danger);">${formatMoney(e.amount)}</strong></td>
+                    <td>${formatDate(e.expense_date || e.created_at)}</td>
+                    <td>${escapeHtml(e.notes) || "-"}</td>
+                    <td>
+                        <div class="actions-cell">
+                            <button class="btn btn-sm secondary" onclick="editExpense(${e.id})">Edit</button>
+                            <button class="btn btn-sm danger" onclick="deleteExpense(${e.id}, '${escapeHtml(e.title)}')">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join("");
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        function resetForm() {
+            document.getElementById("expenseForm").reset();
+            document.getElementById("expId").value = "";
+            document.getElementById("formTitle").textContent = "Log New Expense";
+            document.getElementById("submitBtn").textContent = "Save Expense";
+            document.getElementById("cancelEditBtn").style.display = "none";
+        }
+
+        function editExpense(id) {
+            const e = expenses.find(x => x.id === id);
+            if (!e) return;
+            document.getElementById("expId").value = e.id;
+            document.getElementById("expTitle").value = e.title || "";
+            document.getElementById("expCategory").value = e.category || "";
+            document.getElementById("expAmount").value = e.amount || 0;
+            document.getElementById("expDate").value = e.expense_date || "";
+            document.getElementById("expNotes").value = e.notes || "";
+
+            document.getElementById("formTitle").textContent = "Edit Expense Claim";
+            document.getElementById("submitBtn").textContent = "Update Expense";
+            document.getElementById("cancelEditBtn").style.display = "inline-block";
+            document.getElementById("expenseFormCard").scrollIntoView({ behavior: "smooth" });
+        }
+
+        async function deleteExpense(id, title) {
+            if (!confirm(`Are you sure you want to delete expense record "${title}"?`)) return;
+            try {
+                await api.request(`/api/expenses/${id}`, { method: "DELETE" });
+                showToast(`Expense "${title}" deleted.`, "info");
+                refreshData();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadExpenses();
+
+            document.getElementById("searchInput").addEventListener("input", renderTable);
+            document.getElementById("categoryFilter").addEventListener("change", renderTable);
+
+            document.getElementById("scrollToAddBtn").addEventListener("click", () => {
+                resetForm();
+                document.getElementById("expTitle").focus();
+                document.getElementById("expenseFormCard").scrollIntoView({ behavior: "smooth" });
+            });
+            document.getElementById("cancelEditBtn").addEventListener("click", resetForm);
+
+            document.getElementById("expenseForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const id = document.getElementById("expId").value;
+                const submitBtn = document.getElementById("submitBtn");
+
+                const payload = {
+                    title: document.getElementById("expTitle").value.trim(),
+                    category: document.getElementById("expCategory").value,
+                    amount: parseFloat(document.getElementById("expAmount").value) || 0,
+                    expense_date: document.getElementById("expDate").value,
+                    notes: document.getElementById("expNotes").value.trim()
+                };
+
+                const method = id ? "PUT" : "POST";
+                const endpoint = id ? `/api/expenses/${id}` : "/api/expenses";
+
+                setBtnLoading(submitBtn, true, id ? "Updating..." : "Saving...");
+
+                try {
+                    await api.request(endpoint, { method, body: JSON.stringify(payload) });
+                    showToast(id ? "Expense updated!" : "Expense logged successfully!", "success");
+                    resetForm();
+                    refreshData();
+                } catch (error) {
+                    showToast(error.message, "error");
+                } finally {
+                    setBtnLoading(submitBtn, false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

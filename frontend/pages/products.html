@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory & Stock | MSME Digital ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <span class="brand-text">MSME ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">CRM</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/customer-history.html">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                        <span class="nav-text">Customer History</span>
+                    </a>
+                    <a class="nav-link" href="/pages/messages.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="nav-text">Customer Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory</div>
+                    <a class="nav-link active" href="/pages/products.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Products & Stock</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Billing</div>
+                    <a class="nav-link" href="/pages/billing.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Create Invoice</span>
+                    </a>
+                    <a class="nav-link" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices History</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">HR & Operations</div>
+                    <a class="nav-link" href="/pages/employees.html">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="nav-text">Employees</span>
+                    </a>
+                    <a class="nav-link" href="/pages/departments.html">
+                        <svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                    <a class="nav-link" href="/pages/expenses.html">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="nav-text">Expenses</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Analytics & Reports</div>
+                    <a class="nav-link" href="/pages/analytics.html">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span class="nav-text">Sales Analytics</span>
+                    </a>
+                    <a class="nav-link" href="/pages/reports.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Business Reports</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Inventory & Stock Management</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Inventory Control</h1>
+                        <p class="muted">Monitor stock levels, manage product SKUs, and view automated restock suggestions.</p>
+                    </div>
+                    <div class="actions-cell">
+                        <button class="btn btn-sm" id="scrollToAddBtn">+ Add Product</button>
+                    </div>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- Inventory Summary KPI Banner -->
+                <div class="grid kpi-grid" style="grid-template-columns: repeat(5, 1fr); margin-bottom: 20px;">
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Total Products</span>
+                        <div class="kpi-value" id="statTotalProducts">0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Total Units</span>
+                        <div class="kpi-value" id="statTotalStock">0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Low Stock</span>
+                        <div class="kpi-value" id="statLowStock" style="color: var(--warning);">0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Out of Stock</span>
+                        <div class="kpi-value" id="statOutOfStock" style="color: var(--danger);">0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Restock Needed</span>
+                        <div class="kpi-value" id="statRestockNeeded" style="color: var(--primary);">0</div>
+                    </div>
+                </div>
+
+                <!-- Add / Edit Product Form Card -->
+                <div class="card" id="productFormCard" style="margin-bottom: 24px;">
+                    <h3 id="formTitle" style="margin: 0 0 16px; font-size: 18px;">Add New Product</h3>
+                    <form id="productForm" class="form-grid">
+                        <input type="hidden" name="id" id="productId">
+                        <input type="hidden" name="status" id="prodStatus" value="active">
+                        <label>Product Name <span class="required-asterisk">*</span>
+                            <input name="name" id="prodName" required placeholder="e.g. Copper Wire Coil">
+                        </label>
+                        <label>SKU / Product Code <span class="required-asterisk">*</span>
+                            <input name="sku" id="prodSku" required placeholder="e.g. CW-1001">
+                        </label>
+                        <label>Category
+                            <input name="category" id="prodCategory" placeholder="e.g. Hardware & Electricals">
+                        </label>
+                        <label>Selling Price (₹) <span class="required-asterisk">*</span>
+                            <input type="number" step="0.01" min="0" name="selling_price" id="prodSellingPrice" required placeholder="0.00">
+                        </label>
+                        <label>Cost Price (Purchase Price) (₹)
+                            <input type="number" step="0.01" min="0" name="cost_price" id="prodCostPrice" placeholder="0.00">
+                        </label>
+                        <label>Current Stock Quantity
+                            <input type="number" min="0" name="quantity" id="prodQuantity" placeholder="0" value="0">
+                        </label>
+                        <label>Minimum Stock Threshold
+                            <input type="number" min="0" name="minimum_stock_level" id="prodMinStock" placeholder="5" value="5">
+                        </label>
+                        <label>Product Status
+                            <div id="prodStatusContainer" style="margin-top: 4px;"></div>
+                        </label>
+                        <label class="full">Description / Notes
+                            <textarea name="description" id="prodDescription" rows="2" placeholder="Specifications, supplier details, or unit size..."></textarea>
+                        </label>
+                        <div class="full actions-cell" style="margin-top: 8px;">
+                            <button class="btn" type="submit" id="submitBtn">Add Product</button>
+                            <button class="btn secondary" type="button" id="cancelEditBtn" style="display:none;">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Toolbar & Filters -->
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <input data-search id="searchInput" placeholder="Search by name, SKU, or category..." style="max-width: 280px;">
+                        <select id="statusFilter" style="max-width: 170px;">
+                            <option value="all">All Stock Statuses</option>
+                            <option value="low">Low Stock</option>
+                            <option value="out">Out of Stock</option>
+                            <option value="in">In Stock</option>
+                        </select>
+                        <select id="sortBySelect" style="max-width: 170px;">
+                            <option value="name">Sort by Name</option>
+                            <option value="stock_asc">Stock (Low to High)</option>
+                            <option value="price_desc">Price (High to Low)</option>
+                        </select>
+                    </div>
+                    <div class="actions-cell">
+                        <button class="btn secondary btn-sm" id="viewToggleBtn">Cards View</button>
+                    </div>
+                </div>
+
+                <!-- Product Table View -->
+                <div class="card table-wrap" id="tableViewContainer" style="padding: 0;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>SKU</th>
+                                <th>Category</th>
+                                <th>Selling Price</th>
+                                <th>Cost Price</th>
+                                <th>Current Stock</th>
+                                <th>Active Status</th>
+                                <th>Stock Status</th>
+                                <th>Suggested Restock</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody"></tbody>
+                    </table>
+                </div>
+
+                <!-- Product Cards Grid View (Hidden by Default) -->
+                <div class="grid" id="cardsViewContainer" style="grid-template-columns: repeat(3, minmax(0, 1fr)); display: none;"></div>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- Stock Adjustment Modal -->
+    <div id="stockModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content" style="max-width: 440px;">
+            <div class="modal-header">
+                <h2>Quick Stock Adjustment</h2>
+                <button class="close-btn" id="closeStockModalBtn">&times;</button>
+            </div>
+            <form id="stockForm" class="grid" style="gap: 14px;">
+                <input type="hidden" id="stockProdId">
+                <div>
+                    <strong id="stockProdName" style="font-size: 16px; display: block; margin-bottom: 4px;">Product Name</strong>
+                    <span id="stockProdCurrent" class="muted">Current Stock: 0</span>
+                </div>
+                <label>Action
+                    <select id="stockAction">
+                        <option value="add">Add Stock (+)</option>
+                        <option value="set">Set Exact Stock (=)</option>
+                        <option value="reduce">Reduce Stock (-)</option>
+                    </select>
+                </label>
+                <label>Quantity
+                    <input type="number" min="1" id="stockQty" value="10" required>
+                </label>
+                <div class="actions-cell" style="margin-top: 8px;">
+                    <button class="btn" type="submit" id="saveStockBtn">Update Stock</button>
+                    <button class="btn secondary" type="button" id="cancelStockBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let allProducts = [];
+        let viewMode = "table"; // "table" or "cards"
+
+        async function loadProducts() {
+            await requireLogin();
+            initSegmentedControl(document.getElementById("prodStatusContainer"), document.getElementById("prodStatus"), "active");
+            
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get("filter") === "low_stock") {
+                const filterSel = document.getElementById("statusFilter");
+                if (filterSel) filterSel.value = "low";
+            }
+            
+            await refreshProductsList();
+        }
+
+        async function refreshProductsList() {
+            try {
+                allProducts = await api.request("/api/products");
+                updateStats();
+                renderView();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        function updateStats() {
+            let totalUnits = 0;
+            let lowCount = 0;
+            let outCount = 0;
+            let restockCount = 0;
+
+            allProducts.forEach(p => {
+                const qty = Number(p.quantity || 0);
+                const min = Number(p.minimum_stock_level || 0);
+                totalUnits += qty;
+                if (qty <= 0) {
+                    outCount++;
+                    restockCount++;
+                } else if (qty <= min) {
+                    lowCount++;
+                    restockCount++;
+                }
+            });
+
+            document.getElementById("statTotalProducts").textContent = allProducts.length;
+            document.getElementById("statTotalStock").textContent = totalUnits.toLocaleString("en-IN");
+            document.getElementById("statLowStock").textContent = lowCount;
+            document.getElementById("statOutOfStock").textContent = outCount;
+            document.getElementById("statRestockNeeded").textContent = restockCount;
+        }
+
+        function getFilteredAndSorted() {
+            const search = document.getElementById("searchInput").value.trim().toLowerCase();
+            const statusFilter = document.getElementById("statusFilter").value;
+            const sortBy = document.getElementById("sortBySelect").value;
+
+            return allProducts.filter(p => {
+                const matchesSearch = !search ||
+                    p.name.toLowerCase().includes(search) ||
+                    (p.sku && p.sku.toLowerCase().includes(search)) ||
+                    (p.category && p.category.toLowerCase().includes(search));
+
+                const qty = Number(p.quantity || 0);
+                const min = Number(p.minimum_stock_level || 0);
+
+                let matchesStatus = true;
+                if (statusFilter === "low") matchesStatus = qty > 0 && qty <= min;
+                else if (statusFilter === "out") matchesStatus = qty <= 0;
+                else if (statusFilter === "in") matchesStatus = qty > min;
+
+                return matchesSearch && matchesStatus;
+            }).sort((a, b) => {
+                if (sortBy === "stock_asc") return Number(a.quantity || 0) - Number(b.quantity || 0);
+                if (sortBy === "price_desc") return Number(b.selling_price || 0) - Number(a.selling_price || 0);
+                return a.name.localeCompare(b.name);
+            });
+        }
+
+        function renderView() {
+            const filtered = getFilteredAndSorted();
+
+            if (viewMode === "table") {
+                document.getElementById("tableViewContainer").style.display = "block";
+                document.getElementById("cardsViewContainer").style.display = "none";
+                renderTable(filtered);
+            } else {
+                document.getElementById("tableViewContainer").style.display = "none";
+                document.getElementById("cardsViewContainer").style.display = "grid";
+                renderCards(filtered);
+            }
+        }
+
+        function getStockBadge(qty, min) {
+            qty = Number(qty || 0);
+            min = Number(min || 0);
+            if (qty <= 0) return '<span class="badge danger">Out of Stock</span><div style="font-size:11px; color:#ef4444; font-weight:700; margin-top:2px;">🔴 Reorder recommended</div>';
+            if (qty <= min) return '<span class="badge warning">Low Stock</span><div style="font-size:11px; color:#f59e0b; font-weight:700; margin-top:2px;">⚠️ Reorder recommended</div>';
+            return '<span class="badge success">In Stock</span>';
+        }
+
+        function getSuggestedRestock(qty, min) {
+            qty = Number(qty || 0);
+            min = Number(min || 0);
+            if (qty > min) return "-";
+            const suggested = Math.max((min * 2) - qty, 10);
+            return `<strong style="color: var(--primary);">+${suggested} units</strong>`;
+        }
+
+        function renderTable(rows) {
+            const tbody = document.getElementById("productTableBody");
+            if (!rows.length) {
+                tbody.innerHTML = `<tr><td colspan="10"><div class="empty-state"><span class="empty-icon">📦</span><span>No products found.</span></div></td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = rows.map(p => `
+                <tr>
+                    <td><strong>${escapeHtml(p.name)}</strong></td>
+                    <td><code>${escapeHtml(p.sku)}</code></td>
+                    <td>${escapeHtml(p.category) || "-"}</td>
+                    <td><strong>${formatMoney(p.selling_price)}</strong></td>
+                    <td>${p.cost_price ? formatMoney(p.cost_price) : "-"}</td>
+                    <td><strong>${p.quantity || 0}</strong></td>
+                    <td>${renderActiveBadge(p.status)}</td>
+                    <td>${getStockBadge(p.quantity, p.minimum_stock_level)}</td>
+                    <td>${getSuggestedRestock(p.quantity, p.minimum_stock_level)}</td>
+                    <td>
+                        <div class="actions-cell">
+                            <button class="btn btn-sm secondary" onclick="openStockModal(${p.id})">Stock</button>
+                            <button class="btn btn-sm secondary" onclick="editProduct(${p.id})">Edit</button>
+                            <button class="btn btn-sm danger" onclick="deleteProduct(${p.id}, '${escapeHtml(p.name)}')">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join("");
+        }
+
+        function renderCards(rows) {
+            const container = document.getElementById("cardsViewContainer");
+            if (!rows.length) {
+                container.innerHTML = `<div class="full empty-state"><span class="empty-icon">📦</span><span>No products found.</span></div>`;
+                return;
+            }
+
+            container.innerHTML = rows.map(p => `
+                <div class="card" style="display:flex; flex-direction:column; justify-space-between;">
+                    <div>
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
+                            <h3 style="margin:0; font-size:16px;">${escapeHtml(p.name)}</h3>
+                            <div style="display:flex; gap:4px; flex-direction:column; align-items:flex-end;">
+                                ${renderActiveBadge(p.status)}
+                                ${getStockBadge(p.quantity, p.minimum_stock_level)}
+                            </div>
+                        </div>
+                        <p class="muted" style="font-size:12px; margin:0 0 12px;">SKU: <code>${escapeHtml(p.sku)}</code> | Cat: ${escapeHtml(p.category) || "General"}</p>
+                        
+                        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 8px; font-size: 13px; margin-bottom: 14px;">
+                            <div>Price: <strong>${formatMoney(p.selling_price)}</strong></div>
+                            <div>Stock: <strong>${p.quantity || 0} units</strong></div>
+                        </div>
+                    </div>
+                    <div class="actions-cell" style="margin-top:auto; border-top:1px solid var(--line); padding-top:12px;">
+                        <button class="btn btn-sm secondary" onclick="openStockModal(${p.id})">Stock</button>
+                        <button class="btn btn-sm secondary" onclick="editProduct(${p.id})">Edit</button>
+                        <button class="btn btn-sm danger" onclick="deleteProduct(${p.id}, '${escapeHtml(p.name)}')">Delete</button>
+                    </div>
+                </div>
+            `).join("");
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        function resetForm() {
+            const form = document.getElementById("productForm");
+            form.reset();
+            document.getElementById("productId").value = "";
+            initSegmentedControl(document.getElementById("prodStatusContainer"), document.getElementById("prodStatus"), "active");
+            document.getElementById("formTitle").textContent = "Add New Product";
+            document.getElementById("submitBtn").textContent = "Add Product";
+            document.getElementById("cancelEditBtn").style.display = "none";
+        }
+
+        function editProduct(id) {
+            const p = allProducts.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById("productId").value = p.id;
+            document.getElementById("prodName").value = p.name || "";
+            document.getElementById("prodSku").value = p.sku || "";
+            document.getElementById("prodCategory").value = p.category || "";
+            document.getElementById("prodSellingPrice").value = p.selling_price || 0;
+            document.getElementById("prodCostPrice").value = p.cost_price || "";
+            document.getElementById("prodQuantity").value = p.quantity || 0;
+            document.getElementById("prodMinStock").value = p.minimum_stock_level || 0;
+            document.getElementById("prodDescription").value = p.description || "";
+            initSegmentedControl(document.getElementById("prodStatusContainer"), document.getElementById("prodStatus"), p.status || "active");
+
+            document.getElementById("formTitle").textContent = "Edit Product Details";
+            document.getElementById("submitBtn").textContent = "Update Product";
+            document.getElementById("cancelEditBtn").style.display = "inline-block";
+            document.getElementById("productFormCard").scrollIntoView({ behavior: "smooth" });
+        }
+
+        async function deleteProduct(id, name) {
+            if (!confirm(`Are you sure you want to delete product "${name}"?`)) return;
+            try {
+                await api.request(`/api/products/${id}`, { method: "DELETE" });
+                showToast(`Product "${name}" deleted.`, "info", "Deleted");
+                refreshProductsList();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        function openStockModal(id) {
+            const p = allProducts.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById("stockProdId").value = p.id;
+            document.getElementById("stockProdName").textContent = p.name;
+            document.getElementById("stockProdCurrent").textContent = `Current Stock: ${p.quantity || 0} units`;
+            document.getElementById("stockModal").style.display = "flex";
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadProducts();
+
+            document.getElementById("searchInput").addEventListener("input", renderView);
+            document.getElementById("statusFilter").addEventListener("change", renderView);
+            document.getElementById("sortBySelect").addEventListener("change", renderView);
+            document.getElementById("scrollToAddBtn").addEventListener("click", () => {
+                resetForm();
+                document.getElementById("prodName").focus();
+                document.getElementById("productFormCard").scrollIntoView({ behavior: "smooth" });
+            });
+            document.getElementById("cancelEditBtn").addEventListener("click", resetForm);
+
+            document.getElementById("viewToggleBtn").addEventListener("click", () => {
+                viewMode = viewMode === "table" ? "cards" : "table";
+                document.getElementById("viewToggleBtn").textContent = viewMode === "table" ? "Cards View" : "Table View";
+                renderView();
+            });
+
+            document.getElementById("productForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const submitBtn = document.getElementById("submitBtn");
+                const prodId = document.getElementById("productId").value;
+                const body = {
+                    name: document.getElementById("prodName").value.trim(),
+                    sku: document.getElementById("prodSku").value.trim(),
+                    category: document.getElementById("prodCategory").value.trim(),
+                    selling_price: parseFloat(document.getElementById("prodSellingPrice").value) || 0,
+                    cost_price: parseFloat(document.getElementById("prodCostPrice").value) || 0,
+                    quantity: parseInt(document.getElementById("prodQuantity").value) || 0,
+                    minimum_stock_level: parseInt(document.getElementById("prodMinStock").value) || 0,
+                    status: document.getElementById("prodStatus").value,
+                    description: document.getElementById("prodDescription").value.trim()
+                };
+
+                const method = prodId ? "PUT" : "POST";
+                const endpoint = prodId ? `/api/products/${prodId}` : "/api/products";
+
+                setBtnLoading(submitBtn, true, prodId ? "Updating..." : "Adding...");
+
+                try {
+                    await api.request(endpoint, { method, body: JSON.stringify(body) });
+                    showToast(prodId ? "Product updated successfully!" : "Product added successfully!", "success");
+                    resetForm();
+                    refreshProductsList();
+                } catch (error) {
+                    showToast(error.message, "error");
+                } finally {
+                    setBtnLoading(submitBtn, false);
+                }
+            });
+
+            // Stock modal handlers
+            document.getElementById("closeStockModalBtn").addEventListener("click", () => {
+                document.getElementById("stockModal").style.display = "none";
+            });
+            document.getElementById("cancelStockBtn").addEventListener("click", () => {
+                document.getElementById("stockModal").style.display = "none";
+            });
+
+            document.getElementById("stockForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const id = document.getElementById("stockProdId").value;
+                const p = allProducts.find(x => x.id == id);
+                if (!p) return;
+
+                const action = document.getElementById("stockAction").value;
+                const inputQty = parseInt(document.getElementById("stockQty").value) || 0;
+
+                let newQty = p.quantity || 0;
+                if (action === "add") newQty += inputQty;
+                else if (action === "reduce") newQty = Math.max(0, newQty - inputQty);
+                else if (action === "set") newQty = inputQty;
+
+                const saveBtn = document.getElementById("saveStockBtn");
+                setBtnLoading(saveBtn, true, "Updating...");
+
+                try {
+                    await api.request(`/api/products/${id}`, {
+                        method: "PUT",
+                        body: JSON.stringify({ ...p, quantity: newQty })
+                    });
+                    showToast(`Stock updated to ${newQty} units.`, "success");
+                    document.getElementById("stockModal").style.display = "none";
+                    refreshProductsList();
+                } catch (error) {
+                    showToast(error.message, "error");
+                } finally {
+                    setBtnLoading(saveBtn, false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

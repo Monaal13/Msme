@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procurement & Purchases | Mini ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">🏭</div>
+                <span class="brand-text">Mini ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">Orders & Production</div>
+                    <a class="nav-link" href="/pages/orders.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                        <span class="nav-text">Customer Orders</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory & Material</div>
+                    <a class="nav-link" href="/pages/raw-materials.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Raw Materials</span>
+                    </a>
+                    <a class="nav-link" href="/pages/finished-goods.html">
+                        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        <span class="nav-text">Finished Goods</span>
+                    </a>
+                    <a class="nav-link active" href="/pages/purchases.html">
+                        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span class="nav-text">Procurement</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Raw Material Procurement & Suppliers</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Purchases & Suppliers</h1>
+                        <p class="muted">Record raw material purchases from suppliers. Received quantities automatically increase stock.</p>
+                    </div>
+                    <div class="actions-cell">
+                        <button class="btn secondary" onclick="openSupplierModal()">+ Add Supplier</button>
+                        <button class="btn" onclick="openPurchaseModal()">+ New Material Purchase</button>
+                    </div>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Material</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>Total Amount</th>
+                                <th>Supplier</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="purchasesTableBody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Purchase Modal -->
+    <div id="purchaseModal" class="modal-backdrop" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Record Material Purchase</h2>
+                <button class="close-btn" onclick="closePurchaseModal()">✕</button>
+            </div>
+            <form id="purchaseForm" onsubmit="submitPurchase(event)">
+                <div class="form-grid">
+                    <div>
+                        <label>Raw Material <span class="required-asterisk">*</span></label>
+                        <select name="raw_material_id" id="purMaterialSelect" required></select>
+                    </div>
+                    <div>
+                        <label>Supplier</label>
+                        <select name="supplier_id" id="purSupplierSelect"></select>
+                    </div>
+                    <div>
+                        <label>Purchase Quantity <span class="required-asterisk">*</span></label>
+                        <input type="number" name="quantity" value="150" min="0.1" step="0.1" required>
+                    </div>
+                    <div>
+                        <label>Unit Price (₹) <span class="required-asterisk">*</span></label>
+                        <input type="number" name="unit_price" value="180" min="0" step="0.01" required>
+                    </div>
+                    <div>
+                        <label>Receipt Status</label>
+                        <select name="status">
+                            <option value="Received">Received (Increases Raw Stock)</option>
+                            <option value="Pending">Pending Delivery</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Purchase Date</label>
+                        <input type="date" name="purchase_date" id="purDate">
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+                    <button type="button" class="btn secondary" onclick="closePurchaseModal()">Cancel</button>
+                    <button type="submit" class="btn">Record Purchase</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Supplier Modal -->
+    <div id="supplierModal" class="modal-backdrop" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Supplier</h2>
+                <button class="close-btn" onclick="closeSupplierModal()">✕</button>
+            </div>
+            <form id="supplierForm" onsubmit="submitSupplier(event)">
+                <div class="form-grid">
+                    <div>
+                        <label>Supplier / Vendor Name <span class="required-asterisk">*</span></label>
+                        <input type="text" name="name" placeholder="e.g. Vardhman Yarns Ltd" required>
+                    </div>
+                    <div>
+                        <label>Phone</label>
+                        <input type="text" name="phone" placeholder="+91 98765 43210">
+                    </div>
+                    <div>
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="orders@vardhman.com">
+                    </div>
+                    <div>
+                        <label>Material Types Provided</label>
+                        <input type="text" name="material_types" placeholder="e.g. Fabric, Yarns, Thread">
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+                    <button type="button" class="btn secondary" onclick="closeSupplierModal()">Cancel</button>
+                    <button type="submit" class="btn">Save Supplier</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let rawMaterialsList = [];
+        let suppliersList = [];
+
+        async function initPurchasesPage() {
+            await requireLogin();
+            await loadDropdowns();
+            loadPurchases();
+            document.getElementById("purDate").value = new Date().toISOString().split("T")[0];
+        }
+
+        async function loadDropdowns() {
+            try {
+                rawMaterialsList = await api.request("/api/raw-materials");
+                suppliersList = await api.request("/api/purchases/suppliers");
+
+                const matSel = document.getElementById("purMaterialSelect");
+                matSel.innerHTML = rawMaterialsList.map(m => `<option value="${m.id}">${m.name} (${m.category}) — Current Stock: ${m.current_stock} ${m.unit}</option>`).join("");
+
+                const supSel = document.getElementById("purSupplierSelect");
+                supSel.innerHTML = '<option value="">None / Direct</option>' + suppliersList.map(s => `<option value="${s.id}">${s.name}</option>`).join("");
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        async function loadPurchases() {
+            try {
+                const rows = await api.request("/api/purchases");
+                renderPurchasesTable(rows);
+            } catch (e) {
+                setStatus(e.message, "error");
+            }
+        }
+
+        function renderPurchasesTable(rows) {
+            const tbody = document.getElementById("purchasesTableBody");
+            const columns = [
+                { key: "purchase_date", render: r => formatDate(r.purchase_date) },
+                { key: "raw_material_name", render: r => `<strong>${r.raw_material_name}</strong>` },
+                { key: "raw_material_category", render: r => `<span class="badge info">${r.raw_material_category || 'Material'}</span>` },
+                { key: "quantity", render: r => `${r.quantity} ${r.raw_material_unit || ''}` },
+                { key: "unit_price", render: r => formatMoney(r.unit_price) },
+                { key: "total_amount", render: r => `<strong style="color:var(--primary);">${formatMoney(r.total_amount)}</strong>` },
+                { key: "supplier_name", render: r => r.supplier_name || 'Standard Supplier' },
+                { key: "status", render: r => r.status === "Received" ? '<span class="status-tag available">✅ Received</span>' : '<span class="status-tag shortage">⏳ Pending</span>' },
+            ];
+            renderRows(tbody, rows, columns, "No procurement purchases recorded yet.");
+        }
+
+        function openPurchaseModal() {
+            document.getElementById("purchaseModal").style.display = "flex";
+        }
+        function closePurchaseModal() {
+            document.getElementById("purchaseModal").style.display = "none";
+        }
+
+        function openSupplierModal() {
+            document.getElementById("supplierModal").style.display = "flex";
+        }
+        function closeSupplierModal() {
+            document.getElementById("supplierModal").style.display = "none";
+        }
+
+        async function submitPurchase(e) {
+            e.preventDefault();
+            const data = collectForm(document.getElementById("purchaseForm"));
+            try {
+                const res = await api.request("/api/purchases", { method: "POST", body: JSON.stringify(data) });
+                closePurchaseModal();
+                showToast(res.message, "success", "Purchase Recorded");
+                loadPurchases();
+                loadDropdowns();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        async function submitSupplier(e) {
+            e.preventDefault();
+            const data = collectForm(document.getElementById("supplierForm"));
+            try {
+                const res = await api.request("/api/purchases/suppliers", { method: "POST", body: JSON.stringify(data) });
+                closeSupplierModal();
+                showToast(res.message, "success", "Supplier Saved");
+                loadDropdowns();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", initPurchasesPage);
+    </script>
+</body>
+</html>

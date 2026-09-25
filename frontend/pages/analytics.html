@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Analytics & Insights | MSME Digital ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <span class="brand-text">MSME ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">CRM</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/customer-history.html">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                        <span class="nav-text">Customer History</span>
+                    </a>
+                    <a class="nav-link" href="/pages/messages.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="nav-text">Customer Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory</div>
+                    <a class="nav-link" href="/pages/products.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Products & Stock</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Billing</div>
+                    <a class="nav-link" href="/pages/billing.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Create Invoice</span>
+                    </a>
+                    <a class="nav-link" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices History</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">HR & Operations</div>
+                    <a class="nav-link" href="/pages/employees.html">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="nav-text">Employees</span>
+                    </a>
+                    <a class="nav-link" href="/pages/departments.html">
+                        <svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                    <a class="nav-link" href="/pages/expenses.html">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="nav-text">Expenses</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Analytics & Reports</div>
+                    <a class="nav-link active" href="/pages/analytics.html">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span class="nav-text">Sales Analytics</span>
+                    </a>
+                    <a class="nav-link" href="/pages/reports.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Business Reports</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Sales & Revenue Analytics</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Sales Analytics & Insights</h1>
+                        <p class="muted">Interactive revenue visualizations, expense trends, and product performance analytics.</p>
+                    </div>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- AI Analytics Insights Banner -->
+                <div class="ai-insights-card">
+                    <div class="ai-header">
+                        <span style="font-size: 18px;">🧠</span>
+                        <span>AI Revenue Intelligence</span>
+                    </div>
+                    <div class="insights-list" id="analyticsInsightsList">
+                        <div class="insight-item"><span class="insight-icon">📊</span><div>Analyzing revenue trends...</div></div>
+                    </div>
+                </div>
+
+                <!-- Analytics Charts Grid -->
+                <div class="grid charts" style="grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 24px;">
+                    <div class="card">
+                        <h3 style="margin:0 0 14px; font-size:16px;">Monthly Revenue Distribution</h3>
+                        <div style="height: 260px; position: relative;">
+                            <canvas id="analyticsSales"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 style="margin:0 0 14px; font-size:16px;">Expense Outflow Breakdown</h3>
+                        <div style="height: 260px; position: relative;">
+                            <canvas id="analyticsExpenses"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Product Performance Table -->
+                <div class="card table-wrap" style="padding: 0;">
+                    <div style="padding: 16px 18px; border-bottom: 1px solid var(--line);">
+                        <h3 style="margin: 0; font-size: 16px;">Product Sales & Quantity Ranking</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Product Name</th>
+                                <th>Units Sold</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topProductsTbody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        async function loadAnalytics() {
+            await requireLogin();
+            try {
+                const data = await api.request("/api/analytics/charts");
+                const sales = data.sales_by_month || [];
+                const expenses = data.expenses_by_month || [];
+                const topProducts = data.top_products || [];
+
+                renderAnalyticsInsights(sales, expenses, topProducts);
+
+                const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+                const textColor = isDark ? "#CBD5E1" : "#475569";
+                const gridColor = isDark ? "#1F2937" : "#E2E8F0";
+
+                // Sales Chart
+                const salesCanvas = document.getElementById("analyticsSales");
+                if (sales.length) {
+                    new Chart(salesCanvas, {
+                        type: "bar",
+                        data: {
+                            labels: sales.map(r => r.month),
+                            datasets: [{
+                                label: "Revenue (₹)",
+                                data: sales.map(r => r.total),
+                                backgroundColor: "#2563eb",
+                                borderRadius: 6,
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            scales: {
+                                x: { ticks: { color: textColor }, grid: { color: gridColor } },
+                                y: { ticks: { color: textColor }, grid: { color: gridColor }, beginAtZero: true }
+                            }
+                        }
+                    });
+                } else {
+                    salesCanvas.parentElement.innerHTML = `<div class="empty-state"><span class="empty-icon">📊</span><span>No sales data recorded yet.</span></div>`;
+                }
+
+                // Expenses Chart
+                const expCanvas = document.getElementById("analyticsExpenses");
+                if (expenses.length) {
+                    new Chart(expCanvas, {
+                        type: "bar",
+                        data: {
+                            labels: expenses.map(r => r.month),
+                            datasets: [{
+                                label: "Expenses (₹)",
+                                data: expenses.map(r => r.total),
+                                backgroundColor: "#d97706",
+                                borderRadius: 6,
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: { legend: { display: false } },
+                            scales: {
+                                x: { ticks: { color: textColor }, grid: { color: gridColor } },
+                                y: { ticks: { color: textColor }, grid: { color: gridColor }, beginAtZero: true }
+                            }
+                        }
+                    });
+                } else {
+                    expCanvas.parentElement.innerHTML = `<div class="empty-state"><span class="empty-icon">💸</span><span>No expense data recorded yet.</span></div>`;
+                }
+
+                // Top Products Table
+                const tbody = document.getElementById("topProductsTbody");
+                if (topProducts.length) {
+                    tbody.innerHTML = topProducts.map((p, i) => `
+                        <tr>
+                            <td><strong>#${i + 1}</strong></td>
+                            <td><strong>${escapeHtml(p.name)}</strong></td>
+                            <td><span class="badge info">${p.quantity_sold} units sold</span></td>
+                        </tr>
+                    `).join("");
+                } else {
+                    tbody.innerHTML = `<tr><td colspan="3"><div class="empty-state">No product sales yet.</div></td></tr>`;
+                }
+
+            } catch (e) {
+                setStatus(e.message, "error");
+            }
+        }
+
+        function renderAnalyticsInsights(sales, expenses, topProducts) {
+            const list = document.getElementById("analyticsInsightsList");
+            const insights = [];
+
+            if (sales.length > 1) {
+                const last = Number(sales[sales.length - 1].total || 0);
+                const prev = Number(sales[sales.length - 2].total || 0);
+                if (prev > 0) {
+                    const diff = Math.round(((last - prev) / prev) * 100);
+                    insights.push({
+                        icon: "📈",
+                        text: `<strong>Revenue Growth:</strong> Sales changed by <strong>${diff >= 0 ? '+' : ''}${diff}%</strong> in ${sales[sales.length - 1].month} compared to prior month.`
+                    });
+                }
+            } else if (sales.length === 1) {
+                insights.push({
+                    icon: "📊",
+                    text: `<strong>Revenue Milestone:</strong> Total revenue recorded for ${sales[0].month} is <strong>${formatMoney(sales[0].total)}</strong>.`
+                });
+            } else {
+                insights.push({
+                    icon: "ℹ️",
+                    text: `<strong>Sales Trend:</strong> No sales transactions recorded. Create invoices in Billing module to generate analytics.`
+                });
+            }
+
+            if (topProducts.length) {
+                insights.push({
+                    icon: "⭐",
+                    text: `<strong>Best Seller:</strong> <strong>${escapeHtml(topProducts[0].name)}</strong> leads product performance with ${topProducts[0].quantity_sold} units sold.`
+                });
+            }
+
+            list.innerHTML = insights.map(i => `
+                <div class="insight-item">
+                    <span class="insight-icon">${i.icon}</span>
+                    <div>${i.text}</div>
+                </div>
+            `).join("");
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        document.addEventListener("DOMContentLoaded", loadAnalytics);
+    </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raw Material Inventory | Mini ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">🏭</div>
+                <span class="brand-text">Mini ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">Orders & Production</div>
+                    <a class="nav-link" href="/pages/orders.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                        <span class="nav-text">Customer Orders</span>
+                    </a>
+                    <a class="nav-link" href="/pages/production.html">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <span class="nav-text">Production Board</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory & Material</div>
+                    <a class="nav-link active" href="/pages/raw-materials.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Raw Materials</span>
+                    </a>
+                    <a class="nav-link" href="/pages/finished-goods.html">
+                        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        <span class="nav-text">Finished Goods</span>
+                    </a>
+                    <a class="nav-link" href="/pages/purchases.html">
+                        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                        <span class="nav-text">Procurement</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Raw Material Stock Management</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Raw Material Inventory</h1>
+                        <p class="muted">Track fabric, thread, buttons, zippers, labels, and packaging materials in real time.</p>
+                    </div>
+                    <button class="btn" onclick="openCreateMaterialModal()">+ Add Raw Material</button>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <input type="text" id="matSearch" placeholder="Search material name, category..." onkeyup="loadMaterials()">
+                    </div>
+                    <div class="toolbar-group" style="justify-content: flex-end;">
+                        <select id="catFilter" onchange="loadMaterials()" style="max-width: 200px;">
+                            <option value="all">All Categories</option>
+                            <option value="Fabric">Fabric</option>
+                            <option value="Thread">Thread</option>
+                            <option value="Buttons">Buttons</option>
+                            <option value="Zippers">Zippers</option>
+                            <option value="Labels">Labels</option>
+                            <option value="Packaging Material">Packaging Material</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Material Name</th>
+                                <th>Category</th>
+                                <th>Unit</th>
+                                <th>Current Stock</th>
+                                <th>Min Stock Level</th>
+                                <th>Stock Status</th>
+                                <th>Supplier</th>
+                                <th>Purchase Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="materialsTableBody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Create/Edit Material Modal -->
+    <div id="materialModal" class="modal-backdrop" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="matModalTitle">Add Raw Material</h2>
+                <button class="close-btn" onclick="closeMaterialModal()">✕</button>
+            </div>
+            <form id="materialForm" onsubmit="submitMaterial(event)">
+                <input type="hidden" name="id" id="matId">
+                <div class="form-grid">
+                    <div>
+                        <label>Material Name <span class="required-asterisk">*</span></label>
+                        <input type="text" name="name" id="matName" placeholder="e.g. Cotton Single Jersey Fabric" required>
+                    </div>
+                    <div>
+                        <label>Category <span class="required-asterisk">*</span></label>
+                        <select name="category" id="matCategory" required>
+                            <option value="Fabric">Fabric</option>
+                            <option value="Thread">Thread</option>
+                            <option value="Buttons">Buttons</option>
+                            <option value="Zippers">Zippers</option>
+                            <option value="Labels">Labels</option>
+                            <option value="Packaging Material">Packaging Material</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Unit of Measurement</label>
+                        <select name="unit" id="matUnit">
+                            <option value="meters">Meters</option>
+                            <option value="rolls">Rolls</option>
+                            <option value="pieces">Pieces</option>
+                            <option value="spools">Spools</option>
+                            <option value="boxes">Boxes</option>
+                            <option value="kg">Kg</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Current Stock</label>
+                        <input type="number" name="current_stock" id="matStock" value="1000" min="0" step="0.1">
+                    </div>
+                    <div>
+                        <label>Minimum Stock Alert Level</label>
+                        <input type="number" name="minimum_stock" id="matMinStock" value="200" min="0" step="0.1">
+                    </div>
+                    <div>
+                        <label>Standard Purchase Price (₹)</label>
+                        <input type="number" name="purchase_price" id="matPrice" value="180" min="0" step="0.01">
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+                    <button type="button" class="btn secondary" onclick="closeMaterialModal()">Cancel</button>
+                    <button type="submit" class="btn">Save Material</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        async function initRawMaterialsPage() {
+            await requireLogin();
+            loadMaterials();
+        }
+
+        async function loadMaterials() {
+            try {
+                const search = document.getElementById("matSearch").value;
+                const cat = document.getElementById("catFilter").value;
+                const rows = await api.request(`/api/raw-materials?search=${encodeURIComponent(search)}&category=${encodeURIComponent(cat)}`);
+                renderMaterialsTable(rows);
+            } catch (e) {
+                setStatus(e.message, "error");
+            }
+        }
+
+        function renderMaterialsTable(rows) {
+            const tbody = document.getElementById("materialsTableBody");
+            const columns = [
+                { key: "name", render: r => `<strong>${r.name}</strong>` },
+                { key: "category", render: r => `<span class="badge info">${r.category}</span>` },
+                { key: "unit", render: r => r.unit },
+                { key: "current_stock", render: r => `<strong style="font-size:15px;">${r.current_stock}</strong> ${r.unit}` },
+                { key: "minimum_stock", render: r => `${r.minimum_stock} ${r.unit}` },
+                { key: "stock_status", render: r => {
+                    if (r.current_stock <= 0) return '<span class="status-tag shortage">✕ Out of Stock</span>';
+                    if (r.current_stock <= r.minimum_stock) return '<span class="status-tag shortage">⚠️ Low Stock</span>';
+                    return '<span class="status-tag available">✅ In Stock</span>';
+                }},
+                { key: "supplier_name", render: r => r.supplier_name || 'Standard Supplier' },
+                { key: "purchase_price", render: r => formatMoney(r.purchase_price) },
+                { key: "actions", render: r => `
+                    <div class="actions-cell">
+                        <button class="btn btn-sm secondary" onclick="stockInMaterial(${r.id}, '${r.name}')">+ Stock In</button>
+                    </div>
+                `}
+            ];
+            renderRows(tbody, rows, columns, "No raw materials registered yet.");
+        }
+
+        function openCreateMaterialModal() {
+            document.getElementById("matFormId")?.remove();
+            document.getElementById("materialForm").reset();
+            document.getElementById("matModalTitle").textContent = "Add Raw Material";
+            document.getElementById("materialModal").style.display = "flex";
+        }
+
+        function closeMaterialModal() {
+            document.getElementById("materialModal").style.display = "none";
+        }
+
+        async function submitMaterial(e) {
+            e.preventDefault();
+            const form = document.getElementById("materialForm");
+            const data = collectForm(form);
+
+            try {
+                await api.request("/api/raw-materials", { method: "POST", body: JSON.stringify(data) });
+                closeMaterialModal();
+                showToast("Material saved successfully", "success");
+                loadMaterials();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        async function stockInMaterial(matId, matName) {
+            const qtyStr = prompt(`Enter stock quantity addition for '${matName}':`, "500");
+            if (!qtyStr) return;
+            const qty = parseFloat(qtyStr);
+            if (isNaN(qty) || qty <= 0) {
+                alert("Invalid quantity!");
+                return;
+            }
+
+            try {
+                const res = await api.request(`/api/raw-materials/${matId}/stock-in`, {
+                    method: "POST",
+                    body: JSON.stringify({ quantity: qty })
+                });
+                showToast(res.message, "success", "Stock Updated");
+                loadMaterials();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", initRawMaterialsPage);
+    </script>
+</body>
+</html>

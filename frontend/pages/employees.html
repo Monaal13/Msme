@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management | MSME Digital ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <span class="brand-text">MSME ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">CRM</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/customer-history.html">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                        <span class="nav-text">Customer History</span>
+                    </a>
+                    <a class="nav-link" href="/pages/messages.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="nav-text">Customer Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory</div>
+                    <a class="nav-link" href="/pages/products.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Products & Stock</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Billing</div>
+                    <a class="nav-link" href="/pages/billing.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Create Invoice</span>
+                    </a>
+                    <a class="nav-link" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices History</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">HR & Operations</div>
+                    <a class="nav-link active" href="/pages/employees.html">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="nav-text">Employees</span>
+                    </a>
+                    <a class="nav-link" href="/pages/departments.html">
+                        <svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                    <a class="nav-link" href="/pages/expenses.html">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="nav-text">Expenses</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Analytics & Reports</div>
+                    <a class="nav-link" href="/pages/analytics.html">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span class="nav-text">Sales Analytics</span>
+                    </a>
+                    <a class="nav-link" href="/pages/reports.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Business Reports</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">HR & Employee Directory</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Employee Management</h1>
+                        <p class="muted">Manage employee staff records, payroll salaries, designations, and department assignments.</p>
+                    </div>
+                    <button class="btn btn-sm" id="scrollToAddBtn">+ New Employee</button>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- KPI Banner -->
+                <div class="grid kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Total Staff</span>
+                        <div class="kpi-value" id="statTotalEmployees">0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Active Staff</span>
+                        <div class="kpi-value" id="statActive" style="color: var(--success);">0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Monthly Payroll</span>
+                        <div class="kpi-value" id="statPayroll">₹0</div>
+                    </div>
+                    <div class="card kpi-card">
+                        <span class="kpi-label">Avg Salary</span>
+                        <div class="kpi-value" id="statAvgSalary">₹0</div>
+                    </div>
+                </div>
+
+                <!-- Add / Edit Employee Form Card -->
+                <div class="card" id="employeeFormCard" style="margin-bottom: 24px;">
+                    <h3 id="formTitle" style="margin: 0 0 16px; font-size: 18px;">Add New Employee</h3>
+                    <form id="employeeForm" class="form-grid">
+                        <input type="hidden" id="empId">
+                        <label>Employee Name <span class="required-asterisk">*</span>
+                            <input id="empName" required placeholder="e.g. Rajesh Kumar">
+                        </label>
+                        <label>Department
+                            <select id="empDept">
+                                <option value="">-- Unassigned --</option>
+                            </select>
+                        </label>
+                        <label>Designation
+                            <input id="empDesignation" placeholder="e.g. Operations Specialist">
+                        </label>
+                        <label>Phone
+                            <input id="empPhone" placeholder="e.g. 9876543210">
+                        </label>
+                        <label>Email Address
+                            <input type="email" id="empEmail" placeholder="e.g. rajesh@company.com">
+                        </label>
+                        <label>Monthly Salary (₹)
+                            <input type="number" step="0.01" min="0" id="empSalary" placeholder="25000">
+                        </label>
+                        <label>Joining Date
+                            <input type="date" id="empJoiningDate">
+                        </label>
+                        <label>Employment Status
+                            <input type="hidden" id="empStatus" value="active">
+                            <div id="empStatusContainer" style="margin-top: 4px;"></div>
+                        </label>
+
+                        <div class="full actions-cell" style="margin-top: 8px;">
+                            <button class="btn" type="submit" id="submitBtn">Add Employee</button>
+                            <button class="btn secondary" type="button" id="cancelEditBtn" style="display:none;">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Search & Filters Toolbar -->
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <input data-search id="searchInput" placeholder="Search by employee name, designation..." style="max-width: 300px;">
+                        <select id="deptFilter" style="max-width: 180px;">
+                            <option value="all">All Departments</option>
+                        </select>
+                        <select id="statusFilter" style="max-width: 150px;">
+                            <option value="all">All Statuses</option>
+                            <option value="active">Active Only</option>
+                            <option value="inactive">Inactive Only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Table -->
+                <div class="card table-wrap" style="padding: 0;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Designation</th>
+                                <th>Contact</th>
+                                <th>Salary</th>
+                                <th>Joining Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="employeeTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let employees = [];
+        let departments = [];
+
+        async function loadEmployees() {
+            await requireLogin();
+            initSegmentedControl(document.getElementById("empStatusContainer"), document.getElementById("empStatus"), "active");
+            await refreshData();
+        }
+
+        async function refreshData() {
+            try {
+                [employees, departments] = await Promise.all([
+                    api.request("/api/employees"),
+                    api.request("/api/departments")
+                ]);
+
+                populateDeptSelects();
+                updateStats();
+                renderTable();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        function populateDeptSelects() {
+            const formSelect = document.getElementById("empDept");
+            const filterSelect = document.getElementById("deptFilter");
+
+            const opts = departments.map(d => `<option value="${d.id}">${escapeHtml(d.name)}</option>`).join("");
+            formSelect.innerHTML = `<option value="">-- Unassigned --</option>` + opts;
+            filterSelect.innerHTML = `<option value="all">All Departments</option>` + opts;
+        }
+
+        function updateStats() {
+            const total = employees.length;
+            let active = 0, payroll = 0;
+
+            employees.forEach(e => {
+                if ((e.status || 'active').toLowerCase() === 'active') active++;
+                payroll += Number(e.salary || 0);
+            });
+
+            document.getElementById("statTotalEmployees").textContent = total;
+            document.getElementById("statActive").textContent = active;
+            document.getElementById("statPayroll").textContent = formatMoney(payroll);
+            document.getElementById("statAvgSalary").textContent = total ? formatMoney(payroll / total) : "₹0";
+        }
+
+        function renderTable() {
+            const search = document.getElementById("searchInput").value.trim().toLowerCase();
+            const deptF = document.getElementById("deptFilter").value;
+            const statusF = document.getElementById("statusFilter").value;
+
+            const filtered = employees.filter(e => {
+                const matchesSearch = !search ||
+                    e.name.toLowerCase().includes(search) ||
+                    (e.designation && e.designation.toLowerCase().includes(search));
+
+                const matchesDept = deptF === "all" || (e.department_id && e.department_id == deptF);
+                const matchesStatus = statusF === "all" || (e.status || 'active').toLowerCase() === statusF;
+
+                return matchesSearch && matchesDept && matchesStatus;
+            });
+
+            const tbody = document.getElementById("employeeTableBody");
+            if (!filtered.length) {
+                tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><span class="empty-icon">👥</span><span>No employees found.</span></div></td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(e => `
+                <tr>
+                    <td><strong>${escapeHtml(e.name)}</strong></td>
+                    <td>${escapeHtml(e.department_name) || "Unassigned"}</td>
+                    <td>${escapeHtml(e.designation) || "-"}</td>
+                    <td>${escapeHtml(e.phone) || escapeHtml(e.email) || "-"}</td>
+                    <td><strong>${formatMoney(e.salary)}</strong></td>
+                    <td>${formatDate(e.joining_date)}</td>
+                    <td>${renderActiveBadge(e.status)}</td>
+                    <td>
+                        <div class="actions-cell">
+                            <button class="btn btn-sm secondary" onclick="editEmployee(${e.id})">Edit</button>
+                            <button class="btn btn-sm danger" onclick="deleteEmployee(${e.id}, '${escapeHtml(e.name)}')">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+            `).join("");
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        function resetForm() {
+            document.getElementById("employeeForm").reset();
+            document.getElementById("empId").value = "";
+            initSegmentedControl(document.getElementById("empStatusContainer"), document.getElementById("empStatus"), "active");
+            document.getElementById("formTitle").textContent = "Add New Employee";
+            document.getElementById("submitBtn").textContent = "Add Employee";
+            document.getElementById("cancelEditBtn").style.display = "none";
+        }
+
+        function editEmployee(id) {
+            const e = employees.find(x => x.id === id);
+            if (!e) return;
+            document.getElementById("empId").value = e.id;
+            document.getElementById("empName").value = e.name || "";
+            document.getElementById("empDept").value = e.department_id || "";
+            document.getElementById("empDesignation").value = e.designation || "";
+            document.getElementById("empPhone").value = e.phone || "";
+            document.getElementById("empEmail").value = e.email || "";
+            document.getElementById("empSalary").value = e.salary || 0;
+            document.getElementById("empJoiningDate").value = e.joining_date || "";
+            initSegmentedControl(document.getElementById("empStatusContainer"), document.getElementById("empStatus"), (e.status || 'active').toLowerCase());
+
+            document.getElementById("formTitle").textContent = "Edit Employee Profile";
+            document.getElementById("submitBtn").textContent = "Update Employee";
+            document.getElementById("cancelEditBtn").style.display = "inline-block";
+            document.getElementById("employeeFormCard").scrollIntoView({ behavior: "smooth" });
+        }
+
+        async function deleteEmployee(id, name) {
+            if (!confirm(`Are you sure you want to delete employee "${name}"?`)) return;
+            try {
+                await api.request(`/api/employees/${id}`, { method: "DELETE" });
+                showToast(`Employee "${name}" deleted.`, "info");
+                refreshData();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadEmployees();
+
+            document.getElementById("searchInput").addEventListener("input", renderTable);
+            document.getElementById("deptFilter").addEventListener("change", renderTable);
+            document.getElementById("statusFilter").addEventListener("change", renderTable);
+
+            document.getElementById("scrollToAddBtn").addEventListener("click", () => {
+                resetForm();
+                document.getElementById("empName").focus();
+                document.getElementById("employeeFormCard").scrollIntoView({ behavior: "smooth" });
+            });
+            document.getElementById("cancelEditBtn").addEventListener("click", resetForm);
+
+            document.getElementById("employeeForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const empId = document.getElementById("empId").value;
+                const submitBtn = document.getElementById("submitBtn");
+
+                const payload = {
+                    name: document.getElementById("empName").value.trim(),
+                    department_id: document.getElementById("empDept").value ? parseInt(document.getElementById("empDept").value) : null,
+                    designation: document.getElementById("empDesignation").value.trim(),
+                    phone: document.getElementById("empPhone").value.trim(),
+                    email: document.getElementById("empEmail").value.trim(),
+                    salary: parseFloat(document.getElementById("empSalary").value) || 0,
+                    joining_date: document.getElementById("empJoiningDate").value,
+                    status: document.getElementById("empStatus").value
+                };
+
+                const method = empId ? "PUT" : "POST";
+                const endpoint = empId ? `/api/employees/${empId}` : "/api/employees";
+
+                setBtnLoading(submitBtn, true, empId ? "Updating..." : "Adding...");
+
+                try {
+                    await api.request(endpoint, { method, body: JSON.stringify(payload) });
+                    showToast(empId ? "Employee updated!" : "Employee added successfully!", "success");
+                    resetForm();
+                    refreshData();
+                } catch (error) {
+                    showToast(error.message, "error");
+                } finally {
+                    setBtnLoading(submitBtn, false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

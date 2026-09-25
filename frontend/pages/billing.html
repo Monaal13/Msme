@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Invoice | MSME Digital ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <span class="brand-text">MSME ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">CRM</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/customer-history.html">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                        <span class="nav-text">Customer History</span>
+                    </a>
+                    <a class="nav-link" href="/pages/messages.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="nav-text">Customer Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory</div>
+                    <a class="nav-link" href="/pages/products.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Products & Stock</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Billing</div>
+                    <a class="nav-link active" href="/pages/billing.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Create Invoice</span>
+                    </a>
+                    <a class="nav-link" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices History</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">HR & Operations</div>
+                    <a class="nav-link" href="/pages/employees.html">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="nav-text">Employees</span>
+                    </a>
+                    <a class="nav-link" href="/pages/departments.html">
+                        <svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                    <a class="nav-link" href="/pages/expenses.html">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="nav-text">Expenses</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Analytics & Reports</div>
+                    <a class="nav-link" href="/pages/analytics.html">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span class="nav-text">Sales Analytics</span>
+                    </a>
+                    <a class="nav-link" href="/pages/reports.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Business Reports</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Billing & Invoicing</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Generate GST Invoice</h1>
+                        <p class="muted">Create customer bills, automatically adjust inventory stock, and print/export PDF invoices.</p>
+                    </div>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <form id="invoiceForm">
+                    <!-- Customer Selection Card -->
+                    <div class="card" style="margin-bottom: 20px;">
+                        <h3 style="margin: 0 0 16px; font-size: 18px;">Customer & Invoice Header</h3>
+                        <div class="form-grid">
+                            <label>Select Customer <span class="required-asterisk">*</span>
+                                <select name="customer_id" id="customerSelect" required>
+                                    <option value="">-- Select Customer --</option>
+                                </select>
+                            </label>
+                            <label>Payment Status <span class="required-asterisk">*</span>
+                                <select name="payment_status" id="paymentStatusSelect" required>
+                                    <option value="paid">Paid</option>
+                                    <option value="unpaid" selected>Unpaid</option>
+                                </select>
+                            </label>
+                            <label>Due Date (Default: 15 days)
+                                <input type="date" name="due_date" id="dueDateInput">
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Line Items Table Card -->
+                    <div class="card table-wrap" style="margin-bottom: 20px; padding: 18px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+                            <h3 style="margin: 0; font-size: 18px;">Invoice Products</h3>
+                            <button class="btn btn-sm secondary" type="button" id="addLineBtn">+ Add Product Line</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th style="width: 32%;">Product <span class="required-asterisk">*</span></th>
+                                    <th style="width: 14%;">In Stock</th>
+                                    <th style="width: 14%;">Quantity <span class="required-asterisk">*</span></th>
+                                    <th style="width: 16%;">Unit Price (₹)</th>
+                                    <th style="width: 16%;">Line Total (₹)</th>
+                                    <th style="width: 8%;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lineItemsTbody"></tbody>
+                        </table>
+                    </div>
+
+                    <!-- Invoice Summary Card -->
+                    <div class="card" style="max-width: 520px; margin-left: auto; margin-bottom: 24px;">
+                        <h3 style="margin: 0 0 14px; font-size: 18px;">GST Invoice Breakdown</h3>
+                        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 14px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span>Items Subtotal:</span>
+                                <strong id="subtotalDisplay">₹0.00</strong>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; color: var(--muted);">
+                                <span>CGST (9%):</span>
+                                <span id="cgstDisplay">₹0.00</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; color: var(--muted);">
+                                <span>SGST (9%):</span>
+                                <span id="sgstDisplay">₹0.00</span>
+                            </div>
+                            <hr style="border: 0; border-top: 1px dashed var(--line); margin: 6px 0;">
+                            <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 800; color: var(--primary);">
+                                <span>Grand Total:</span>
+                                <span id="grandTotalDisplay">₹0.00</span>
+                            </div>
+                        </div>
+
+                        <div class="actions-cell" style="margin-top: 20px; justify-content: flex-end;">
+                            <button class="btn secondary" type="button" id="previewBtn">Preview Invoice</button>
+                            <button class="btn" type="submit" id="submitInvoiceBtn">Generate & Save Invoice</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <!-- GST Invoice Preview Modal -->
+    <div id="previewModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content" style="max-width: 720px;">
+            <div class="modal-header">
+                <h2>Invoice Tax Preview</h2>
+                <button class="close-btn" id="closePreviewBtn">&times;</button>
+            </div>
+            
+            <div id="invoicePrintArea" style="padding: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                    <div>
+                        <h2 style="margin: 0; color: var(--primary); font-size: 22px;">MSME Enterprise ERP</h2>
+                        <p style="margin: 4px 0 0; font-size: 13px; color: var(--muted);">Tax Invoice | GSTIN: 27AAAAA0000A1Z5</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span class="badge info" id="previewInvStatus">PAID</span>
+                        <p style="margin: 6px 0 0; font-size: 12px; color: var(--muted);" id="previewInvDate">Date: Today</p>
+                    </div>
+                </div>
+
+                <div style="background: var(--secondary); padding: 14px; border-radius: 8px; margin-bottom: 20px; font-size: 14px;">
+                    <strong>Billed To:</strong>
+                    <div id="previewCustomerDetails" style="margin-top: 4px;">Select customer</div>
+                </div>
+
+                <table style="margin-bottom: 20px;">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="previewItemsTbody"></tbody>
+                </table>
+
+                <div style="max-width: 300px; margin-left: auto; font-size: 14px; display: flex; flex-direction: column; gap: 6px;">
+                    <div style="display: flex; justify-content: space-between;"><span>Subtotal:</span><strong id="previewSubtotal">₹0.00</strong></div>
+                    <div style="display: flex; justify-content: space-between; color: var(--muted);"><span>CGST (9%):</span><span id="previewCGST">₹0.00</span></div>
+                    <div style="display: flex; justify-content: space-between; color: var(--muted);"><span>SGST (9%):</span><span id="previewSGST">₹0.00</span></div>
+                    <hr style="border:0; border-top:1px solid var(--line);">
+                    <div style="display: flex; justify-content: space-between; font-size: 16px; font-weight: 800; color: var(--primary);"><span>Total Amount:</span><span id="previewTotal">₹0.00</span></div>
+                </div>
+            </div>
+
+            <div class="actions-cell" style="margin-top: 20px; justify-content: flex-end;">
+                <button class="btn secondary" type="button" onclick="window.print()">Print Invoice</button>
+                <button class="btn secondary" type="button" id="closePreviewBtn2">Close Preview</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let customers = [];
+        let products = [];
+
+        async function initBilling() {
+            await requireLogin();
+            const defaultDue = new Date();
+            defaultDue.setDate(defaultDue.getDate() + 15);
+            document.getElementById("dueDateInput").value = defaultDue.toISOString().split("T")[0];
+            try {
+                [customers, products] = await Promise.all([
+                    api.request("/api/customers"),
+                    api.request("/api/products"),
+                ]);
+                populateCustomers();
+                addLineItem();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        function populateCustomers() {
+            const select = document.getElementById("customerSelect");
+            if (!customers.length) {
+                select.innerHTML = `<option value="">No customers found. Please add a customer first.</option>`;
+                return;
+            }
+            select.innerHTML = `<option value="">-- Select Customer --</option>` +
+                customers.map(c => `<option value="${c.id}">${escapeHtml(c.name)} ${c.company_name ? `(${escapeHtml(c.company_name)})` : ''}</option>`).join("");
+        }
+
+        function addLineItem() {
+            const tbody = document.getElementById("lineItemsTbody");
+            const tr = document.createElement("tr");
+
+            const productOptions = `<option value="">-- Select Product --</option>` +
+                products.map(p => `<option value="${p.id}">${escapeHtml(p.name)} (${formatMoney(p.selling_price)})</option>`).join("");
+
+            tr.innerHTML = `
+                <td>
+                    <select class="prod-select" required>
+                        ${productOptions}
+                    </select>
+                </td>
+                <td class="stock-cell muted">0</td>
+                <td>
+                    <input type="number" class="qty-input" min="1" value="1" required style="width: 80px;">
+                </td>
+                <td>
+                    <input type="number" class="price-input" step="0.01" min="0" value="0.00" required style="width: 100px;">
+                </td>
+                <td class="line-total-cell" style="font-weight: 700;">₹0.00</td>
+                <td>
+                    <button class="btn btn-sm danger remove-line-btn" type="button">✕</button>
+                </td>
+            `;
+
+            tbody.appendChild(tr);
+
+            const prodSelect = tr.querySelector(".prod-select");
+            const qtyInput = tr.querySelector(".qty-input");
+            const priceInput = tr.querySelector(".price-input");
+            const removeBtn = tr.querySelector(".remove-line-btn");
+
+            prodSelect.addEventListener("change", () => {
+                const prodId = prodSelect.value;
+                const p = products.find(x => x.id == prodId);
+                if (p) {
+                    priceInput.value = p.selling_price || 0;
+                    tr.querySelector(".stock-cell").textContent = p.quantity || 0;
+                } else {
+                    priceInput.value = "0.00";
+                    tr.querySelector(".stock-cell").textContent = "0";
+                }
+                recalculate();
+            });
+
+            qtyInput.addEventListener("input", recalculate);
+            priceInput.addEventListener("input", recalculate);
+
+            removeBtn.addEventListener("click", () => {
+                if (tbody.children.length > 1) {
+                    tr.remove();
+                    recalculate();
+                } else {
+                    showToast("At least one product line is required.", "warning");
+                }
+            });
+
+            recalculate();
+        }
+
+        function calculateTotals() {
+            const rows = document.querySelectorAll("#lineItemsTbody tr");
+            let subtotal = 0;
+            const items = [];
+
+            rows.forEach(tr => {
+                const prodId = tr.querySelector(".prod-select").value;
+                const qty = parseInt(tr.querySelector(".qty-input").value) || 0;
+                const price = parseFloat(tr.querySelector(".price-input").value) || 0;
+                const lineTotal = qty * price;
+
+                tr.querySelector(".line-total-cell").textContent = formatMoney(lineTotal);
+
+                if (prodId && qty > 0) {
+                    subtotal += lineTotal;
+                    const p = products.find(x => x.id == prodId);
+                    items.push({
+                        product_id: parseInt(prodId),
+                        name: p ? p.name : "Product",
+                        quantity: qty,
+                        unit_price: price,
+                        subtotal: lineTotal
+                    });
+                }
+            });
+
+            const cgst = subtotal * 0.09;
+            const sgst = subtotal * 0.09;
+            const grandTotal = subtotal + cgst + sgst;
+
+            return { subtotal, cgst, sgst, grandTotal, items };
+        }
+
+        function recalculate() {
+            const { subtotal, cgst, sgst, grandTotal } = calculateTotals();
+            document.getElementById("subtotalDisplay").textContent = formatMoney(subtotal);
+            document.getElementById("cgstDisplay").textContent = formatMoney(cgst);
+            document.getElementById("sgstDisplay").textContent = formatMoney(sgst);
+            document.getElementById("grandTotalDisplay").textContent = formatMoney(grandTotal);
+        }
+
+        function updatePreviewModal() {
+            const { subtotal, cgst, sgst, grandTotal, items } = calculateTotals();
+            const custId = document.getElementById("customerSelect").value;
+            const cust = customers.find(c => c.id == custId);
+            const status = document.getElementById("paymentStatusSelect").value.toUpperCase();
+
+            document.getElementById("previewInvStatus").textContent = status;
+            document.getElementById("previewInvStatus").className = `badge ${status === 'PAID' ? 'success' : 'warning'}`;
+            document.getElementById("previewInvDate").textContent = `Date: ${formatDate(new Date())}`;
+
+            if (cust) {
+                document.getElementById("previewCustomerDetails").innerHTML = `
+                    <strong>${escapeHtml(cust.name)}</strong><br>
+                    ${cust.company_name ? escapeHtml(cust.company_name) + '<br>' : ''}
+                    Phone: ${escapeHtml(cust.phone) || '-'} | Email: ${escapeHtml(cust.email) || '-'}
+                `;
+            } else {
+                document.getElementById("previewCustomerDetails").textContent = "No customer selected";
+            }
+
+            const tbody = document.getElementById("previewItemsTbody");
+            if (!items.length) {
+                tbody.innerHTML = `<tr><td colspan="4"><div class="empty-state">No products added yet.</div></td></tr>`;
+            } else {
+                tbody.innerHTML = items.map(item => `
+                    <tr>
+                        <td><strong>${escapeHtml(item.name)}</strong></td>
+                        <td>${item.quantity}</td>
+                        <td>${formatMoney(item.unit_price)}</td>
+                        <td><strong>${formatMoney(item.subtotal)}</strong></td>
+                    </tr>
+                `).join("");
+            }
+
+            document.getElementById("previewSubtotal").textContent = formatMoney(subtotal);
+            document.getElementById("previewCGST").textContent = formatMoney(cgst);
+            document.getElementById("previewSGST").textContent = formatMoney(sgst);
+            document.getElementById("previewTotal").textContent = formatMoney(grandTotal);
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            initBilling();
+
+            document.getElementById("addLineBtn").addEventListener("click", addLineItem);
+            document.getElementById("previewBtn").addEventListener("click", () => {
+                updatePreviewModal();
+                document.getElementById("previewModal").style.display = "flex";
+            });
+
+            document.getElementById("closePreviewBtn").addEventListener("click", () => {
+                document.getElementById("previewModal").style.display = "none";
+            });
+            document.getElementById("closePreviewBtn2").addEventListener("click", () => {
+                document.getElementById("previewModal").style.display = "none";
+            });
+
+            document.getElementById("invoiceForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const custId = document.getElementById("customerSelect").value;
+                if (!custId) {
+                    showToast("Please select a customer.", "warning");
+                    return;
+                }
+
+                const { grandTotal, items } = calculateTotals();
+                if (!items.length) {
+                    showToast("Please select at least one valid product.", "warning");
+                    return;
+                }
+
+                const payload = {
+                    customer_id: parseInt(custId),
+                    payment_status: document.getElementById("paymentStatusSelect").value,
+                    due_date: document.getElementById("dueDateInput").value,
+                    items: items.map(i => ({
+                        product_id: i.product_id,
+                        quantity: i.quantity,
+                        unit_price: i.unit_price
+                    }))
+                };
+
+                const submitBtn = document.getElementById("submitInvoiceBtn");
+                setBtnLoading(submitBtn, true, "Generating Invoice...");
+
+                try {
+                    const result = await api.request("/api/sales", {
+                        method: "POST",
+                        body: JSON.stringify(payload)
+                    });
+                    showToast(`Invoice ${result.invoice_number || ''} generated successfully!`, "success", "Invoice Created");
+                    setTimeout(() => {
+                        window.location.href = "/pages/invoices.html";
+                    }, 800);
+                } catch (error) {
+                    showToast(error.message, "error");
+                } finally {
+                    setBtnLoading(submitBtn, false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

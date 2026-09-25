@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Reports & AI Insights | MSME Digital ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <span class="brand-text">MSME ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">CRM</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/customer-history.html">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                        <span class="nav-text">Customer History</span>
+                    </a>
+                    <a class="nav-link" href="/pages/messages.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="nav-text">Customer Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory</div>
+                    <a class="nav-link" href="/pages/products.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Products & Stock</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Billing</div>
+                    <a class="nav-link" href="/pages/billing.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Create Invoice</span>
+                    </a>
+                    <a class="nav-link" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices History</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">HR & Operations</div>
+                    <a class="nav-link" href="/pages/employees.html">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="nav-text">Employees</span>
+                    </a>
+                    <a class="nav-link" href="/pages/departments.html">
+                        <svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                    <a class="nav-link" href="/pages/expenses.html">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="nav-text">Expenses</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Analytics & Reports</div>
+                    <a class="nav-link" href="/pages/analytics.html">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span class="nav-text">Sales Analytics</span>
+                    </a>
+                    <a class="nav-link active" href="/pages/reports.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Business Reports</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Executive Business Intelligence</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Business Performance Reports</h1>
+                        <p class="muted">Generate comprehensive sales, customer, inventory, and HR reports with Excel and PDF exports.</p>
+                    </div>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- Phase 9: AI Business Insights Banner -->
+                <div class="ai-insights-card">
+                    <div class="ai-header">
+                        <span style="font-size: 18px;">💡</span>
+                        <span>AI Executive Business Insights (Real DB Metrics)</span>
+                    </div>
+                    <div class="insights-list" id="aiInsightsList">
+                        <div class="insight-item">
+                            <span class="insight-icon">📈</span>
+                            <div><strong>Loading metrics...</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Date Range & Export Toolbar -->
+                <div class="toolbar" style="flex-wrap: wrap; margin-bottom: 20px;">
+                    <div style="display: flex; gap: 6px; align-items: center;">
+                        <button class="btn btn-sm filter-btn active" data-range="all">All Time</button>
+                        <button class="btn btn-sm secondary filter-btn" data-range="this_month">This Month</button>
+                        <button class="btn btn-sm secondary filter-btn" data-range="last_month">Last Month</button>
+                        <button class="btn btn-sm secondary filter-btn" data-range="custom">Custom Date Range</button>
+                    </div>
+
+                    <div id="customDateWrap" style="display: none; align-items: center; gap: 8px;">
+                        <input type="date" id="startDateInput" style="padding: 6px 10px; max-width: 150px;">
+                        <span class="muted">to</span>
+                        <input type="date" id="endDateInput" style="padding: 6px 10px; max-width: 150px;">
+                        <button class="btn btn-sm" id="applyCustomDateBtn">Apply</button>
+                    </div>
+
+                    <div class="actions-cell" style="margin-left: auto;">
+                        <button class="btn secondary btn-sm" id="exportExcelBtn">📥 Export Excel (CSV)</button>
+                        <button class="btn btn-sm" onclick="window.print()">📄 PDF / Print Report</button>
+                    </div>
+                </div>
+
+                <!-- Report Section Tabs -->
+                <div style="display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--line); padding-bottom: 10px;">
+                    <button class="btn btn-sm report-tab active" data-tab="sales">Sales Report</button>
+                    <button class="btn btn-sm secondary report-tab" data-tab="customer">Customer Report</button>
+                    <button class="btn btn-sm secondary report-tab" data-tab="inventory">Inventory Report</button>
+                    <button class="btn btn-sm secondary report-tab" data-tab="hr">HR & Payroll Report</button>
+                    <button class="btn btn-sm secondary report-tab" data-tab="retention">Engagement & Retention</button>
+                </div>
+
+                <!-- Printable Report Area -->
+                <div id="reportContainer">
+                    <div id="reportHeader" style="border-bottom: 2px solid var(--line); padding-bottom: 14px; margin-bottom: 24px;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                            <div>
+                                <h2 id="reportBizName" style="margin: 0 0 4px; font-size: 24px;">MSME Enterprise ERP</h2>
+                                <div class="muted" id="reportBizContact">Business Statement</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <h3 style="margin: 0 0 4px; color: var(--primary);" id="activeReportTitle">Sales Performance Report</h3>
+                                <div class="muted" style="font-size: 13px;">Period: <strong id="reportPeriodLabel">All Time</strong></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1. Sales Report Tab Section -->
+                    <div class="report-section" id="tabSales">
+                        <div class="grid kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Total Revenue</span>
+                                <div class="kpi-value" id="salesTotal">₹0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Invoices Issued</span>
+                                <div class="kpi-value" id="salesCount">0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Average Order Value</span>
+                                <div class="kpi-value" id="salesAvg">₹0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Total Expenses</span>
+                                <div class="kpi-value" id="salesExpenses">₹0</div>
+                            </div>
+                        </div>
+
+                        <div class="card table-wrap" style="margin-bottom: 24px; padding: 0;">
+                            <div style="padding: 16px 18px; border-bottom: 1px solid var(--line);">
+                                <h3 style="margin: 0; font-size: 16px;">Top Revenue Products</h3>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>SKU</th>
+                                        <th>Quantity Sold</th>
+                                        <th>Total Revenue</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="salesTopProductsTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 2. Customer Report Tab Section -->
+                    <div class="report-section" id="tabCustomer" style="display: none;">
+                        <div class="grid kpi-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 20px;">
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Total Active Customers</span>
+                                <div class="kpi-value" id="custTotal">0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Top Spender Order Count</span>
+                                <div class="kpi-value" id="custTopOrders">0</div>
+                            </div>
+                        </div>
+
+                        <div class="card table-wrap" style="margin-bottom: 24px; padding: 0;">
+                            <div style="padding: 16px 18px; border-bottom: 1px solid var(--line);">
+                                <h3 style="margin: 0; font-size: 16px;">Customer Spend Leaderboard</h3>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Company</th>
+                                        <th>Total Orders</th>
+                                        <th>Total Purchased Amount</th>
+                                        <th>Last Purchase Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="customerReportTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 3. Inventory Report Tab Section -->
+                    <div class="report-section" id="tabInventory" style="display: none;">
+                        <div class="grid kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Catalog Products</span>
+                                <div class="kpi-value" id="invTotalProducts">0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Stock Units</span>
+                                <div class="kpi-value" id="invTotalUnits">0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Total Stock Value</span>
+                                <div class="kpi-value" id="invTotalVal">₹0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Low / Out of Stock</span>
+                                <div class="kpi-value" id="invLowCount" style="color: var(--warning);">0</div>
+                            </div>
+                        </div>
+
+                        <div class="card table-wrap" style="margin-bottom: 24px; padding: 0;">
+                            <div style="padding: 16px 18px; border-bottom: 1px solid var(--line);">
+                                <h3 style="margin: 0; font-size: 16px;">Product Inventory Valuation</h3>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>SKU</th>
+                                        <th>Category</th>
+                                        <th>Selling Price</th>
+                                        <th>Current Stock</th>
+                                        <th>Status</th>
+                                        <th>Inventory Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="inventoryReportTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 4. HR Report Tab Section -->
+                    <div class="report-section" id="tabHr" style="display: none;">
+                        <div class="grid kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Total Employees</span>
+                                <div class="kpi-value" id="hrTotalEmp">0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Active Staff</span>
+                                <div class="kpi-value" id="hrActiveEmp">0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Total Monthly Payroll</span>
+                                <div class="kpi-value" id="hrPayroll">₹0</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Departments</span>
+                                <div class="kpi-value" id="hrDepts">0</div>
+                            </div>
+                        </div>
+
+                        <div class="card table-wrap" style="margin-bottom: 24px; padding: 0;">
+                            <div style="padding: 16px 18px; border-bottom: 1px solid var(--line);">
+                                <h3 style="margin: 0; font-size: 16px;">Department Payroll Breakdown</h3>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Department Name</th>
+                                        <th>Description</th>
+                                        <th>Employee Count</th>
+                                        <th>Total Dept Payroll</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="hrReportTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 5. Customer Engagement & Retention Tab Section -->
+                    <div class="report-section" id="tabRetention" style="display: none;">
+                        <div class="grid kpi-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom: 20px;">
+                            <div class="card kpi-card">
+                                <span class="kpi-label">New Customers</span>
+                                <div class="kpi-value" id="retNewCount">0</div>
+                                <div class="kpi-sub">First-time buyers</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Returning Customers</span>
+                                <div class="kpi-value" id="retReturningCount" style="color: var(--success);">0</div>
+                                <div class="kpi-sub">Purchased > 1 times</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Inactive Customers</span>
+                                <div class="kpi-value" id="retInactiveCount" style="color: var(--danger);">0</div>
+                                <div class="kpi-sub">No purchase in last 30 days</div>
+                            </div>
+                            <div class="card kpi-card">
+                                <span class="kpi-label">Total Messages Sent</span>
+                                <div class="kpi-value" id="retTotalMessages">0</div>
+                                <div class="kpi-sub" id="retMsgFailedLabel">0 failed</div>
+                            </div>
+                        </div>
+
+                        <div class="card table-wrap" style="margin-bottom: 24px; padding: 0;">
+                            <div style="padding: 16px 18px; border-bottom: 1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+                                <h3 style="margin: 0; font-size: 16px;">Customer Loyalty & Retention Segments</h3>
+                                <button class="btn btn-sm" id="sendCampaignBtn" style="font-weight:700;">📣 Send Retention Offer</button>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Customer</th>
+                                        <th>Phone</th>
+                                        <th>Total Orders</th>
+                                        <th>Total Spent</th>
+                                        <th>Last Purchase</th>
+                                        <th>Activity Status</th>
+                                        <th>Loyalty Group</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="retentionReportTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Send Retention Campaign Modal -->
+    <div id="campaignModal" class="modal-backdrop" style="display: none; z-index: 1100;">
+        <div class="modal-content" style="max-width: 480px;">
+            <div class="modal-header">
+                <h2>Retention Offer Campaign</h2>
+                <button class="close-btn" id="closeCampaignModalBtn">&times;</button>
+            </div>
+            <form id="campaignForm" style="padding: 10px;">
+                <p style="font-size:13px; margin-bottom:14px;">This will immediately trigger and deliver a customized offer to all <strong id="campaignTargetCount">0</strong> inactive customers (no purchase in last 30 days).</p>
+                <label>Offer Message Text <span class="required-asterisk">*</span>
+                    <textarea id="campaignMsgText" rows="5" required placeholder="Type your message here. You can use {{customer_name}} placeholder."></textarea>
+                </label>
+                <div class="actions-cell" style="margin-top:20px; justify-content:flex-end;">
+                    <button class="btn secondary" type="button" id="cancelCampaignBtn">Cancel</button>
+                    <button class="btn" type="submit" id="submitCampaignBtn">Send Campaign</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let reportData = null;
+        let activeTab = "sales";
+        let dateRange = "all";
+        let startDate = "";
+        let endDate = "";
+
+        async function loadReports() {
+            await requireLogin();
+            await fetchReportData();
+        }
+
+        async function fetchReportData() {
+            try {
+                let url = `/api/reports/summary?date_range=${dateRange}`;
+                if (dateRange === "custom" && startDate && endDate) {
+                    url += `&start_date=${startDate}&end_date=${endDate}`;
+                }
+                reportData = await api.request(url);
+                renderAIInsights();
+                renderReportContent();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        // Phase 9: AI Business Insights Engine from Real DB Data
+        function renderAIInsights() {
+            const list = document.getElementById("aiInsightsList");
+            if (!reportData) return;
+
+            const sales = reportData.sales_report || {};
+            const inv = reportData.inventory_report || {};
+            const cust = reportData.customer_report || {};
+            const hr = reportData.hr_report || {};
+
+            const insights = [];
+
+            // 1. Revenue & Sales Growth Insight
+            if (sales.total_sales > 0) {
+                insights.push({
+                    icon: "📈",
+                    text: `<strong>Revenue Highlight:</strong> Total sales generated reach <strong>${formatMoney(sales.total_sales)}</strong> across <strong>${sales.invoice_count}</strong> invoices (Avg ${formatMoney(sales.avg_invoice)} per order).`
+                });
+            } else {
+                insights.push({
+                    icon: "ℹ️",
+                    text: `<strong>Sales Trend:</strong> No sales transactions recorded for this period.`
+                });
+            }
+
+            // 2. Low Stock Warning Insight
+            if (inv.low_stock_count > 0 || inv.out_of_stock_count > 0) {
+                insights.push({
+                    icon: "⚠️",
+                    text: `<strong>Inventory Alert:</strong> <strong>${inv.low_stock_count}</strong> items low in stock and <strong>${inv.out_of_stock_count}</strong> out of stock requiring urgent restock.`
+                });
+            } else {
+                insights.push({
+                    icon: "✅",
+                    text: `<strong>Stock Status:</strong> All products in stock with total inventory valuation of <strong>${formatMoney(inv.total_inventory_value)}</strong>.`
+                });
+            }
+
+            // 3. Top Customer Insight
+            if (cust.top_customers && cust.top_customers.length > 0) {
+                const topC = cust.top_customers[0];
+                insights.push({
+                    icon: "⭐",
+                    text: `<strong>Top Customer:</strong> <strong>${escapeHtml(topC.name)}</strong> is your highest value buyer contributing <strong>${formatMoney(topC.total_purchase)}</strong> across ${topC.total_orders} orders.`
+                });
+            }
+
+            // 4. Best Selling Product Insight
+            if (sales.top_products && sales.top_products.length > 0) {
+                const topP = sales.top_products[0];
+                insights.push({
+                    icon: "🏆",
+                    text: `<strong>Best Seller:</strong> <strong>${escapeHtml(topP.name)}</strong> is the top product with <strong>${topP.quantity_sold}</strong> units sold for <strong>${formatMoney(topP.revenue)}</strong>.`
+                });
+            }
+
+            list.innerHTML = insights.map(i => `
+                <div class="insight-item">
+                    <span class="insight-icon">${i.icon}</span>
+                    <div>${i.text}</div>
+                </div>
+            `).join("");
+        }
+
+        function renderReportContent() {
+            if (!reportData) return;
+
+            const bInfo = reportData.business_info || {};
+            document.getElementById("reportBizName").textContent = bInfo.name || "MSME Enterprise ERP";
+            document.getElementById("reportBizContact").textContent = `Phone: ${bInfo.phone || '-'} | Email: ${bInfo.email || '-'}`;
+            document.getElementById("reportPeriodLabel").textContent = dateRange === 'all' ? 'All Time' : (dateRange === 'this_month' ? 'This Month' : (dateRange === 'last_month' ? 'Last Month' : `${startDate} to ${endDate}`));
+
+            // 1. Sales Report
+            const s = reportData.sales_report || {};
+            document.getElementById("salesTotal").textContent = formatMoney(s.total_sales);
+            document.getElementById("salesCount").textContent = s.invoice_count || 0;
+            document.getElementById("salesAvg").textContent = formatMoney(s.avg_invoice);
+            document.getElementById("salesExpenses").textContent = formatMoney(reportData.profit_report?.total_expenses);
+
+            const topPBody = document.getElementById("salesTopProductsTable");
+            topPBody.innerHTML = (s.top_products || []).map(p => `
+                <tr>
+                    <td><strong>${escapeHtml(p.name)}</strong></td>
+                    <td><code>${escapeHtml(p.sku)}</code></td>
+                    <td>${p.quantity_sold} units</td>
+                    <td><strong>${formatMoney(p.revenue)}</strong></td>
+                </tr>
+            `).join("") || `<tr><td colspan="4"><div class="empty-state">No product sales.</div></td></tr>`;
+
+            // 2. Customer Report
+            const c = reportData.customer_report || {};
+            document.getElementById("custTotal").textContent = c.total_customers || 0;
+            document.getElementById("custTopOrders").textContent = c.top_customers && c.top_customers.length ? c.top_customers[0].total_orders : 0;
+
+            const cBody = document.getElementById("customerReportTable");
+            cBody.innerHTML = (c.top_customers || []).map(cust => `
+                <tr>
+                    <td><strong>${escapeHtml(cust.name)}</strong></td>
+                    <td>${escapeHtml(cust.company_name) || "-"}</td>
+                    <td>${cust.total_orders || 0}</td>
+                    <td><strong>${formatMoney(cust.total_purchase)}</strong></td>
+                    <td>${cust.last_purchase_date ? formatDate(cust.last_purchase_date) : "-"}</td>
+                </tr>
+            `).join("") || `<tr><td colspan="5"><div class="empty-state">No customer purchase records.</div></td></tr>`;
+
+            // 3. Inventory Report
+            const inv = reportData.inventory_report || {};
+            document.getElementById("invTotalProducts").textContent = inv.total_products || 0;
+            document.getElementById("invTotalUnits").textContent = (inv.total_stock_units || 0).toLocaleString("en-IN");
+            document.getElementById("invTotalVal").textContent = formatMoney(inv.total_inventory_value);
+            document.getElementById("invLowCount").textContent = (inv.low_stock_count || 0) + (inv.out_of_stock_count || 0);
+
+            const invBody = document.getElementById("inventoryReportTable");
+            invBody.innerHTML = (inv.products || []).map(p => `
+                <tr>
+                    <td><strong>${escapeHtml(p.name)}</strong></td>
+                    <td><code>${escapeHtml(p.sku)}</code></td>
+                    <td>${escapeHtml(p.category) || "-"}</td>
+                    <td>${formatMoney(p.selling_price)}</td>
+                    <td><strong>${p.quantity || 0}</strong></td>
+                    <td><span class="badge ${p.stock_status === 'In Stock' ? 'success' : (p.stock_status === 'Low Stock' ? 'warning' : 'danger')}">${p.stock_status}</span></td>
+                    <td><strong>${formatMoney(p.inventory_value)}</strong></td>
+                </tr>
+            `).join("") || `<tr><td colspan="7"><div class="empty-state">No inventory records.</div></td></tr>`;
+
+            // 4. HR Report
+            const hr = reportData.hr_report || {};
+            document.getElementById("hrTotalEmp").textContent = hr.total_employees || 0;
+            document.getElementById("hrActiveEmp").textContent = hr.active_employees || 0;
+            document.getElementById("hrPayroll").textContent = formatMoney(hr.total_payroll);
+            document.getElementById("hrDepts").textContent = hr.total_departments || 0;
+
+            const hrBody = document.getElementById("hrReportTable");
+            hrBody.innerHTML = (hr.departments || []).map(d => `
+                <tr>
+                    <td><strong>${escapeHtml(d.name)}</strong></td>
+                    <td>${escapeHtml(d.description) || "-"}</td>
+                    <td>${d.employee_count || 0} employees</td>
+                    <td><strong>${formatMoney(d.dept_payroll)}</strong></td>
+                </tr>
+            `).join("") || `<tr><td colspan="4"><div class="empty-state">No department records.</div></td></tr>`;
+        }
+
+        function renderReportContent() {
+            if (!reportData) return;
+
+            const bInfo = reportData.business_info || {};
+            document.getElementById("reportBizName").textContent = bInfo.name || "MSME Enterprise ERP";
+            document.getElementById("reportBizContact").textContent = `Phone: ${bInfo.phone || '-'} | Email: ${bInfo.email || '-'}`;
+            document.getElementById("reportPeriodLabel").textContent = dateRange === 'all' ? 'All Time' : (dateRange === 'this_month' ? 'This Month' : (dateRange === 'last_month' ? 'Last Month' : `${startDate} to ${endDate}`));
+
+            // 1. Sales Report
+            const s = reportData.sales_report || {};
+            document.getElementById("salesTotal").textContent = formatMoney(s.total_sales);
+            document.getElementById("salesCount").textContent = s.invoice_count || 0;
+            document.getElementById("salesAvg").textContent = formatMoney(s.avg_invoice);
+            document.getElementById("salesExpenses").textContent = formatMoney(reportData.profit_report?.total_expenses);
+
+            const topPBody = document.getElementById("salesTopProductsTable");
+            topPBody.innerHTML = (s.top_products || []).map(p => `
+                <tr>
+                    <td><strong>${escapeHtml(p.name)}</strong></td>
+                    <td><code>${escapeHtml(p.sku)}</code></td>
+                    <td>${p.quantity_sold} units</td>
+                    <td><strong>${formatMoney(p.revenue)}</strong></td>
+                </tr>
+            `).join("") || `<tr><td colspan="4"><div class="empty-state">No product sales.</div></td></tr>`;
+
+            // 2. Customer Report
+            const c = reportData.customer_report || {};
+            document.getElementById("custTotal").textContent = c.total_customers || 0;
+            document.getElementById("custTopOrders").textContent = c.top_customers && c.top_customers.length ? c.top_customers[0].total_orders : 0;
+
+            const cBody = document.getElementById("customerReportTable");
+            cBody.innerHTML = (c.top_customers || []).map(cust => `
+                <tr>
+                    <td><strong>${escapeHtml(cust.name)}</strong></td>
+                    <td>${escapeHtml(cust.company_name) || "-"}</td>
+                    <td>${cust.total_orders || 0}</td>
+                    <td><strong>${formatMoney(cust.total_purchase)}</strong></td>
+                    <td>${cust.last_purchase_date ? formatDate(cust.last_purchase_date) : "-"}</td>
+                </tr>
+            `).join("") || `<tr><td colspan="5"><div class="empty-state">No customer purchase records.</div></td></tr>`;
+
+            // 3. Inventory Report
+            const inv = reportData.inventory_report || {};
+            document.getElementById("invTotalProducts").textContent = inv.total_products || 0;
+            document.getElementById("invTotalUnits").textContent = (inv.total_stock_units || 0).toLocaleString("en-IN");
+            document.getElementById("invTotalVal").textContent = formatMoney(inv.total_inventory_value);
+            document.getElementById("invLowCount").textContent = (inv.low_stock_count || 0) + (inv.out_of_stock_count || 0);
+
+            const invBody = document.getElementById("inventoryReportTable");
+            invBody.innerHTML = (inv.products || []).map(p => `
+                <tr>
+                    <td><strong>${escapeHtml(p.name)}</strong></td>
+                    <td><code>${escapeHtml(p.sku)}</code></td>
+                    <td>${escapeHtml(p.category) || "-"}</td>
+                    <td>${formatMoney(p.selling_price)}</td>
+                    <td><strong>${p.quantity || 0}</strong></td>
+                    <td><span class="badge ${p.stock_status === 'In Stock' ? 'success' : (p.stock_status === 'Low Stock' ? 'warning' : 'danger')}">${p.stock_status}</span></td>
+                    <td><strong>${formatMoney(p.inventory_value)}</strong></td>
+                </tr>
+            `).join("") || `<tr><td colspan="7"><div class="empty-state">No inventory records.</div></td></tr>`;
+
+            // 4. HR Report
+            const hr = reportData.hr_report || {};
+            document.getElementById("hrTotalEmp").textContent = hr.total_employees || 0;
+            document.getElementById("hrActiveEmp").textContent = hr.active_employees || 0;
+            document.getElementById("hrPayroll").textContent = formatMoney(hr.total_payroll);
+            document.getElementById("hrDepts").textContent = hr.total_departments || 0;
+
+            const hrBody = document.getElementById("hrReportTable");
+            hrBody.innerHTML = (hr.departments || []).map(d => `
+                <tr>
+                    <td><strong>${escapeHtml(d.name)}</strong></td>
+                    <td>${escapeHtml(d.description) || "-"}</td>
+                    <td>${d.employee_count || 0} employees</td>
+                    <td><strong>${formatMoney(d.dept_payroll)}</strong></td>
+                </tr>
+            `).join("") || `<tr><td colspan="4"><div class="empty-state">No department records.</div></td></tr>`;
+
+            // 5. Customer Engagement & Retention Report
+            const ret = reportData.retention_report || {};
+            const comm = reportData.communication_report || {};
+            
+            document.getElementById("retNewCount").textContent = ret.new_count || 0;
+            document.getElementById("retReturningCount").textContent = ret.returning_count || 0;
+            document.getElementById("retInactiveCount").textContent = ret.inactive_count || 0;
+            document.getElementById("retTotalMessages").textContent = comm.total_messages || 0;
+            document.getElementById("retMsgFailedLabel").textContent = `${comm.failed_count || 0} failed`;
+
+            const retBody = document.getElementById("retentionReportTable");
+            retBody.innerHTML = (ret.customers || []).map(c => `
+                <tr>
+                    <td><strong>${escapeHtml(c.name)}</strong></td>
+                    <td>${escapeHtml(c.phone || '-')}</td>
+                    <td>${c.total_orders || 0} orders</td>
+                    <td><strong>${formatMoney(c.total_purchase)}</strong></td>
+                    <td>${c.last_purchase_date ? formatDate(c.last_purchase_date) : "-"}</td>
+                    <td><span class="badge ${c.activity_status === 'Active' ? 'success' : 'danger'}">${c.activity_status}</span></td>
+                    <td><span class="badge info">${c.group_type}</span></td>
+                </tr>
+            `).join("") || `<tr><td colspan="7"><div class="empty-state">No customers recorded.</div></td></tr>`;
+        }
+
+        function switchTab(tabName) {
+            activeTab = tabName;
+            document.querySelectorAll(".report-tab").forEach(btn => {
+                if (btn.dataset.tab === tabName) {
+                    btn.classList.add("active");
+                    btn.classList.remove("secondary");
+                } else {
+                    btn.classList.remove("active");
+                    btn.classList.add("secondary");
+                }
+            });
+
+            document.querySelectorAll(".report-section").forEach(sec => {
+                sec.style.display = sec.id === `tab${tabName.charAt(0).toUpperCase() + tabName.slice(1)}` ? "block" : "none";
+            });
+
+            const titles = {
+                sales: "Sales Performance Report",
+                customer: "Customer Relationship Report",
+                inventory: "Inventory Valuation Report",
+                hr: "HR & Department Payroll Report",
+                retention: "Customer Engagement & Retention Report"
+            };
+            document.getElementById("activeReportTitle").textContent = titles[tabName] || "Business Report";
+        }
+
+        // Export active table to CSV
+        function exportToCSV() {
+            let activeTable = document.querySelector(`#tab${activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} table`);
+            if (!activeTable) return;
+
+            let csv = [];
+            let rows = activeTable.querySelectorAll("tr");
+            for (let i = 0; i < rows.length; i++) {
+                let row = [], cols = rows[i].querySelectorAll("td, th");
+                for (let j = 0; j < cols.length; j++) {
+                    let text = cols[j].innerText.replace(/"/g, '""').trim();
+                    row.push('"' + text + '"');
+                }
+                csv.push(row.join(","));
+            }
+
+            let csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+            let downloadLink = document.createElement("a");
+            downloadLink.download = `${activeTab}_report_${new Date().toISOString().slice(0,10)}.csv`;
+            downloadLink.href = window.URL.createObjectURL(csvFile);
+            downloadLink.style.display = "none";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+            showToast("Report exported to Excel CSV format.", "success");
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadReports();
+
+            document.querySelectorAll(".filter-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.querySelectorAll(".filter-btn").forEach(b => {
+                        b.classList.remove("active");
+                        b.classList.add("secondary");
+                    });
+                    btn.classList.add("active");
+                    btn.classList.remove("secondary");
+
+                    dateRange = btn.dataset.range;
+                    if (dateRange === "custom") {
+                        document.getElementById("customDateWrap").style.display = "flex";
+                    } else {
+                        document.getElementById("customDateWrap").style.display = "none";
+                        fetchReportData();
+                    }
+                });
+            });
+
+            document.getElementById("applyCustomDateBtn").addEventListener("click", () => {
+                startDate = document.getElementById("startDateInput").value;
+                endDate = document.getElementById("endDateInput").value;
+                if (!startDate || !endDate) {
+                    showToast("Please select start and end dates.", "warning");
+                    return;
+                }
+                fetchReportData();
+            });
+
+            document.querySelectorAll(".report-tab").forEach(btn => {
+                btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+            });
+
+            document.getElementById("exportExcelBtn").addEventListener("click", exportToCSV);
+
+            // Campaign triggers
+            const sendCampBtn = document.getElementById("sendCampaignBtn");
+            if (sendCampBtn) {
+                sendCampBtn.addEventListener("click", () => {
+                    const ret = reportData?.retention_report || {};
+                    document.getElementById("campaignTargetCount").textContent = ret.inactive_count || 0;
+                    document.getElementById("campaignMsgText").value = "Hi {{customer_name}} 👋 We miss you! Get 10% off your next purchase by showing this message. Valid this week! ❤️";
+                    document.getElementById("campaignModal").style.display = "flex";
+                });
+            }
+            
+            document.getElementById("closeCampaignModalBtn").addEventListener("click", () => {
+                document.getElementById("campaignModal").style.display = "none";
+            });
+            document.getElementById("cancelCampaignBtn").addEventListener("click", () => {
+                document.getElementById("campaignModal").style.display = "none";
+            });
+
+            document.getElementById("campaignForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const text = document.getElementById("campaignMsgText").value.trim();
+                const submitBtn = document.getElementById("submitCampaignBtn");
+                setBtnLoading(submitBtn, true, "Launching...");
+                try {
+                    const res = await api.request("/api/messages/send-campaign", {
+                        method: "POST",
+                        body: JSON.stringify({ message_text: text })
+                    });
+                    showToast(res.message || "Campaign dispatched successfully!", "success");
+                    document.getElementById("campaignModal").style.display = "none";
+                    fetchReportData();
+                } catch (err) {
+                    showToast(err.message, "error");
+                } finally {
+                    setBtnLoading(submitBtn, false);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

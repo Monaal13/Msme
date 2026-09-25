@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Signup | Garment Portal</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg);
+            padding: 20px;
+        }
+        .auth-card {
+            width: min(420px, 100%);
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow-xl);
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-card">
+        <div style="text-align: center; margin-bottom: 24px;">
+            <div style="font-size: 40px; margin-bottom: 8px;">🛍️</div>
+            <h2 style="margin: 0; font-size: 22px;">Create Customer Account</h2>
+            <p class="muted" style="margin-top: 4px; font-size: 13px;">Track your garment orders, bills & updates online.</p>
+        </div>
+
+        <div data-status class="status"></div>
+
+        <form id="customerRegisterForm">
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+                <div>
+                    <label>Full Name <span class="required-asterisk">*</span></label>
+                    <input type="text" name="name" placeholder="Rahul Sharma" required>
+                </div>
+                <div>
+                    <label>Phone Number</label>
+                    <input type="tel" name="phone" placeholder="+91 98765 43210">
+                </div>
+                <div>
+                    <label>Email Address <span class="required-asterisk">*</span></label>
+                    <input type="email" name="email" placeholder="rahul@example.com" required>
+                </div>
+                <div>
+                    <label>Password <span class="required-asterisk">*</span></label>
+                    <input type="password" name="password" placeholder="••••••••" required minlength="4">
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 8px;">Create Customer Account</button>
+            </div>
+        </form>
+
+        <div style="text-align: center; margin-top: 20px; font-size: 13px;" class="muted">
+            Already have an account? <a href="/" style="color: var(--primary); font-weight: 600;">Sign in here</a>
+        </div>
+        <div style="text-align: center; margin-top: 8px; font-size: 13px;" class="muted">
+            Business Admin? <a href="/pages/register.html" style="color: var(--primary); font-weight: 600;">Register Business Admin</a>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

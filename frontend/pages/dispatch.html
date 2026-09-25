@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dispatch & Logistics | Mini ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">🏭</div>
+                <span class="brand-text">Mini ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">Orders & Production</div>
+                    <a class="nav-link" href="/pages/orders.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                        <span class="nav-text">Customer Orders</span>
+                    </a>
+                    <a class="nav-link" href="/pages/production.html">
+                        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <span class="nav-text">Production Board</span>
+                    </a>
+                    <a class="nav-link active" href="/pages/dispatch.html">
+                        <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                        <span class="nav-text">Dispatch</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Dispatch & Shipping Management</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Dispatch & Logistics</h1>
+                        <p class="muted">Manage order shipments, courier tracking, transport details, and delivery completion.</p>
+                    </div>
+                    <button class="btn" onclick="openDispatchModal()">+ Create Dispatch Shipment</button>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dispatch Date</th>
+                                <th>Order #</th>
+                                <th>Customer</th>
+                                <th>Garment</th>
+                                <th>Quantity</th>
+                                <th>Transport / Courier</th>
+                                <th>Tracking Number</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dispatchesTableBody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Create Dispatch Modal -->
+    <div id="dispatchModal" class="modal-backdrop" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Order Dispatch Shipment</h2>
+                <button class="close-btn" onclick="closeDispatchModal()">✕</button>
+            </div>
+            <form id="dispatchForm" onsubmit="submitDispatch(event)">
+                <div class="form-grid">
+                    <div class="full">
+                        <label>Production Order Ready for Dispatch <span class="required-asterisk">*</span></label>
+                        <select name="production_order_id" id="dispOrderSelect" required onchange="fillDispatchOrderInfo()"></select>
+                    </div>
+                    <div>
+                        <label>Quantity to Dispatch</label>
+                        <input type="number" name="quantity" id="dispQty" value="500" required>
+                    </div>
+                    <div>
+                        <label>Dispatch Date</label>
+                        <input type="date" name="dispatch_date" id="dispDate">
+                    </div>
+                    <div>
+                        <label>Transport / Courier Company</label>
+                        <input type="text" name="courier_transport_details" placeholder="e.g. VRL Logistics / BlueDart">
+                    </div>
+                    <div>
+                        <label>Tracking / AWB Number</label>
+                        <input type="text" name="tracking_number" placeholder="e.g. VRL-992014">
+                    </div>
+                    <div class="full">
+                        <label>Shipment Notes</label>
+                        <textarea name="notes" rows="2" placeholder="e.g. Driver phone: 9876543210"></textarea>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+                    <button type="button" class="btn secondary" onclick="closeDispatchModal()">Cancel</button>
+                    <button type="submit" class="btn">Dispatch Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let readyOrdersList = [];
+
+        async function initDispatchPage() {
+            await requireLogin();
+            await loadReadyOrders();
+            loadDispatches();
+            document.getElementById("dispDate").value = new Date().toISOString().split("T")[0];
+        }
+
+        async function loadReadyOrders() {
+            try {
+                const orders = await api.request("/api/orders");
+                readyOrdersList = orders.filter(o => ["Ready for Dispatch", "Packed", "Completed"].includes(o.current_stage));
+                
+                const sel = document.getElementById("dispOrderSelect");
+                if (readyOrdersList.length) {
+                    sel.innerHTML = readyOrdersList.map(o => `<option value="${o.id}">${o.order_number} — ${o.garment_name} (Customer: ${o.customer_name}, Qty: ${o.quantity})</option>`).join("");
+                } else {
+                    sel.innerHTML = '<option value="">No packed orders ready for dispatch</option>';
+                }
+                fillDispatchOrderInfo();
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function fillDispatchOrderInfo() {
+            const id = document.getElementById("dispOrderSelect").value;
+            const ord = readyOrdersList.find(o => o.id == id);
+            if (ord) {
+                document.getElementById("dispQty").value = ord.quantity;
+            }
+        }
+
+        async function loadDispatches() {
+            try {
+                const rows = await api.request("/api/dispatches");
+                renderDispatchesTable(rows);
+            } catch (e) {
+                setStatus(e.message, "error");
+            }
+        }
+
+        function renderDispatchesTable(rows) {
+            const tbody = document.getElementById("dispatchesTableBody");
+            const columns = [
+                { key: "dispatch_date", render: r => formatDate(r.dispatch_date) },
+                { key: "order_number", render: r => `<strong>${r.order_number || 'Direct'}</strong>` },
+                { key: "customer_name", render: r => r.customer_name },
+                { key: "garment_name", render: r => r.garment_name || '-' },
+                { key: "quantity", render: r => `${r.quantity} Pcs` },
+                { key: "courier_transport_details", render: r => r.courier_transport_details || 'Standard Transport' },
+                { key: "tracking_number", render: r => `<code style="background:var(--secondary); padding:2px 6px; border-radius:4px;">${r.tracking_number || 'N/A'}</code>` },
+                { key: "status", render: r => r.status === "Delivered" ? '<span class="status-tag available">✅ Delivered</span>' : '<span class="status-tag shortage">🚚 Dispatched</span>' },
+                { key: "actions", render: r => r.status !== "Delivered" ? `<button class="btn btn-sm success" onclick="markDelivered(${r.id})">Mark Delivered</button>` : '<span class="muted">Completed</span>' }
+            ];
+            renderRows(tbody, rows, columns, "No dispatch shipments recorded yet.");
+        }
+
+        function openDispatchModal() {
+            document.getElementById("dispatchModal").style.display = "flex";
+        }
+        function closeDispatchModal() {
+            document.getElementById("dispatchModal").style.display = "none";
+        }
+
+        async function submitDispatch(e) {
+            e.preventDefault();
+            const data = collectForm(document.getElementById("dispatchForm"));
+            try {
+                const res = await api.request("/api/dispatches", { method: "POST", body: JSON.stringify(data) });
+                closeDispatchModal();
+                showToast(res.message, "success", "Dispatched");
+                loadDispatches();
+                loadReadyOrders();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        async function markDelivered(dispatchId) {
+            try {
+                await api.request(`/api/dispatches/${dispatchId}`, {
+                    method: "PUT",
+                    body: JSON.stringify({ status: "Delivered" })
+                });
+                showToast("Shipment marked as Delivered", "success");
+                loadDispatches();
+            } catch (err) {
+                setStatus(err.message, "error");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", initDispatchPage);
+    </script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoices History | MSME Digital ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                <span class="brand-text">MSME ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                
+                <div class="nav-group">
+                    <div class="nav-title">CRM</div>
+                    <a class="nav-link" href="/pages/customers.html">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="nav-text">Customers</span>
+                    </a>
+                    <a class="nav-link" href="/pages/customer-history.html">
+                        <svg viewBox="0 0 24 24"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="9"/></svg>
+                        <span class="nav-text">Customer History</span>
+                    </a>
+                    <a class="nav-link" href="/pages/messages.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        <span class="nav-text">Customer Messages</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Inventory</div>
+                    <a class="nav-link" href="/pages/products.html">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <span class="nav-text">Products & Stock</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Billing</div>
+                    <a class="nav-link" href="/pages/billing.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Create Invoice</span>
+                    </a>
+                    <a class="nav-link active" href="/pages/invoices.html">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                        <span class="nav-text">Invoices History</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">HR & Operations</div>
+                    <a class="nav-link" href="/pages/employees.html">
+                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span class="nav-text">Employees</span>
+                    </a>
+                    <a class="nav-link" href="/pages/departments.html">
+                        <svg viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>
+                        <span class="nav-text">Departments</span>
+                    </a>
+                    <a class="nav-link" href="/pages/expenses.html">
+                        <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        <span class="nav-text">Expenses</span>
+                    </a>
+                </div>
+
+                <div class="nav-group">
+                    <div class="nav-title">Analytics & Reports</div>
+                    <a class="nav-link" href="/pages/analytics.html">
+                        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span class="nav-text">Sales Analytics</span>
+                    </a>
+                    <a class="nav-link" href="/pages/reports.html">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                        <span class="nav-text">Business Reports</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;">Invoices Registry</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Invoice Records</h1>
+                        <p class="muted">Review generated customer invoices, track payment statuses, and print billing receipts.</p>
+                    </div>
+                    <a class="btn btn-sm" href="/pages/billing.html">+ Create Invoice</a>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- Toolbar (Search & Filter) -->
+                <div class="toolbar">
+                    <div class="toolbar-group">
+                        <input data-search id="searchInput" placeholder="Search by invoice number or customer..." style="max-width: 300px;">
+                        <select id="statusFilter" style="max-width: 160px;">
+                            <option value="all">All Statuses</option>
+                            <option value="paid">Paid Only</option>
+                            <option value="unpaid">Unpaid Only</option>
+                            <option value="overdue">Overdue Only</option>
+                        </select>
+                    </div>
+                    <div style="font-size: 13px; color: var(--muted);" id="invoiceCountLabel">
+                        Showing 0 invoices
+                    </div>
+                </div>
+
+                <!-- Invoices Table -->
+                <div class="card table-wrap" style="padding: 0;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Invoice #</th>
+                                <th>Customer Name</th>
+                                <th>Invoice Date</th>
+                                <th>Due Date</th>
+                                <th>Payment Date</th>
+                                <th>Amount</th>
+                                <th>Payment Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="invoiceTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Invoice Details Modal -->
+    <div id="invoiceModal" class="modal-backdrop" style="display: none;">
+        <div class="modal-content" style="max-width: 780px;">
+            <div class="modal-header">
+                <h2>Tax Invoice Statement</h2>
+                <div class="actions-cell">
+                    <button class="btn btn-sm success" id="modalMarkPaidBtn" style="display:none;">Mark as Paid</button>
+                    <button class="btn btn-sm secondary" onclick="window.print()">Print</button>
+                    <button class="close-btn" id="closeInvoiceModalBtn">&times;</button>
+                </div>
+            </div>
+            
+            <div id="modalPrintArea">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                    <div>
+                        <h2 style="margin: 0; color: var(--primary); font-size: 22px;">MSME Enterprise ERP</h2>
+                        <p style="margin: 4px 0 0; font-size: 13px; color: var(--muted);">GSTIN: 27AAAAA0000A1Z5</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <strong style="font-size: 18px; display: block;" id="modalInvNumber">INV-0000</strong>
+                        <div id="modalInvBadgeContainer" style="margin: 4px 0;"></div>
+                        <p style="margin: 2px 0 0; font-size: 12px; color: var(--muted);" id="modalInvDate">Invoice Date: -</p>
+                        <p style="margin: 2px 0 0; font-size: 12px; color: var(--muted);" id="modalDueDate">Due Date: -</p>
+                        <p style="margin: 2px 0 0; font-size: 12px; color: var(--muted);" id="modalPaymentDate">Payment Date: -</p>
+                    </div>
+                </div>
+
+                <div style="background: var(--secondary); padding: 14px; border-radius: 8px; margin-bottom: 20px; font-size: 14px;">
+                    <strong>Customer Details:</strong>
+                    <div id="modalCustInfo" style="margin-top: 4px;">-</div>
+                </div>
+
+                <table style="margin-bottom: 20px;">
+                    <thead>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalItemsTable"></tbody>
+                </table>
+
+                <div style="max-width: 320px; margin-left: auto; font-size: 14px; display: flex; flex-direction: column; gap: 6px; margin-bottom: 24px;">
+                    <div style="display: flex; justify-content: space-between;"><span>Items Subtotal:</span><strong id="modalSubtotal">₹0.00</strong></div>
+                    <div style="display: flex; justify-content: space-between; color: var(--muted);"><span>CGST (9%):</span><span id="modalCGST">₹0.00</span></div>
+                    <div style="display: flex; justify-content: space-between; color: var(--muted);"><span>SGST (9%):</span><span id="modalSGST">₹0.00</span></div>
+                    <hr style="border:0; border-top:1px solid var(--line);">
+                    <div style="display: flex; justify-content: space-between; font-size: 18px; font-weight: 800; color: var(--primary);"><span>Grand Total:</span><span id="modalGrandTotal">₹0.00</span></div>
+                </div>
+
+                <!-- Payment History Timeline -->
+                <div style="border-top: 1px dashed var(--line); padding-top: 16px;">
+                    <h3 style="font-size: 15px; margin: 0 0 12px;">Payment History Timeline</h3>
+                    <div id="modalTimelineContainer" class="payment-timeline"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        let allInvoices = [];
+
+        async function loadInvoices() {
+            await requireLogin();
+            await refreshInvoicesList();
+        }
+
+        async function refreshInvoicesList() {
+            try {
+                allInvoices = await api.request("/api/sales");
+                renderTable();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        function renderTable() {
+            const search = document.getElementById("searchInput").value.trim().toLowerCase();
+            const statusFilter = document.getElementById("statusFilter").value;
+
+            const filtered = allInvoices.filter(inv => {
+                const matchesSearch = !search ||
+                    (inv.invoice_number && inv.invoice_number.toLowerCase().includes(search)) ||
+                    (inv.customer_name && inv.customer_name.toLowerCase().includes(search));
+
+                const st = (inv.payment_status || "unpaid").toLowerCase();
+                let matchesStatus = true;
+                if (statusFilter === "paid") matchesStatus = st === "paid";
+                else if (statusFilter === "unpaid") matchesStatus = st === "unpaid";
+                else if (statusFilter === "overdue") matchesStatus = st === "overdue" || (inv.overdue_days > 0 && st !== "paid");
+
+                return matchesSearch && matchesStatus;
+            });
+
+            document.getElementById("invoiceCountLabel").textContent = `Showing ${filtered.length} invoices`;
+            const tbody = document.getElementById("invoiceTableBody");
+
+            if (!filtered.length) {
+                tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><span class="empty-icon">🧾</span><span>No invoices found.</span></div></td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(inv => `
+                <tr>
+                    <td><strong>${escapeHtml(inv.invoice_number || 'INV-' + inv.id)}</strong></td>
+                    <td>${escapeHtml(inv.customer_name) || "Walk-in Customer"}</td>
+                    <td>${formatDate(inv.sale_date || inv.created_at)}</td>
+                    <td>${inv.due_date ? formatDate(inv.due_date) : "-"}</td>
+                    <td>${inv.payment_date ? formatDateTime(inv.payment_date) : "Pending"}</td>
+                    <td><strong>${formatMoney(inv.total_amount)}</strong></td>
+                    <td>${renderPaymentBadge(inv.payment_status, inv.overdue_days)}</td>
+                    <td>
+                        <div class="actions-cell">
+                            <button class="btn btn-sm secondary" onclick="viewInvoiceDetails(${inv.id})">View Invoice</button>
+                            ${(inv.payment_status || 'unpaid').toLowerCase() !== 'paid' 
+                                ? `<button class="btn btn-sm success" onclick="markAsPaid(${inv.id}, '${escapeHtml(inv.invoice_number || 'INV-' + inv.id)}')">Mark as Paid</button>`
+                                : `<button class="btn btn-sm secondary" onclick="togglePaymentStatus(${inv.id}, 'unpaid')">Mark Unpaid</button>`
+                            }
+                        </div>
+                    </td>
+                </tr>
+            `).join("");
+        }
+
+        function escapeHtml(str) {
+            if (!str) return "";
+            return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        async function markAsPaid(id, invNumber) {
+            if (!confirm(`Are you sure you want to mark invoice ${invNumber} as Paid?`)) return;
+            try {
+                await api.request(`/api/sales/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify({ payment_status: "paid" })
+                });
+                showToast("Payment recorded successfully.", "success", "Payment Saved");
+                await refreshInvoicesList();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        async function togglePaymentStatus(id, newStatus) {
+            try {
+                await api.request(`/api/sales/${id}`, {
+                    method: "PUT",
+                    body: JSON.stringify({ payment_status: newStatus })
+                });
+                showToast(`Invoice status updated to ${newStatus}.`, "info");
+                await refreshInvoicesList();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        async function viewInvoiceDetails(id) {
+            try {
+                const data = await api.request(`/api/sales/${id}`);
+                const invNum = data.invoice_number || `INV-${data.id}`;
+                document.getElementById("modalInvNumber").textContent = invNum;
+                document.getElementById("modalInvBadgeContainer").innerHTML = renderPaymentBadge(data.payment_status, data.overdue_days);
+                document.getElementById("modalInvDate").textContent = `Invoice Date: ${formatDate(data.sale_date)}`;
+                document.getElementById("modalDueDate").textContent = `Due Date: ${data.due_date ? formatDate(data.due_date) : '-'}`;
+                document.getElementById("modalPaymentDate").textContent = `Payment Date: ${data.payment_date ? formatDateTime(data.payment_date) : 'Pending'}`;
+
+                const markPaidBtn = document.getElementById("modalMarkPaidBtn");
+                if ((data.payment_status || 'unpaid').toLowerCase() !== 'paid') {
+                    markPaidBtn.style.display = "inline-block";
+                    markPaidBtn.onclick = async () => {
+                        await markAsPaid(data.id, invNum);
+                        viewInvoiceDetails(data.id);
+                    };
+                } else {
+                    markPaidBtn.style.display = "none";
+                }
+
+                document.getElementById("modalCustInfo").innerHTML = `
+                    <strong>${escapeHtml(data.customer_name || 'Walk-in Customer')}</strong><br>
+                    Phone: ${escapeHtml(data.customer_phone) || '-'} | Email: ${escapeHtml(data.customer_email) || '-'}
+                `;
+
+                const itemsTbody = document.getElementById("modalItemsTable");
+                if (!data.items || !data.items.length) {
+                    itemsTbody.innerHTML = `<tr><td colspan="4"><div class="empty-state">No line items.</div></td></tr>`;
+                } else {
+                    itemsTbody.innerHTML = data.items.map(item => `
+                        <tr>
+                            <td><strong>${escapeHtml(item.product_name)}</strong></td>
+                            <td>${item.quantity}</td>
+                            <td>${formatMoney(item.unit_price)}</td>
+                            <td><strong>${formatMoney(item.subtotal)}</strong></td>
+                        </tr>
+                    `).join("");
+                }
+
+                const subtotal = data.items ? data.items.reduce((sum, item) => sum + item.subtotal, 0) : data.total_amount;
+                const cgst = subtotal * 0.09;
+                const sgst = subtotal * 0.09;
+
+                document.getElementById("modalSubtotal").textContent = formatMoney(subtotal);
+                document.getElementById("modalCGST").textContent = formatMoney(cgst);
+                document.getElementById("modalSGST").textContent = formatMoney(sgst);
+                document.getElementById("modalGrandTotal").textContent = formatMoney(subtotal + cgst + sgst);
+
+                // Render Timeline
+                const timelineContainer = document.getElementById("modalTimelineContainer");
+                if (!data.payment_history || !data.payment_history.length) {
+                    timelineContainer.innerHTML = `
+                        <div class="timeline-item">
+                            <div class="timeline-action">Invoice Created (${data.payment_status || 'unpaid'})</div>
+                            <div class="timeline-date">${formatDateTime(data.created_at || data.sale_date)}</div>
+                        </div>
+                    `;
+                } else {
+                    timelineContainer.innerHTML = data.payment_history.map(ph => `
+                        <div class="timeline-item">
+                            <div class="timeline-action">${escapeHtml(ph.action)}</div>
+                            <div class="timeline-date">${formatDateTime(ph.created_at)}</div>
+                        </div>
+                    `).join("");
+                }
+
+                document.getElementById("invoiceModal").style.display = "flex";
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadInvoices();
+
+            document.getElementById("searchInput").addEventListener("input", renderTable);
+            document.getElementById("statusFilter").addEventListener("change", renderTable);
+            document.getElementById("closeInvoiceModalBtn").addEventListener("click", () => {
+                document.getElementById("invoiceModal").style.display = "none";
+            });
+            document.getElementById("invoiceModal").addEventListener("click", (e) => {
+                if (e.target === document.getElementById("invoiceModal")) {
+                    document.getElementById("invoiceModal").style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

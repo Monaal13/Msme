@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Mini ERP</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">🏭</div>
+                <span class="brand-text">Mini ERP</span>
+            </div>
+            <nav>
+                <a class="nav-link active" href="/pages/dashboard.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <a class="nav-link" href="/pages/customers.html">
+                    <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    <span class="nav-text">Customers</span>
+                </a>
+                <a class="nav-link" href="/pages/orders.html">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+                    <span class="nav-text">Orders</span>
+                </a>
+                <a class="nav-link" href="/pages/products.html">
+                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    <span class="nav-text">Products</span>
+                </a>
+                <a class="nav-link" href="/pages/raw-materials.html">
+                    <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    <span class="nav-text">Inventory</span>
+                </a>
+                <a class="nav-link" href="/pages/purchases.html">
+                    <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span class="nav-text">Purchases</span>
+                </a>
+                <a class="nav-link" href="/pages/production.html">
+                    <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    <span class="nav-text">Production</span>
+                </a>
+                <a class="nav-link" href="/pages/employees.html">
+                    <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <span class="nav-text">Employees</span>
+                </a>
+                <a class="nav-link" href="/pages/attendance.html">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <span class="nav-text">Attendance</span>
+                </a>
+                <a class="nav-link" href="/pages/billing.html">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span class="nav-text">Billing</span>
+                </a>
+                <a class="nav-link" href="/pages/invoices.html">
+                    <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h12M6 12h8"/></svg>
+                    <span class="nav-text">Payments</span>
+                </a>
+                <a class="nav-link" href="/pages/dispatch.html">
+                    <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                    <span class="nav-text">Dispatch</span>
+                </a>
+                <a class="nav-link" href="/pages/messages.html">
+                    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <span class="nav-text">Messages</span>
+                </a>
+                <a class="nav-link" href="/pages/reports.html">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span class="nav-text">Reports</span>
+                </a>
+                <a class="nav-link" href="/pages/settings.html">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                    <span class="nav-text">Settings</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <strong style="font-size: 16px; font-weight: 700;" data-business-name>Demo Garment Store</strong>
+                </div>
+                <div class="topbar-right">
+                    <button class="btn secondary btn-sm" data-logout>Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="page-header">
+                    <div>
+                        <h1 class="page-title">Manufacturing Dashboard</h1>
+                        <p class="muted">Live operational overview for garment manufacturing & order dispatch pipeline.</p>
+                    </div>
+                    <div class="actions-cell" style="flex-wrap: wrap;">
+                        <a href="/pages/orders.html" class="btn btn-sm" style="font-weight: 700;">+ New Order</a>
+                        <a href="/pages/production.html" class="btn secondary btn-sm">Production Board</a>
+                        <a href="/pages/purchases.html" class="btn secondary btn-sm">+ Material Purchase</a>
+                        <a href="/pages/raw-materials.html" class="btn secondary btn-sm">Raw Stock</a>
+                    </div>
+                </div>
+
+                <div data-status class="status"></div>
+
+                <!-- KPI Cards Section -->
+                <div class="grid kpi-grid" data-kpis></div>
+
+                <!-- Production Stage Pipeline Overview -->
+                <div class="card" style="margin-bottom: 24px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+                        <div>
+                            <h3 style="margin:0; font-size:16px;">Garment Manufacturing Overview</h3>
+                            <p class="muted" style="margin:2px 0 0; font-size:12px;">Real-time stage progression across active customer orders</p>
+                        </div>
+                        <a href="/pages/production.html" class="btn btn-sm secondary">Open Kanban Board →</a>
+                    </div>
+
+                    <div class="grid" style="grid-template-columns: repeat(7, 1fr); gap: 10px;" id="productionPipelineGrid">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Charts Section -->
+                <div class="grid charts">
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                            <h3 style="margin:0; font-size:16px;">Monthly Revenue</h3>
+                            <span class="badge info">Sales</span>
+                        </div>
+                        <div id="salesChartWrap" style="height:260px; position:relative;">
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                            <h3 style="margin:0; font-size:16px;">Profit & Margin Trend</h3>
+                            <span class="badge success">Net Profit</span>
+                        </div>
+                        <div id="profitChartWrap" style="height:260px; position:relative;">
+                            <canvas id="profitChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity & Raw Material Shortage Grid -->
+                <div class="grid section-grid">
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                            <h3 style="margin:0; font-size:16px;">Recent Orders</h3>
+                            <a href="/pages/orders.html" style="font-size:12px; color:var(--primary); font-weight:600;">View Orders</a>
+                        </div>
+                        <div id="recentOrders"></div>
+                    </div>
+
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                            <h3 style="margin:0; font-size:16px;">Raw Material Shortage</h3>
+                            <a href="/pages/purchases.html" style="font-size:12px; color:var(--danger); font-weight:600;">Procure</a>
+                        </div>
+                        <div id="rawMaterialShortages"></div>
+                    </div>
+
+                    <div class="card">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                            <h3 style="margin:0; font-size:16px;">Recent Sales / Invoices</h3>
+                            <a href="/pages/invoices.html" style="font-size:12px; color:var(--primary); font-weight:600;">History</a>
+                        </div>
+                        <div id="recentSales"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script>
+        async function loadDashboardView() {
+            const user = await requireLogin();
+            if (user.role === 'customer') {
+                window.location.href = '/pages/customer-portal.html';
+                return;
+            }
+
+            try {
+                const dashboard = await api.request("/api/analytics/dashboard");
+                renderDashboardSummary(dashboard.summary || {});
+                renderProductionPipeline(dashboard.stage_counts || {});
+                renderDashboardCharts(dashboard);
+                renderRecentOrders(dashboard.recent_orders || []);
+                renderRawMaterialShortages(dashboard.raw_material_shortages || []);
+                renderRecentSales(dashboard.recent_sales || []);
+            } catch (error) {
+                setStatus(error.message, "error");
+            }
+        }
+
+        function renderDashboardSummary(data) {
+            const kpis = document.querySelector("[data-kpis]");
+            if (!kpis) return;
+
+            const cardsConfig = [
+                { label: "Today's Orders", raw: data.today_orders ?? 0, isMoney: false, icon: "📋", sub: "New garment orders" },
+                { label: "Pending Orders", raw: data.pending_orders ?? 0, isMoney: false, icon: "⏳", sub: "Orders in progress" },
+                { label: "Today's Sales", raw: data.sales_today ?? 0, isMoney: false, icon: "💰", sub: "Invoices issued today" },
+                { label: "Pending Payments", raw: data.total_unpaid_amount ?? 0, isMoney: true, icon: "💳", sub: "Receivables pending" },
+                { label: "Raw Material Low Stock", raw: data.raw_material_low_stock ?? 0, isMoney: false, icon: "🧵", sub: "Requires purchase" },
+                { label: "Finished Goods Stock", raw: data.finished_goods_stock ?? 0, isMoney: false, icon: "👕", sub: "Available garments" },
+                { label: "Active Production", raw: data.active_production ?? 0, isMoney: false, icon: "🏭", sub: "Cutting/Stitching/Finishing" },
+                { label: "Ready for Dispatch", raw: data.orders_ready_dispatch ?? 0, isMoney: false, icon: "📦", sub: "Packed & ready" },
+            ];
+
+            kpis.style.gridTemplateColumns = "repeat(4, 1fr)";
+            kpis.innerHTML = cardsConfig.map((c, i) => `
+                <div class="card kpi-card">
+                    <div class="kpi-header">
+                        <span class="kpi-label">${c.label}</span>
+                        <div class="kpi-icon-box">${c.icon}</div>
+                    </div>
+                    <div class="kpi-value" id="dashKpi${i}">0</div>
+                    <div class="kpi-sub">${c.sub}</div>
+                </div>
+            `).join("");
+
+            cardsConfig.forEach((c, i) => {
+                const el = document.getElementById(`dashKpi${i}`);
+                if (el) animateValue(el, c.raw, 600, c.isMoney);
+            });
+        }
+
+        function renderProductionPipeline(stages) {
+            const target = document.getElementById("productionPipelineGrid");
+            if (!target) return;
+
+            const pipeline = [
+                { title: "Cutting", icon: "✂️", stage: "Cutting" },
+                { title: "Stitching", icon: "🪡", stage: "Stitching" },
+                { title: "Finishing", icon: "✨", stage: "Finishing" },
+                { title: "Quality Check", icon: "🔍", stage: "Quality Check" },
+                { title: "Packing", icon: "📦", stage: "Packing" },
+                { title: "Ready Dispatch", icon: "🚚", stage: "Ready for Dispatch" },
+                { title: "Completed", icon: "✅", stage: "Completed" },
+            ];
+
+            target.innerHTML = pipeline.map(p => {
+                const count = stages[p.stage] || 0;
+                return `
+                    <div style="padding: 12px 8px; background: var(--secondary); border: 1px solid var(--line); border-radius: 8px; text-align: center;">
+                        <span style="font-size: 18px; display: block; margin-bottom: 4px;">${p.icon}</span>
+                        <span class="muted" style="font-size: 11px; font-weight: 600; display: block;">${p.title}</span>
+                        <strong style="font-size: 18px; color: var(--primary); display: block; margin-top: 4px;">${count}</strong>
+                    </div>
+                `;
+            }).join("");
+        }
+
+        function renderChartOrEmpty(id, rows, label, color) {
+            const wrapper = document.getElementById(`${id}Wrap`);
+            if (!wrapper) return;
+
+            let canvas = document.getElementById(id);
+            if (canvas && typeof Chart !== "undefined") {
+                const existing = Chart.getChart(canvas);
+                if (existing) existing.destroy();
+            }
+
+            if (!rows || !rows.length) {
+                wrapper.innerHTML = `<div class="empty-state"><span class="empty-icon">📊</span><span>No data available yet.</span></div>`;
+                return;
+            }
+
+            if (!document.getElementById(id)) {
+                wrapper.innerHTML = `<canvas id="${id}"></canvas>`;
+            }
+            canvas = document.getElementById(id);
+
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            const textColor = isDark ? "#CBD5E1" : "#475569";
+            const gridColor = isDark ? "#1F2937" : "#E2E8F0";
+
+            new Chart(canvas, {
+                type: "line",
+                data: {
+                    labels: rows.map((r) => r.month),
+                    datasets: [{
+                        label,
+                        data: rows.map((r) => Number(r.total || 0)),
+                        borderColor: color,
+                        backgroundColor: `${color}18`,
+                        borderWidth: 2,
+                        tension: 0.3,
+                        fill: true,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                    }],
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    animation: { duration: 600, easing: "easeOutQuart" },
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { ticks: { color: textColor }, grid: { color: gridColor } },
+                        y: { ticks: { color: textColor }, grid: { color: gridColor }, beginAtZero: true },
+                    },
+                },
+            });
+        }
+
+        function renderDashboardCharts(dashboard) {
+            renderChartOrEmpty("salesChart", dashboard.monthly_sales || [], "Revenue", "#2563eb");
+            renderChartOrEmpty("profitChart", dashboard.monthly_profit || [], "Profit", "#10b981");
+        }
+
+        function renderRecentOrders(rows) {
+            const target = document.getElementById("recentOrders");
+            if (!target) return;
+            if (!rows.length) {
+                target.innerHTML = '<div class="empty-state"><span class="empty-icon">📋</span><span>No orders placed yet.</span></div>';
+                return;
+            }
+            target.innerHTML = `<div class="mini-list">${rows.map((row) => `
+                <div class="mini-item">
+                    <div class="mini-row"><span class="mini-title">${row.order_number} — ${row.garment_name}</span>${renderStageBadge(row.current_stage)}</div>
+                    <div class="mini-row mini-meta"><span>Customer: ${row.customer_name}</span><span>Qty: ${row.quantity}</span></div>
+                </div>
+            `).join("")}</div>`;
+        }
+
+        function renderRawMaterialShortages(rows) {
+            const target = document.getElementById("rawMaterialShortages");
+            if (!target) return;
+            if (!rows.length) {
+                target.innerHTML = '<div class="empty-state"><span class="empty-icon">✅</span><span>All raw materials in stock.</span></div>';
+                return;
+            }
+            target.innerHTML = `<div class="mini-list">${rows.map((row) => `
+                <div class="mini-item">
+                    <div class="mini-row"><span class="mini-title">${row.name} (${row.category})</span><span class="status-tag shortage">⚠️ Shortage</span></div>
+                    <div class="mini-meta">Available: ${row.current_stock} ${row.unit} | Min Required: ${row.minimum_stock} ${row.unit}</div>
+                </div>
+            `).join("")}</div>`;
+        }
+
+        function renderRecentSales(rows) {
+            const target = document.getElementById("recentSales");
+            if (!target) return;
+            if (!rows.length) {
+                target.innerHTML = '<div class="empty-state"><span class="empty-icon">🧾</span><span>No invoices generated yet.</span></div>';
+                return;
+            }
+            target.innerHTML = `<div class="mini-list">${rows.map((row) => `
+                <div class="mini-item">
+                    <div class="mini-row"><span class="mini-title">${row.invoice_number || "Invoice"}</span><strong>${formatMoney(row.total_amount)}</strong></div>
+                    <div class="mini-row mini-meta"><span>${row.customer_name || "Customer"}</span>${renderPaymentBadge(row.payment_status)}</div>
+                </div>
+            `).join("")}</div>`;
+        }
+
+        document.addEventListener("DOMContentLoaded", loadDashboardView);
+    </script>
+</body>
+</html>
