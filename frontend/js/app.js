@@ -168,10 +168,27 @@ async function requireLogin() {
     try {
         const res = await api.request("/api/auth/me");
         window.currentUser = res.user;
-        const userBrand = document.querySelector("[data-user-name]");
-        if (userBrand) userBrand.textContent = res.user.name || "User";
-        const bizBrand = document.querySelector("[data-business-name]");
-        if (bizBrand && res.user.business_name) bizBrand.textContent = res.user.business_name;
+        const bizName = res.user.business_name || "Aur Garments";
+
+        const userBrands = document.querySelectorAll("[data-user-name]");
+        userBrands.forEach((el) => {
+            el.textContent = res.user.name || "User";
+        });
+
+        const bizBrands = document.querySelectorAll("[data-business-name]");
+        bizBrands.forEach((el) => {
+            if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+                el.value = bizName;
+            } else {
+                el.textContent = bizName;
+            }
+        });
+
+        const setBizInput = document.getElementById("setBizName");
+        if (setBizInput && !setBizInput.dataset.userEdited) {
+            setBizInput.value = bizName;
+        }
+
         return res.user;
     } catch {
         window.location.href = "/";

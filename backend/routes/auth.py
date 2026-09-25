@@ -10,12 +10,18 @@ auth_bp = Blueprint("auth", __name__)
 @auth_bp.post("/register")
 def register_admin():
     data = request.get_json() or {}
-    error = require_fields(data, ["business_name", "name", "email", "password"])
+    company_name = (data.get("company_name") or data.get("business_name") or "").strip()
+    if not company_name:
+        return jsonify({"error": "Company Name is required"}), 400
+
+    error = require_fields(data, ["name", "email", "password"])
     if error:
         return jsonify({"error": error}), 400
 
+    email = data["email"].strip().lower()
+
     try:
-        existing = fetch_one("SELECT id FROM users WHERE email = %s", (data["email"],))
+        existing = fetch_one("SELECT id FROM users WHERE email = %s", (email,))
         if existing:
             return jsonify({"error": "Email is already registered"}), 409
 
@@ -26,12 +32,12 @@ def register_admin():
                 VALUES (%s, %s, %s, %s, %s, %s)
                 """),
                 (
-                    data["business_name"],
-                    data.get("industry") or "Manufacturing",
-                    data.get("business_type") or "Knitwear / Garment Manufacturing",
-                    data.get("business_phone"),
-                    data.get("business_email"),
-                    data.get("business_address"),
+                    company_name,
+                    (data.get("industry") or "Manufacturing").strip(),
+                    (data.get("business_type") or "Knitwear / Garment Manufacturing").strip(),
+                    (data.get("business_phone") or "").strip() or None,
+                    (data.get("business_email") or "").strip() or None,
+                    (data.get("business_address") or "").strip() or None,
                 ),
             )
             business_id = cursor.lastrowid
@@ -43,8 +49,8 @@ def register_admin():
                 """),
                 (
                     business_id,
-                    data["name"],
-                    data["email"],
+                    data["name"].strip(),
+                    email,
                     generate_password_hash(data["password"]),
                     "admin",
                 ),
@@ -53,13 +59,14 @@ def register_admin():
 
         session["user_id"] = user_id
         session["business_id"] = business_id
-        session["user_name"] = data["name"]
+        session["user_name"] = data["name"].strip()
         session["role"] = "admin"
 
         return jsonify({
             "message": "Business & Admin registered successfully",
             "user_id": user_id,
             "role": "admin",
+            "business_name": company_name,
             "redirect": "/pages/dashboard.html",
         }), 201
     except DatabaseError as exc:
@@ -75,6 +82,7 @@ def register_customer():
 
     email = data["email"].strip().lower()
     phone = (data.get("phone") or "").strip()
+    company_name = (data.get("company_name") or data.get("business_name") or "").strip()
 
     try:
         existing = fetch_one("SELECT id FROM users WHERE email = %s", (email,))
@@ -97,7 +105,13 @@ def register_customer():
 
         if not first_biz:
             # Fallback create system business container
-            first_biz = execute("INSERT INTO businesses (name, industry) VALUES ('Default Platform Store', 'Garments')")
+            fallback_name = company_name or "Aur Garments"
+            with db_cursor(commit=True) as cursor:
+                cursor.execute(
+                    normalize_query("INSERT INTO businesses (name, industry) VALUES (%s, 'Garments')"),
+                    (fallback_name,),
+                )
+                first_biz = cursor.lastrowid
 
         with db_cursor(commit=True) as cursor:
             cursor.execute(
@@ -126,7 +140,7 @@ def register_customer():
                 )
 
         session["user_id"] = user_id
-        session["business_id"] = 0
+        session["business_id"] = first_biz or 0
         session["user_name"] = data["name"].strip()
         session["role"] = "customer"
 
@@ -161,6 +175,15 @@ def login():
         session["user_name"] = user["name"]
         session["role"] = role
 
+        biz_name = None
+        if user.get("business_id"):
+            biz = fetch_one("SELECT name FROM businesses WHERE id = %s", (user["business_id"],))
+            if biz and biz.get("name"):
+                biz_name = biz["name"].strip()
+
+        if not biz_name:
+            biz_name = "Aur Garments"
+
         redirect_page = "/pages/customer-portal.html" if role == "customer" else "/pages/dashboard.html"
 
         return jsonify({
@@ -171,6 +194,7 @@ def login():
                 "email": user["email"],
                 "role": role,
                 "business_id": user["business_id"],
+                "business_name": biz_name,
             },
             "redirect": redirect_page,
         })
@@ -193,8 +217,11 @@ def me():
     biz_id = session.get("business_id")
     if biz_id:
         biz = fetch_one("SELECT name FROM businesses WHERE id = %s", (biz_id,))
-        if biz:
-            biz_name = biz["name"]
+        if biz and biz.get("name"):
+            biz_name = biz["name"].strip()
+
+    if not biz_name:
+        biz_name = "Aur Garments"
 
     return jsonify({
         "authenticated": True,
@@ -206,3 +233,75 @@ def me():
             "role": session.get("role", "staff"),
         },
     })
+
+
+@auth_bp.post("/update-business")
+def update_business():
+    if not session.get("user_id"):
+        return jsonify({"error": "Authentication required"}), 401
+
+    biz_id = session.get("business_id")
+    if not biz_id:
+        return jsonify({"error": "No associated business found for account"}), 400
+
+    data = request.get_json() or {}
+    company_name = (data.get("company_name") or data.get("name") or data.get("business_name") or "").strip()
+    if not company_name:
+        return jsonify({"error": "Company Name cannot be empty"}), 400
+
+    try:
+        with db_cursor(commit=True) as cursor:
+            cursor.execute(
+                normalize_query("""
+                UPDATE businesses
+                SET name = %s,
+                    gstin = %s,
+                    phone = %s,
+                    email = %s,
+                    address = %s,
+                    updated_at = CURRENT_TIMESTAMP
+                WHERE id = %s
+                """),
+                (
+                    company_name,
+                    (data.get("gstin") or "").strip() or None,
+                    (data.get("phone") or "").strip() or None,
+                    (data.get("email") or "").strip() or None,
+                    (data.get("address") or "").strip() or None,
+                    biz_id,
+                ),
+            )
+
+        return jsonify({
+            "message": "Business profile updated successfully",
+            "business_name": company_name,
+        })
+    except Exception:
+        # Fallback if gstin column is not present in businesses table
+        try:
+            with db_cursor(commit=True) as cursor:
+                cursor.execute(
+                    normalize_query("""
+                    UPDATE businesses
+                    SET name = %s,
+                        phone = %s,
+                        email = %s,
+                        address = %s,
+                        updated_at = CURRENT_TIMESTAMP
+                    WHERE id = %s
+                    """),
+                    (
+                        company_name,
+                        (data.get("phone") or "").strip() or None,
+                        (data.get("email") or "").strip() or None,
+                        (data.get("address") or "").strip() or None,
+                        biz_id,
+                    ),
+                )
+            return jsonify({
+                "message": "Business profile updated successfully",
+                "business_name": company_name,
+            })
+        except DatabaseError as exc:
+            return handle_db_error(exc)
+

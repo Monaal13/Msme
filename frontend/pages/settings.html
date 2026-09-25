@@ -137,14 +137,28 @@
     <script>
         document.addEventListener("DOMContentLoaded", async () => {
             await requireLogin();
-            document.getElementById("settingsForm").addEventListener("submit", (e) => {
+            document.getElementById("settingsForm").addEventListener("submit", async (e) => {
                 e.preventDefault();
                 const btn = document.getElementById("saveSettingsBtn");
                 setBtnLoading(btn, true, "Saving...");
-                setTimeout(() => {
+                try {
+                    const newBizName = document.getElementById("setBizName").value.trim();
+                    const gstin = document.getElementById("setGstin").value.trim();
+                    const phone = document.getElementById("setPhone").value.trim();
+                    const email = document.getElementById("setEmail").value.trim();
+                    const address = document.getElementById("setAddress").value.trim();
+
+                    const res = await api.request("/api/auth/update-business", {
+                        method: "POST",
+                        body: JSON.stringify({ company_name: newBizName, gstin, phone, email, address }),
+                    });
                     setBtnLoading(btn, false);
-                    showToast("Business profile preferences saved!", "success");
-                }, 400);
+                    showToast(res.message || "Business profile preferences saved!", "success");
+                    await requireLogin();
+                } catch (err) {
+                    setBtnLoading(btn, false);
+                    setStatus(err.message, "error");
+                }
             });
         });
     </script>

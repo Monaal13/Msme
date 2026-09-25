@@ -155,7 +155,7 @@
                     <div id="reportHeader" style="border-bottom: 2px solid var(--line); padding-bottom: 14px; margin-bottom: 24px;">
                         <div style="display: flex; justify-content: space-between; align-items: flex-end;">
                             <div>
-                                <h2 id="reportBizName" style="margin: 0 0 4px; font-size: 24px;">MSME Enterprise ERP</h2>
+                                <h2 id="reportBizName" data-business-name style="margin: 0 0 4px; font-size: 24px;">Aur Garments</h2>
                                 <div class="muted" id="reportBizContact">Business Statement</div>
                             </div>
                             <div style="text-align: right;">
@@ -483,7 +483,7 @@
             if (!reportData) return;
 
             const bInfo = reportData.business_info || {};
-            document.getElementById("reportBizName").textContent = bInfo.name || "MSME Enterprise ERP";
+            document.getElementById("reportBizName").textContent = bInfo.name || (window.currentUser && window.currentUser.business_name) || "Aur Garments";
             document.getElementById("reportBizContact").textContent = `Phone: ${bInfo.phone || '-'} | Email: ${bInfo.email || '-'}`;
             document.getElementById("reportPeriodLabel").textContent = dateRange === 'all' ? 'All Time' : (dateRange === 'this_month' ? 'This Month' : (dateRange === 'last_month' ? 'Last Month' : `${startDate} to ${endDate}`));
 
@@ -562,7 +562,7 @@
             if (!reportData) return;
 
             const bInfo = reportData.business_info || {};
-            document.getElementById("reportBizName").textContent = bInfo.name || "MSME Enterprise ERP";
+            document.getElementById("reportBizName").textContent = bInfo.name || (window.currentUser && window.currentUser.business_name) || "Aur Garments";
             document.getElementById("reportBizContact").textContent = `Phone: ${bInfo.phone || '-'} | Email: ${bInfo.email || '-'}`;
             document.getElementById("reportPeriodLabel").textContent = dateRange === 'all' ? 'All Time' : (dateRange === 'this_month' ? 'This Month' : (dateRange === 'last_month' ? 'Last Month' : `${startDate} to ${endDate}`));
 
