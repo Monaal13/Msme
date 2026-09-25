@@ -1043,7 +1043,13 @@ tbody tr:hover {
     flex-shrink: 0;
 }
 
-/* Phase 13: Responsive Breakpoints */
+/* Phase 13: Multi-Device Responsive Breakpoints & Mobile Optimization */
+@media (pointer: coarse) {
+    button, input, select, .nav-link, .icon-btn, .btn {
+        min-height: 44px;
+    }
+}
+
 @media (max-width: 1024px) {
     .kpi-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1085,13 +1091,65 @@ tbody tr:hover {
     .app-shell.sidebar-mobile-open .mobile-overlay {
         display: block;
     }
+    .topbar {
+        padding: 0 14px;
+    }
+    .topbar-left {
+        gap: 8px;
+    }
+    .topbar-right {
+        gap: 6px;
+    }
     .kpi-grid, .form-grid {
         grid-template-columns: 1fr;
     }
     .content {
-        padding: 16px;
+        padding: 16px 12px;
+    }
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .toolbar-group {
+        width: 100%;
+        min-width: 0;
+    }
+    .table-wrap {
+        -webkit-overflow-scrolling: touch;
+        overflow-x: auto;
+    }
+    table {
+        min-width: 600px;
+    }
+    .modal-content {
+        padding: 20px 14px;
+        width: 95vw;
+        max-height: 92vh;
     }
 }
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 24px 18px;
+        border-radius: 12px;
+    }
+    .kpi-value {
+        font-size: 22px;
+    }
+    .page-title {
+        font-size: 20px;
+    }
+    .toast-item {
+        min-width: 280px;
+        max-width: 92vw;
+    }
+    .pagination {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+}
+
 
 /* Phase 7: Invoice Print Layout */
 @media print {
