@@ -2,7 +2,7 @@ const api = {
     async request(path, options = {}) {
         const baseUrl = window.API_BASE_URL !== undefined
             ? window.API_BASE_URL
-            : (window.location.port === "5000" ? "" : "http://127.0.0.1:5000");
+            : "";
 
         const url = (path.startsWith("http://") || path.startsWith("https://"))
             ? path
