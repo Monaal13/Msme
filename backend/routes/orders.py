@@ -161,7 +161,7 @@ def create_order():
     if not customer_id:
         return jsonify({"error": "Customer selection is required"}), 400
 
-    customer = fetch_one("SELECT id, name FROM customers WHERE id = %s AND business_id = %s", (customer_id, biz_id))
+    customer = fetch_one("SELECT id, name FROM customers WHERE id = %s AND business_id = %s AND LOWER(COALESCE(status, 'active')) = 'active'", (customer_id, biz_id))
     if not customer:
         return jsonify({"error": "Selected customer does not exist"}), 400
 

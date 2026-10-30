@@ -2,7 +2,7 @@ import re
 from flask import Blueprint, jsonify, request
 
 from services.db import execute, fetch_all, fetch_one
-from .common import DatabaseError, current_business_id, handle_db_error, login_required
+from .common import DatabaseError, admin_required, current_business_id, handle_db_error
 
 employees_bp = Blueprint("employees", __name__)
 
@@ -24,6 +24,9 @@ def validate_employee_data(data, biz_id):
         return "Invalid salary format"
 
     dept_id = data.get("department_id")
+    status = (data.get("status") or "active").strip().lower()
+    if status not in ("active", "inactive"):
+        return "Employment status must be active or inactive"
     if dept_id:
         dept = fetch_one("SELECT id FROM departments WHERE id = %s AND business_id = %s", (dept_id, biz_id))
         if not dept:
@@ -33,7 +36,7 @@ def validate_employee_data(data, biz_id):
 
 
 @employees_bp.get("")
-@login_required
+@admin_required
 def list_employees():
     search = f"%{request.args.get('search', '').strip()}%"
     status = request.args.get("status", "all").strip().lower()
@@ -69,7 +72,7 @@ def list_employees():
 
 
 @employees_bp.get("/stats")
-@login_required
+@admin_required
 def employee_stats():
     biz_id = current_business_id()
     try:
@@ -104,7 +107,7 @@ def employee_stats():
 
 
 @employees_bp.post("")
-@login_required
+@admin_required
 def create_employee():
     data = request.get_json() or {}
     biz_id = current_business_id()
@@ -137,7 +140,7 @@ def create_employee():
 
 
 @employees_bp.get("/<int:employee_id>")
-@login_required
+@admin_required
 def get_employee(employee_id):
     biz_id = current_business_id()
     try:
@@ -158,7 +161,7 @@ def get_employee(employee_id):
 
 
 @employees_bp.put("/<int:employee_id>")
-@login_required
+@admin_required
 def update_employee(employee_id):
     data = request.get_json() or {}
     biz_id = current_business_id()
@@ -175,7 +178,9 @@ def update_employee(employee_id):
             """
             UPDATE employees
             SET department_id = %s, name = %s, phone = %s, email = %s, designation = %s,
-                salary = %s, joining_date = %s, status = %s, updated_at = CURRENT_TIMESTAMP
+                salary = %s, joining_date = %s, status = %s,
+                leaving_date = CASE WHEN LOWER(%s) = 'active' THEN NULL WHEN leaving_date IS NULL THEN DATE('now') ELSE leaving_date END,
+                updated_at = CURRENT_TIMESTAMP
             WHERE id = %s AND business_id = %s
             """,
             (
@@ -187,6 +192,7 @@ def update_employee(employee_id):
                 float(data.get("salary", 0)),
                 (data.get("joining_date") or "").strip() or None,
                 (data.get("status") or "active").strip().lower(),
+                (data.get("status") or "active").strip().lower(),
                 employee_id,
                 biz_id,
             ),
@@ -197,7 +203,7 @@ def update_employee(employee_id):
 
 
 @employees_bp.delete("/<int:employee_id>")
-@login_required
+@admin_required
 def delete_employee(employee_id):
     biz_id = current_business_id()
     try:
@@ -205,8 +211,22 @@ def delete_employee(employee_id):
         if not existing:
             return jsonify({"error": "Employee not found"}), 404
 
-        execute("DELETE FROM employees WHERE id = %s AND business_id = %s", (employee_id, biz_id))
-        return jsonify({"message": "Employee deleted successfully"})
+        execute("UPDATE employees SET status = 'inactive', leaving_date = COALESCE(leaving_date, DATE('now')), updated_at = CURRENT_TIMESTAMP WHERE id = %s AND business_id = %s", (employee_id, biz_id))
+        return jsonify({"message": "Employee deactivated successfully"})
+    except DatabaseError as exc:
+        return handle_db_error(exc)
+
+
+@employees_bp.post("/<int:employee_id>/reactivate")
+@admin_required
+def reactivate_employee(employee_id):
+    biz_id = current_business_id()
+    try:
+        existing = fetch_one("SELECT id FROM employees WHERE id = %s AND business_id = %s", (employee_id, biz_id))
+        if not existing:
+            return jsonify({"error": "Employee not found"}), 404
+        execute("UPDATE employees SET status = 'active', leaving_date = NULL, updated_at = CURRENT_TIMESTAMP WHERE id = %s AND business_id = %s", (employee_id, biz_id))
+        return jsonify({"message": "Employee reactivated successfully"})
     except DatabaseError as exc:
         return handle_db_error(exc)
 

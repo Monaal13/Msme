@@ -73,11 +73,34 @@ def run_migrations(connection):
     cols_users = [row[1] for row in cursor.execute("PRAGMA table_info(users)").fetchall()]
     if "phone" not in cols_users:
         cursor.execute("ALTER TABLE users ADD COLUMN phone TEXT")
+    if "is_active" not in cols_users:
+        cursor.execute("ALTER TABLE users ADD COLUMN is_active INTEGER NOT NULL DEFAULT 1")
+
+    cols_employees = [row[1] for row in cursor.execute("PRAGMA table_info(employees)").fetchall()]
+    if "leaving_date" not in cols_employees:
+        cursor.execute("ALTER TABLE employees ADD COLUMN leaving_date TEXT")
 
     for table in ["customers", "products", "inventory", "departments"]:
         cols = [row[1] for row in cursor.execute(f"PRAGMA table_info({table})").fetchall()]
         if "status" not in cols:
             cursor.execute(f"ALTER TABLE {table} ADD COLUMN status TEXT DEFAULT 'active'")
+
+    # Link legacy customer accounts only when contact details identify one
+    # unambiguous customer within their business. Never guess a tenant.
+    cursor.execute("""
+        INSERT OR IGNORE INTO customer_users (user_id, business_id, customer_id)
+        SELECT u.id, c.business_id, c.id
+        FROM users u JOIN customers c ON c.business_id = u.business_id
+        WHERE LOWER(COALESCE(u.role, '')) = 'customer'
+          AND LOWER(COALESCE(c.status, 'active')) = 'active'
+          AND ((u.email IS NOT NULL AND c.email IS NOT NULL AND LOWER(u.email) = LOWER(c.email))
+               OR (u.phone IS NOT NULL AND c.phone IS NOT NULL AND u.phone = c.phone))
+          AND (SELECT COUNT(*) FROM customers c2
+               WHERE c2.business_id = c.business_id
+                 AND LOWER(COALESCE(c2.status, 'active')) = 'active'
+                 AND ((u.email IS NOT NULL AND c2.email IS NOT NULL AND LOWER(u.email) = LOWER(c2.email))
+                      OR (u.phone IS NOT NULL AND c2.phone IS NOT NULL AND u.phone = c2.phone))) = 1
+    """)
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS payment_history (

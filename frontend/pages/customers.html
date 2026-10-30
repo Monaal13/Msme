@@ -141,6 +141,11 @@
                 <div class="toolbar">
                     <div class="toolbar-group">
                         <input data-search id="searchInput" placeholder="Search by name, company, phone, or email...">
+                        <select id="customerStatusFilter" style="max-width: 170px;">
+                            <option value="all">All Customers</option>
+                            <option value="active">Active Customers</option>
+                            <option value="inactive">Inactive Customers</option>
+                        </select>
                     </div>
                     <div style="font-size: 13px; color: var(--muted);" id="customerCountLabel">
                         Showing 0 customers
@@ -313,6 +318,8 @@
         }
 
         function renderCustomerTable() {
+            const selectedStatus = document.getElementById("customerStatusFilter").value;
+            filteredCustomers = allCustomers.filter(customer => selectedStatus === "all" || (customer.status || "active").toLowerCase() === selectedStatus);
             const tbody = document.getElementById("customerTableBody");
             const countLabel = document.getElementById("customerCountLabel");
             const pageInfo = document.getElementById("pageInfo");
@@ -358,7 +365,9 @@
                         <div class="actions-cell">
                             <button class="btn btn-sm secondary" onclick="viewCustomerDetails(${row.id})">View</button>
                             <button class="btn btn-sm secondary" onclick="editCustomer(${row.id})">Edit</button>
-                            <button class="btn btn-sm danger" onclick="deleteCustomer(${row.id}, '${escapeHtml(row.name)}')">Delete</button>
+                            ${(row.status || "active").toLowerCase() === "active"
+                                ? `<button class="btn btn-sm danger" onclick="deleteCustomer(${row.id}, '${escapeHtml(row.name)}')">Deactivate</button>`
+                                : `<button class="btn btn-sm success" onclick="reactivateCustomer(${row.id}, '${escapeHtml(row.name)}')">Reactivate</button>`}
                         </div>
                     </td>
                 </tr>
@@ -408,10 +417,21 @@
         }
 
         async function deleteCustomer(id, name) {
-            if (!confirm(`Are you sure you want to delete customer "${name}"?`)) return;
+            if (!confirm(`Deactivate customer "${name}"? Previous orders and transactions will be preserved.`)) return;
             try {
                 await api.request(`/api/customers/${id}`, { method: "DELETE" });
-                showToast(`Customer "${name}" deleted.`, "info", "Deleted");
+                showToast(`Customer "${name}" deactivated.`, "info");
+                refreshCustomerList();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        async function reactivateCustomer(id, name) {
+            if (!confirm(`Reactivate customer "${name}"?`)) return;
+            try {
+                await api.request(`/api/customers/${id}/reactivate`, { method: "POST" });
+                showToast(`Customer "${name}" reactivated.`, "success");
                 refreshCustomerList();
             } catch (error) {
                 showToast(error.message, "error");
@@ -526,6 +546,7 @@
             loadCustomers();
 
             document.getElementById("searchInput").addEventListener("input", refreshCustomerList);
+            document.getElementById("customerStatusFilter").addEventListener("change", renderCustomerTable);
             document.getElementById("scrollToAddBtn").addEventListener("click", focusAddForm);
             document.getElementById("cancelEditBtn").addEventListener("click", resetForm);
 

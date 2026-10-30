@@ -2,9 +2,22 @@ from flask import Blueprint, jsonify, request, session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from services.db import db_cursor, fetch_all, fetch_one, normalize_query
-from .common import DatabaseError, handle_db_error, require_fields
+from .common import DatabaseError, admin_required, handle_db_error, require_fields
 
 auth_bp = Blueprint("auth", __name__)
+
+
+def is_inactive_employee_account(user):
+    if (user.get("role") or "").lower() not in ("staff", "employee") or not user.get("business_id"):
+        return False
+    employee = fetch_one(
+        """SELECT id FROM employees
+           WHERE business_id = %s AND email IS NOT NULL AND LOWER(email) = LOWER(%s)
+             AND LOWER(COALESCE(status, 'active')) != 'active'
+           LIMIT 1""",
+        (user["business_id"], user.get("email") or ""),
+    )
+    return bool(employee)
 
 
 @auth_bp.post("/register")
@@ -82,42 +95,34 @@ def register_customer():
 
     email = data["email"].strip().lower()
     phone = (data.get("phone") or "").strip()
-    company_name = (data.get("company_name") or data.get("business_name") or "").strip()
 
     try:
         existing = fetch_one("SELECT id FROM users WHERE email = %s", (email,))
         if existing:
             return jsonify({"error": "Email is already registered. Please login instead."}), 409
 
+        # A portal account must be anchored to one exact, active customer record.
         matching_customers = fetch_all(
             """
             SELECT id, business_id FROM customers
-            WHERE (email IS NOT NULL AND LOWER(email) = %s)
-               OR (%s != '' AND phone IS NOT NULL AND phone = %s)
+            WHERE LOWER(TRIM(name)) = LOWER(TRIM(%s))
+              AND ((email IS NOT NULL AND LOWER(email) = %s)
+               OR (%s != '' AND phone IS NOT NULL AND phone = %s))
+              AND LOWER(COALESCE(status, 'active')) = 'active'
             """,
-            (email, phone, phone),
+            (data["name"].strip(), email, phone, phone),
         )
+        if len(matching_customers) != 1:
+            return jsonify({"error": "Your account is not registered with this company. Please contact the administrator."}), 403
 
-        first_biz = matching_customers[0]["business_id"] if matching_customers else None
-        if not first_biz:
-            biz_row = fetch_one("SELECT id FROM businesses ORDER BY id ASC LIMIT 1")
-            first_biz = biz_row["id"] if biz_row else None
-
-        if not first_biz:
-            # Fallback create system business container
-            fallback_name = company_name or "Aur Garments"
-            with db_cursor(commit=True) as cursor:
-                cursor.execute(
-                    normalize_query("INSERT INTO businesses (name, industry) VALUES (%s, 'Garments')"),
-                    (fallback_name,),
-                )
-                first_biz = cursor.lastrowid
+        customer = matching_customers[0]
+        first_biz = customer["business_id"]
 
         with db_cursor(commit=True) as cursor:
             cursor.execute(
                 normalize_query("""
-                INSERT INTO users (business_id, name, email, phone, password_hash, role)
-                VALUES (%s, %s, %s, %s, %s, 'customer')
+                INSERT INTO users (business_id, name, email, phone, password_hash, role, is_active)
+                VALUES (%s, %s, %s, %s, %s, 'customer', 1)
                 """),
                 (
                     first_biz,
@@ -129,18 +134,16 @@ def register_customer():
             )
             user_id = cursor.lastrowid
 
-            for cust_rec in matching_customers:
-                cursor.execute(
-                    normalize_query("""
-                    INSERT INTO customer_users (user_id, business_id, customer_id)
-                    VALUES (%s, %s, %s)
-                    ON CONFLICT(user_id, business_id) DO NOTHING
-                    """),
-                    (user_id, cust_rec["business_id"], cust_rec["id"]),
-                )
+            cursor.execute(
+                normalize_query("""
+                INSERT INTO customer_users (user_id, business_id, customer_id)
+                VALUES (%s, %s, %s)
+                """),
+                (user_id, customer["business_id"], customer["id"]),
+            )
 
         session["user_id"] = user_id
-        session["business_id"] = first_biz or 0
+        session["business_id"] = first_biz
         session["user_name"] = data["name"].strip()
         session["role"] = "customer"
 
@@ -148,6 +151,7 @@ def register_customer():
             "message": "Customer account created successfully",
             "user_id": user_id,
             "role": "customer",
+            "registered": True,
             "redirect": "/pages/customer-portal.html",
         }), 201
     except DatabaseError as exc:
@@ -163,13 +167,32 @@ def login():
 
     try:
         user = fetch_one(
-            "SELECT id, business_id, name, email, role, password_hash FROM users WHERE email = %s",
+            "SELECT id, business_id, name, email, role, password_hash, is_active FROM users WHERE email = %s",
             (data["email"].strip().lower(),),
         )
         if not user or not check_password_hash(user["password_hash"], data["password"]):
             return jsonify({"error": "Invalid email or password"}), 401
 
+        # Block inactive accounts from logging in
+        is_active = user.get("is_active")
+        if is_active is not None and int(is_active) == 0:
+            return jsonify({"error": "Your account has been deactivated. Please contact the administrator."}), 403
+
         role = user.get("role") or "staff"
+        if is_inactive_employee_account(user):
+            return jsonify({"error": "Your employee account is inactive. Please contact the administrator."}), 403
+        if role == "customer":
+            link = fetch_one(
+                """SELECT cu.business_id, cu.customer_id FROM customer_users cu
+                   JOIN customers c ON c.id = cu.customer_id AND c.business_id = cu.business_id
+                   WHERE cu.user_id = %s AND LOWER(COALESCE(c.status, 'active')) = 'active'
+                   LIMIT 1""",
+                (user["id"],),
+            )
+            if not link:
+                return jsonify({"error": "Your account is not registered with this company. Please contact the administrator."}), 403
+            user["business_id"] = link["business_id"]
+            session.clear()
         session["user_id"] = user["id"]
         session["business_id"] = user["business_id"]
         session["user_name"] = user["name"]
@@ -181,7 +204,7 @@ def login():
             if biz and biz.get("name"):
                 biz_name = biz["name"].strip()
 
-        if not biz_name:
+        if not biz_name and role != "customer":
             biz_name = "Aur Garments"
 
         redirect_page = "/pages/customer-portal.html" if role == "customer" else "/pages/dashboard.html"
@@ -213,29 +236,57 @@ def me():
     if not session.get("user_id"):
         return jsonify({"authenticated": False}), 401
 
+    user = fetch_one("SELECT id, role, business_id, name, is_active FROM users WHERE id = %s", (session["user_id"],))
+    if not user or not user.get("is_active", 1):
+        session.clear()
+        return jsonify({"authenticated": False, "error": "Your account has been deactivated. Please contact the administrator."}), 403
+    role = user.get("role") or "staff"
+    if is_inactive_employee_account(user):
+        session.clear()
+        return jsonify({"authenticated": False, "error": "Your employee account is inactive. Please contact the administrator."}), 403
+    session["role"] = role
+    session["business_id"] = user.get("business_id")
+    session["user_name"] = user.get("name")
     biz_name = None
-    biz_id = session.get("business_id")
+    biz_id = user.get("business_id")
     if biz_id:
         biz = fetch_one("SELECT name FROM businesses WHERE id = %s", (biz_id,))
         if biz and biz.get("name"):
             biz_name = biz["name"].strip()
 
-    if not biz_name:
+    if not biz_name and role != "customer":
         biz_name = "Aur Garments"
+
+    # Revalidate the customer link on every session check, including deactivation.
+    registered = True
+    if role == "customer":
+        user_id = session["user_id"]
+        linked = fetch_one(
+            """SELECT COUNT(*) AS cnt FROM customer_users cu
+               JOIN customers c ON c.id = cu.customer_id AND c.business_id = cu.business_id
+               WHERE cu.user_id = %s AND LOWER(COALESCE(c.status, 'active')) = 'active'""",
+            (user_id,),
+        )
+        registered = bool(linked and linked.get("cnt", 0) > 0)
+        if not registered:
+            session.clear()
+            return jsonify({"authenticated": False, "error": "Your account is not registered with this company. Please contact the administrator."}), 403
 
     return jsonify({
         "authenticated": True,
         "user": {
-            "id": session["user_id"],
-            "business_id": session.get("business_id"),
+            "id": user["id"],
+            "business_id": user.get("business_id"),
             "business_name": biz_name,
-            "name": session.get("user_name"),
-            "role": session.get("role", "staff"),
+            "name": user.get("name"),
+            "role": role,
+            "registered": registered,
         },
     })
 
 
 @auth_bp.post("/update-business")
+@admin_required
 def update_business():
     if not session.get("user_id"):
         return jsonify({"error": "Authentication required"}), 401

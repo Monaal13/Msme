@@ -2,7 +2,7 @@ import re
 from flask import Blueprint, jsonify, request
 
 from services.db import execute, fetch_all, fetch_one
-from .common import DatabaseError, current_business_id, handle_db_error, login_required
+from .common import DatabaseError, admin_required, current_business_id, handle_db_error
 
 customers_bp = Blueprint("customers", __name__)
 
@@ -17,11 +17,14 @@ def validate_customer_data(data):
     phone = (data.get("phone") or "").strip()
     if phone and not re.match(r"^[0-9+\-\s()]{7,15}$", phone):
         return "Invalid phone number format"
+    status = (data.get("status") or "active").strip().lower()
+    if status not in ("active", "inactive"):
+        return "Customer status must be active or inactive"
     return None
 
 
 @customers_bp.get("")
-@login_required
+@admin_required
 def list_customers():
     search = f"%{request.args.get('search', '').strip()}%"
     try:
@@ -49,7 +52,7 @@ def list_customers():
 
 
 @customers_bp.post("")
-@login_required
+@admin_required
 def create_customer():
     data = request.get_json() or {}
     error = validate_customer_data(data)
@@ -77,7 +80,7 @@ def create_customer():
 
 
 @customers_bp.get("/<int:customer_id>")
-@login_required
+@admin_required
 def get_customer(customer_id):
     biz_id = current_business_id()
     try:
@@ -166,7 +169,7 @@ def get_customer(customer_id):
 
 
 @customers_bp.put("/<int:customer_id>")
-@login_required
+@admin_required
 def update_customer(customer_id):
     data = request.get_json() or {}
     error = validate_customer_data(data)
@@ -201,7 +204,7 @@ def update_customer(customer_id):
 
 
 @customers_bp.delete("/<int:customer_id>")
-@login_required
+@admin_required
 def delete_customer(customer_id):
     biz_id = current_business_id()
     try:
@@ -209,17 +212,22 @@ def delete_customer(customer_id):
         if not existing:
             return jsonify({"error": "Customer not found"}), 404
 
-        sales_count = fetch_one(
-            "SELECT COUNT(*) AS count FROM sales WHERE customer_id = %s AND business_id = %s",
-            (customer_id, biz_id),
-        )["count"]
-        if sales_count > 0:
-            return jsonify({
-                "error": f"Cannot delete customer. This customer has {sales_count} existing sale/invoice record(s). Invoices must be preserved for accounting integrity."
-            }), 400
+        execute("UPDATE customers SET status = 'inactive', updated_at = CURRENT_TIMESTAMP WHERE id = %s AND business_id = %s", (customer_id, biz_id))
+        return jsonify({"message": "Customer deactivated"})
+    except DatabaseError as exc:
+        return handle_db_error(exc)
 
-        execute("DELETE FROM customers WHERE id = %s AND business_id = %s", (customer_id, biz_id))
-        return jsonify({"message": "Customer deleted"})
+
+@customers_bp.post("/<int:customer_id>/reactivate")
+@admin_required
+def reactivate_customer(customer_id):
+    biz_id = current_business_id()
+    try:
+        existing = fetch_one("SELECT id FROM customers WHERE id = %s AND business_id = %s", (customer_id, biz_id))
+        if not existing:
+            return jsonify({"error": "Customer not found"}), 404
+        execute("UPDATE customers SET status = 'active', updated_at = CURRENT_TIMESTAMP WHERE id = %s AND business_id = %s", (customer_id, biz_id))
+        return jsonify({"message": "Customer reactivated"})
     except DatabaseError as exc:
         return handle_db_error(exc)
 

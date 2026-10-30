@@ -69,7 +69,7 @@ def create_sale():
         return jsonify({"error": "Customer is required"}), 400
 
     customer = fetch_one(
-        "SELECT id, name FROM customers WHERE id = %s AND business_id = %s",
+        "SELECT id, name FROM customers WHERE id = %s AND business_id = %s AND LOWER(COALESCE(status, 'active')) = 'active'",
         (customer_id, biz_id),
     )
     if not customer:

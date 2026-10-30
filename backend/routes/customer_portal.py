@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, session
 
 from services.db import fetch_all, fetch_one
-from .common import DatabaseError, handle_db_error, login_required
+from .common import DatabaseError, customer_required, handle_db_error
 
 customer_portal_bp = Blueprint("customer_portal", __name__)
 
@@ -17,7 +17,7 @@ def current_customer_info():
 
 
 @customer_portal_bp.get("/stores")
-@login_required
+@customer_required
 def customer_stores():
     user_id = session.get("user_id")
     try:
@@ -30,7 +30,7 @@ def customer_stores():
             FROM customer_users cu
             JOIN businesses b ON b.id = cu.business_id
             JOIN customers c ON c.id = cu.customer_id
-            WHERE cu.user_id = %s
+            WHERE cu.user_id = %s AND LOWER(COALESCE(c.status, 'active')) = 'active'
             ORDER BY b.name ASC
             """,
             (user_id,),
@@ -41,7 +41,7 @@ def customer_stores():
 
 
 @customer_portal_bp.get("/orders")
-@login_required
+@customer_required
 def customer_orders():
     user_id = session.get("user_id")
     biz_id_param = request.args.get("business_id")
@@ -51,7 +51,7 @@ def customer_orders():
             FROM production_orders po
             JOIN customer_users cu ON cu.business_id = po.business_id AND cu.customer_id = po.customer_id
             JOIN businesses b ON b.id = po.business_id
-            WHERE cu.user_id = %s
+            WHERE cu.user_id = %s AND LOWER(COALESCE((SELECT status FROM customers WHERE id = cu.customer_id AND business_id = cu.business_id), 'active')) = 'active'
         """
         params = [user_id]
         if biz_id_param:
@@ -83,7 +83,7 @@ def customer_orders():
 
 
 @customer_portal_bp.get("/invoices")
-@login_required
+@customer_required
 def customer_invoices():
     user_id = session.get("user_id")
     biz_id_param = request.args.get("business_id")
@@ -93,7 +93,7 @@ def customer_invoices():
             FROM sales s
             JOIN customer_users cu ON cu.business_id = s.business_id AND cu.customer_id = s.customer_id
             JOIN businesses b ON b.id = s.business_id
-            WHERE cu.user_id = %s
+            WHERE cu.user_id = %s AND LOWER(COALESCE((SELECT status FROM customers WHERE id = cu.customer_id AND business_id = cu.business_id), 'active')) = 'active'
         """
         params = [user_id]
         if biz_id_param:
@@ -108,7 +108,7 @@ def customer_invoices():
 
 
 @customer_portal_bp.get("/notifications")
-@login_required
+@customer_required
 def customer_notifications():
     user_id = session.get("user_id")
     try:
@@ -118,7 +118,7 @@ def customer_notifications():
             FROM messages m
             JOIN customer_users cu ON cu.business_id = m.business_id AND cu.customer_id = m.customer_id
             JOIN businesses b ON b.id = m.business_id
-            WHERE cu.user_id = %s AND LOWER(m.status) IN ('sent', 'scheduled')
+            WHERE cu.user_id = %s AND LOWER(COALESCE((SELECT status FROM customers WHERE id = cu.customer_id AND business_id = cu.business_id), 'active')) = 'active' AND LOWER(m.status) IN ('sent', 'scheduled')
             ORDER BY m.created_at DESC
             """,
             (user_id,),
@@ -129,7 +129,7 @@ def customer_notifications():
 
 
 @customer_portal_bp.get("/profile")
-@login_required
+@customer_required
 def customer_profile():
     user_id = session.get("user_id")
     try:

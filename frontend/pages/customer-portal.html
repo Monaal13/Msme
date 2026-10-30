@@ -86,6 +86,10 @@
     <script>
         async function initCustomerPortal() {
             const user = await requireLogin();
+            if (!user || user.role !== "customer" || !user.registered) {
+                setStatus("Your account is not registered with this company. Please contact the administrator.", "error");
+                return;
+            }
             loadStores();
             loadOrders();
             loadInvoices();

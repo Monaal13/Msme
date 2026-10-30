@@ -186,10 +186,12 @@
                     <table>
                         <thead>
                             <tr>
+                                <th>Employee ID</th>
                                 <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
                                 <th>Department</th>
                                 <th>Designation</th>
-                                <th>Contact</th>
                                 <th>Salary</th>
                                 <th>Joining Date</th>
                                 <th>Status</th>
@@ -261,7 +263,11 @@
             const filtered = employees.filter(e => {
                 const matchesSearch = !search ||
                     e.name.toLowerCase().includes(search) ||
-                    (e.designation && e.designation.toLowerCase().includes(search));
+                    (e.designation && e.designation.toLowerCase().includes(search)) ||
+                    (e.email && e.email.toLowerCase().includes(search)) ||
+                    (e.phone && e.phone.toLowerCase().includes(search)) ||
+                    (e.department_name && e.department_name.toLowerCase().includes(search)) ||
+                    `EMP-${String(e.id).padStart(5, "0")}`.toLowerCase().includes(search);
 
                 const matchesDept = deptF === "all" || (e.department_id && e.department_id == deptF);
                 const matchesStatus = statusF === "all" || (e.status || 'active').toLowerCase() === statusF;
@@ -271,23 +277,28 @@
 
             const tbody = document.getElementById("employeeTableBody");
             if (!filtered.length) {
-                tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><span class="empty-icon">👥</span><span>No employees found.</span></div></td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="10"><div class="empty-state"><span class="empty-icon">👥</span><span>No employees found.</span></div></td></tr>`;
                 return;
             }
 
             tbody.innerHTML = filtered.map(e => `
                 <tr>
+                    <td>EMP-${String(e.id).padStart(5, "0")}</td>
                     <td><strong>${escapeHtml(e.name)}</strong></td>
+                    <td>${escapeHtml(e.email) || "-"}</td>
+                    <td>${escapeHtml(e.phone) || "-"}</td>
                     <td>${escapeHtml(e.department_name) || "Unassigned"}</td>
                     <td>${escapeHtml(e.designation) || "-"}</td>
-                    <td>${escapeHtml(e.phone) || escapeHtml(e.email) || "-"}</td>
                     <td><strong>${formatMoney(e.salary)}</strong></td>
                     <td>${formatDate(e.joining_date)}</td>
                     <td>${renderActiveBadge(e.status)}</td>
                     <td>
                         <div class="actions-cell">
+                            <button class="btn btn-sm secondary" onclick="viewEmployeeDetails(${e.id})">View</button>
                             <button class="btn btn-sm secondary" onclick="editEmployee(${e.id})">Edit</button>
-                            <button class="btn btn-sm danger" onclick="deleteEmployee(${e.id}, '${escapeHtml(e.name)}')">Delete</button>
+                            ${(e.status || "active").toLowerCase() === "active"
+                                ? `<button class="btn btn-sm danger" onclick="deleteEmployee(${e.id}, '${escapeHtml(e.name)}')">Mark as Left</button>`
+                                : `<button class="btn btn-sm success" onclick="reactivateEmployee(${e.id}, '${escapeHtml(e.name)}')">Reactivate</button>`}
                         </div>
                     </td>
                 </tr>
@@ -328,11 +339,31 @@
         }
 
         async function deleteEmployee(id, name) {
-            if (!confirm(`Are you sure you want to delete employee "${name}"?`)) return;
+            if (!confirm(`Mark employee "${name}" as left? Their work history will be preserved.`)) return;
             try {
                 await api.request(`/api/employees/${id}`, { method: "DELETE" });
-                showToast(`Employee "${name}" deleted.`, "info");
+                showToast(`Employee "${name}" marked as left.`, "info");
                 refreshData();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        async function reactivateEmployee(id, name) {
+            if (!confirm(`Reactivate employee "${name}"?`)) return;
+            try {
+                await api.request(`/api/employees/${id}/reactivate`, { method: "POST" });
+                showToast(`Employee "${name}" reactivated.`, "success");
+                refreshData();
+            } catch (error) {
+                showToast(error.message, "error");
+            }
+        }
+
+        async function viewEmployeeDetails(id) {
+            try {
+                const e = await api.request(`/api/employees/${id}`);
+                alert(`Employee ID: EMP-${String(e.id).padStart(5, "0")}\nName: ${e.name}\nEmail: ${e.email || "-"}\nPhone: ${e.phone || "-"}\nDepartment: ${e.department_name || "-"}\nDesignation: ${e.designation || "-"}\nJoining Date: ${e.joining_date || "-"}\nStatus: ${e.status || "Active"}${e.leaving_date ? `\nLeaving Date: ${e.leaving_date}` : ""}`);
             } catch (error) {
                 showToast(error.message, "error");
             }

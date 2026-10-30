@@ -342,6 +342,68 @@ function renderRows(tableBody, rows, columns, emptyText) {
         .join("");
 }
 
+/**
+ * initSegmentedControl
+ * Renders a segmented toggle button group (Active / Inactive) inside `container`
+ * and keeps the value of `hiddenInput` in sync with the selection.
+ *
+ * @param {HTMLElement} container  - The element to render the segmented control inside.
+ * @param {HTMLInputElement} hiddenInput - The hidden <input> whose value is kept in sync.
+ * @param {string} defaultValue    - 'active' | 'inactive'
+ */
+function initSegmentedControl(container, hiddenInput, defaultValue) {
+    if (!container || !hiddenInput) return;
+
+    const options = [
+        { value: "active",   label: "✓ Active" },
+        { value: "inactive", label: "✕ Inactive" },
+    ];
+
+    container.innerHTML = "";
+
+    const wrapper = document.createElement("div");
+    wrapper.style.cssText = "display:inline-flex; border:1px solid var(--line); border-radius:8px; overflow:hidden; gap:0;";
+
+    options.forEach((opt) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.textContent = opt.label;
+        btn.dataset.segValue = opt.value;
+        btn.style.cssText = `
+            padding: 6px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+            background: var(--secondary);
+            color: var(--muted);
+        `;
+
+        const activate = () => {
+            wrapper.querySelectorAll("button").forEach((b) => {
+                b.style.background = "var(--secondary)";
+                b.style.color = "var(--muted)";
+            });
+            btn.style.background = opt.value === "active" ? "var(--success)" : "var(--danger)";
+            btn.style.color = "#fff";
+            hiddenInput.value = opt.value;
+        };
+
+        btn.addEventListener("click", activate);
+
+        // Activate the matching default
+        if ((defaultValue || "active").toLowerCase() === opt.value) {
+            // defer so CSS variables are applied
+            requestAnimationFrame(activate);
+        }
+
+        wrapper.appendChild(btn);
+    });
+
+    container.appendChild(wrapper);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     handleAuth("loginForm", "/api/auth/login");
     handleAuth("registerForm", "/api/auth/register");
